@@ -72,7 +72,7 @@
 						class="menu-arrow"></span>
 				</a>
 					<ul class="nav-second-level" aria-expanded="false">
-						<li><a href="product-manager.html">Danh sách sản phẩm</a></li>
+						<li><a href="editproduct">Danh sách sản phẩm</a></li>
 						<li><a href="product-edit.html">Thêm sản phẩm</a></li>
 					</ul></li>
 

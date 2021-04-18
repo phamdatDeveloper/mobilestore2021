@@ -40,7 +40,8 @@
 	rel="stylesheet" type="text/css">
 <link href="<c:url value ="/template/admin/assets/css/app.min.css"/>"
 	rel="stylesheet" type="text/css" id="app-stylesheet">
-
+<!--ck-->
+        <script src="<c:url value ="/template/admin/assets/ckeditor/ckeditor.js"/>"></script>
 </head>
 
 <body>
