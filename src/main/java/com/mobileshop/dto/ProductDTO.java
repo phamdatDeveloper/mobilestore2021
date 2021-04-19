@@ -1,72 +1,43 @@
-package com.mobileshop.entity;
+package com.mobileshop.dto;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+public class ProductDTO {
 
-@Entity
-@Table(name = "product")
-public class ProductEntity extends BaseEntity {
-
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private Long Id;
-
-	@Column(name = "productname")
+	private Long id;
 	private String productName;
 
-	@Column(name = "price")
 	private double price;
 
-	@Column(name = "pricesale")
 	private double priceSale;
-	
-	
-	@Column(name = "description")
+
 	private String description;
-	
-	@Column(name = "specification")
+
 	private String specification;
-	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "categoryid", referencedColumnName="id")
-//	private CategoryEntity category;
-	
-	@Column(name = "quantity")
+
 	private int quantity;
-	
-	@Column(name = "status")
+
 	private String status;
-	
-	@Column(name = "active")
+
 	private int active;
-	
-	@Column(name = "categoryid")
+
 	private int categoryId;
 
-//	private String createBy;
-//
-//	private Date createDate;
-//
-//	private String modifyBy;
-//
-//	private Date modifyDate;
+	private String createBy;
 
-//	public Long getId() {
-//		return Id;
-//	}
-//
-//	public void setId(Long id) {
-//		Id = id;
-//	}
+	private Date createDate;
+
+	private String modifyBy;
+
+	private Date modifyDate;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		id = id;
+	}
 
 	public String getProductName() {
 		return productName;
@@ -140,13 +111,36 @@ public class ProductEntity extends BaseEntity {
 		this.categoryId = categoryId;
 	}
 
-//	public CategoryEntity getCategory() {
-//		return category;
-//	}
-//
-//	public void setCategory(CategoryEntity category) {
-//		this.category = category;
-//	}
+	public String getCreateBy() {
+		return createBy;
+	}
 
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public String getModifyBy() {
+		return modifyBy;
+	}
+
+	public void setModifyBy(String modifyBy) {
+		this.modifyBy = modifyBy;
+	}
+
+	public Date getModifyDate() {
+		return modifyDate;
+	}
+
+	public void setModifyDate(Date modifyDate) {
+		this.modifyDate = modifyDate;
+	}
 
 }

@@ -2,19 +2,11 @@ package com.mobileshop.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.mobileshop.dto.ProductDTO;
 
-import com.mobileshop.entity.ProductEntity;
-import com.mobileshop.repository.ProductRepository;
-
-@Service
-public class ProductService {
-	@Autowired
-	private ProductRepository productRepository;
+public interface ProductService {
 	
-	public List<ProductEntity> getProduct() {
-		List<ProductEntity> list= productRepository.findAll();
-		return list;
-	}
+	List<ProductDTO> findAllProductActive() ;
+	
+	ProductDTO getProductByID(Long id);
 }

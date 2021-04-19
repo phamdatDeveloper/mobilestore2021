@@ -70,6 +70,7 @@ public class JPAConfig {
 		dataSource.setUrl(environment.getProperty("jdbc.url"));
 		dataSource.setUsername(environment.getProperty("jdbc.username"));
 		dataSource.setPassword(environment.getProperty("jdbc.password"));
+		
 		return dataSource;
 	}
 }

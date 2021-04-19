@@ -7,13 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mobileshop.service.ProductService;
+import com.mobileshop.service.impl.ProductServiceImpl;
 
 @Controller
 
 public class AdminHomeController {
 	@Autowired
-	private ProductService productService;
+	private ProductServiceImpl productService;
 	
 	@RequestMapping("/admin/home")
 	public String adminHome(ModelAndView modelAndView) {
