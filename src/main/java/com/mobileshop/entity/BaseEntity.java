@@ -2,25 +2,14 @@ package com.mobileshop.entity;
 
 import java.util.Date;
 
-public class UserEntity {
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
+public class BaseEntity {
 	private Long id;
-	
-	private String fullName;
-	
-	private String numberPhone;
-	
-	private String email;
-	
-	private String address;
-	
-	private int active;
-	
 	private String createBy;
-	
 	private Date createDate;
-	
 	private String modifyBy;
-	
 	private Date modifyDate;
 
 	public Long getId() {
@@ -29,46 +18,6 @@ public class UserEntity {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	public String getNumberPhone() {
-		return numberPhone;
-	}
-
-	public void setNumberPhone(String numberPhone) {
-		this.numberPhone = numberPhone;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public int getActive() {
-		return active;
-	}
-
-	public void setActive(int active) {
-		this.active = active;
 	}
 
 	public String getCreateBy() {
@@ -102,6 +51,4 @@ public class UserEntity {
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
-	
-	
 }

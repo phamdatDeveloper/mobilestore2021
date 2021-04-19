@@ -2,25 +2,17 @@ package com.mobileshop.entity;
 
 import java.util.Date;
 
-public class UserEntity {
+public class OrderEntity {
 	private Long id;
-	
-	private String fullName;
-	
-	private String numberPhone;
-	
-	private String email;
-	
-	private String address;
-	
+	private Long userId;
+	private String shipAddress;
+	private String orderEmail;
+	private String orderPhone;
+	private String status;
 	private int active;
-	
 	private String createBy;
-	
 	private Date createDate;
-	
 	private String modifyBy;
-	
 	private Date modifyDate;
 
 	public Long getId() {
@@ -31,36 +23,44 @@ public class UserEntity {
 		this.id = id;
 	}
 
-	public String getFullName() {
-		return fullName;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
-	public String getNumberPhone() {
-		return numberPhone;
+	public String getShipAddress() {
+		return shipAddress;
 	}
 
-	public void setNumberPhone(String numberPhone) {
-		this.numberPhone = numberPhone;
+	public void setShipAddress(String shipAddress) {
+		this.shipAddress = shipAddress;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getOrderEmail() {
+		return orderEmail;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setOrderEmail(String orderEmail) {
+		this.orderEmail = orderEmail;
 	}
 
-	public String getAddress() {
-		return address;
+	public String getOrderPhone() {
+		return orderPhone;
 	}
 
-	public void setAddress(String address) {
-		this.address = address;
+	public void setOrderPhone(String orderPhone) {
+		this.orderPhone = orderPhone;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public int getActive() {
@@ -102,6 +102,5 @@ public class UserEntity {
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
-	
-	
+
 }

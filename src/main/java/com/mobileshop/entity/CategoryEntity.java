@@ -2,25 +2,13 @@ package com.mobileshop.entity;
 
 import java.util.Date;
 
-public class UserEntity {
+public class CategoryEntity {
 	private Long id;
-	
-	private String fullName;
-	
-	private String numberPhone;
-	
-	private String email;
-	
-	private String address;
-	
+	private String categoryName;
 	private int active;
-	
 	private String createBy;
-	
 	private Date createDate;
-	
 	private String modifyBy;
-	
 	private Date modifyDate;
 
 	public Long getId() {
@@ -31,36 +19,12 @@ public class UserEntity {
 		this.id = id;
 	}
 
-	public String getFullName() {
-		return fullName;
+	public String getCategoryName() {
+		return categoryName;
 	}
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	public String getNumberPhone() {
-		return numberPhone;
-	}
-
-	public void setNumberPhone(String numberPhone) {
-		this.numberPhone = numberPhone;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
 	}
 
 	public int getActive() {
@@ -102,6 +66,5 @@ public class UserEntity {
 	public void setModifyDate(Date modifyDate) {
 		this.modifyDate = modifyDate;
 	}
-	
-	
+
 }
