@@ -31,4 +31,10 @@ public class ProductAPI {
 		}
 		return ResponseEntity.ok().body(product);
 	}
+	@PostMapping("/api/product/{id}")
+	public ResponseEntity<ProductDTO> save(@PathVariable("id") Long id) {
+		ProductDTO product = productService.getProductByID(id);
+		
+		return ResponseEntity.ok().body(product);
+	}
 }
