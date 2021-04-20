@@ -1,10 +1,8 @@
 package com.mobileshop.dto;
 
-import java.util.Date;
+public class ProductDTO extends BaseDTO{
 
-public class ProductDTO {
-
-	private Long id;
+	
 	private String productName;
 
 	private double price;
@@ -23,21 +21,6 @@ public class ProductDTO {
 
 	private int categoryId;
 
-	private String createBy;
-
-	private Date createDate;
-
-	private String modifyBy;
-
-	private Date modifyDate;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		id = id;
-	}
 
 	public String getProductName() {
 		return productName;
@@ -111,36 +94,6 @@ public class ProductDTO {
 		this.categoryId = categoryId;
 	}
 
-	public String getCreateBy() {
-		return createBy;
-	}
 
-	public void setCreateBy(String createBy) {
-		this.createBy = createBy;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public String getModifyBy() {
-		return modifyBy;
-	}
-
-	public void setModifyBy(String modifyBy) {
-		this.modifyBy = modifyBy;
-	}
-
-	public Date getModifyDate() {
-		return modifyDate;
-	}
-
-	public void setModifyDate(Date modifyDate) {
-		this.modifyDate = modifyDate;
-	}
 
 }

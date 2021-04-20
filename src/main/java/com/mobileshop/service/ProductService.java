@@ -9,4 +9,8 @@ public interface ProductService {
 	List<ProductDTO> findAllProductActive() ;
 	
 	ProductDTO getProductByID(Long id);
+	
+	ProductDTO save(ProductDTO product);
+	
+	void update(ProductDTO product);
 }

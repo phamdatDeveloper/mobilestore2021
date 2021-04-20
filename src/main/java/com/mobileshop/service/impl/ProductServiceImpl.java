@@ -39,4 +39,18 @@ public class ProductServiceImpl implements ProductService {
 		
 		return product;
 	}
+
+	@Override
+	public ProductDTO save(ProductDTO product) {
+		ProductEntity productEntity = converter.convertToEntity(product);
+		ProductDTO productDTO = converter.convertToDTO(productRepository.save(productEntity));
+		return productDTO;
+	}
+
+	@Override
+	public void update(ProductDTO product) {
+		ProductEntity productEntity = converter.convertToEntity(product);
+		ProductDTO productDTO = converter.convertToDTO(productRepository.save(productEntity));
+		
+	}
 }
