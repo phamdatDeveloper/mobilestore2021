@@ -4,17 +4,18 @@
 	prefix="decorator"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
 <meta charset="utf-8">
-<title><decorator:title default="Home"/></title>
+<title><decorator:title default="Home" /></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta content="Responsive bootstrap 4 admin template" name="description">
 <meta content="Coderthemes" name="author">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- App favicon -->
-<link rel="shortcut icon" href="assets\images\icon-logo.jpg">
+<link rel="shortcut icon"
+	href="<c:url value ="/template/admin/assets/images/icon-logo.jpg"/>">
 
 <!-- Plugins css-->
 <link
@@ -41,7 +42,8 @@
 <link href="<c:url value ="/template/admin/assets/css/app.min.css"/>"
 	rel="stylesheet" type="text/css" id="app-stylesheet">
 <!--ck-->
-        <script src="<c:url value ="/template/admin/assets/ckeditor/ckeditor.js"/>"></script>
+<script
+	src="<c:url value ="/template/admin/assets/ckeditor/ckeditor.js"/>"></script>
 </head>
 
 <body>
@@ -62,9 +64,18 @@
 
 	<!-- Vendor js -->
 	<script src="<c:url value ="/template/admin/assets/js/vendor.min.js"/>"></script>
-
+    <!-- Required datatable js -->
+    <script src="<c:url value ="/template/admin/assets/libs/datatables/jquery.dataTables.min.js"/>"></script>
+    <script src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.bootstrap4.min.js"/>"></script>
 	<!-- App js -->
 	<script src="<c:url value ="/template/admin/assets/js/app.min.js"/>"></script>
+	    <!-- Responsive examples -->
+    <script src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.responsive.min.js"/>"></script>
+    <script src="<c:url value ="/template/admin/assets/libs/datatables/responsive.bootstrap4.min.js"/>"></script>
 
+    <script src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.keyTable.min.js"/>"></script>
+    <script src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.select.min.js"/>"></script>
+	<!-- Datatables init -->
+	<script src="<c:url value ="/template/admin/assets/js/pages/datatables.init.js"/>"></script>
 </body>
 </html>

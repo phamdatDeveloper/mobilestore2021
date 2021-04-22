@@ -16,10 +16,6 @@ import javax.persistence.Table;
 @Table(name = "product")
 public class ProductEntity extends BaseEntity {
 
-//	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private Long Id;
-
 	@Column(name = "productname")
 	private String productName;
 
@@ -28,45 +24,30 @@ public class ProductEntity extends BaseEntity {
 
 	@Column(name = "pricesale")
 	private double priceSale;
-	
-	
+
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "specification")
 	private String specification;
-	
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "categoryid", referencedColumnName="id")
-//	private CategoryEntity category;
-	
+
+	@Column(name = "mainimage")
+	private String mainImage;
+
+	@Column(name = "secondaryimage")
+	private String secondaryImage;
+
 	@Column(name = "quantity")
 	private int quantity;
-	
+
 	@Column(name = "status")
 	private String status;
-	
+
 	@Column(name = "active")
 	private int active;
-	
+
 	@Column(name = "categoryid")
 	private int categoryId;
-
-//	private String createBy;
-//
-//	private Date createDate;
-//
-//	private String modifyBy;
-//
-//	private Date modifyDate;
-
-//	public Long getId() {
-//		return Id;
-//	}
-//
-//	public void setId(Long id) {
-//		Id = id;
-//	}
 
 	public String getProductName() {
 		return productName;
@@ -140,13 +121,20 @@ public class ProductEntity extends BaseEntity {
 		this.categoryId = categoryId;
 	}
 
-//	public CategoryEntity getCategory() {
-//		return category;
-//	}
-//
-//	public void setCategory(CategoryEntity category) {
-//		this.category = category;
-//	}
+	public String getMainImage() {
+		return mainImage;
+	}
 
+	public void setMainImage(String mainImage) {
+		this.mainImage = mainImage;
+	}
+
+	public String getSecondaryImage() {
+		return secondaryImage;
+	}
+
+	public void setSecondaryImage(String secondaryImage) {
+		this.secondaryImage = secondaryImage;
+	}
 
 }

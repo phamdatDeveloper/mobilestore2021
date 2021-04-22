@@ -1,6 +1,4 @@
-﻿<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%> 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -59,36 +57,31 @@
 
                                         <div class="row">
                                             <div class="col-12">
-                                            	
-										        <form:form action="save" method="get" modelAttribute="product" class="form-horizontal">
-                                                		<div class="form-group row">
-                                                            
-                                                            <div class="col-lg-10">
-                                                                 <form:hidden path="id"/>
-                                                            </div>
-                                                        </div>
+                                                <div class="">
+                                                    <form class="form-horizontal">
                                                         <div class="form-group row">
                                                             <label class="col-lg-2 col-form-label">Tên sản phẩm</label>
                                                             <div class="col-lg-10">
-                                                            	<form:input path="productName" type="text" class="form-control" />  
+                                                                <input type="text" class="form-control" value="Tên sản phẩm">
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-lg-2 col-form-label" for="example-email" >Giá</label>
                                                             <div class="col-lg-10">
-                                                            	<form:input path="price" type="text" class="form-control" />  
-                                                               
-                                                               
+                                                                <input type="email" id="price-product" name="example-email" class="form-control" placeholder="Giá sản phẩm ">
+                                                                <p id="convert-money"></p>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row">
                                                             <label class="col-lg-2 col-form-label">Phân loại sản phẩm</label>
-                                                            
                                                             <div class="col-lg-10">
-                                                            <form:select path="categoryId" class=" custom-select form-control">
-                                                            	<form:options items="${categorys}" itemValue="id" itemLabel="categoryName" />
-                                                            </form:select>
-                                                                
+                                                                <select class=" custom-select form-control">
+                                                                    <option>Iphone</option>
+                                                                    <option>Samsung</option>
+                                                                    <option>Huawei</option>
+                                                                    <option>Oppo</option>
+                                                                    <option>Nokia</option>
+                                                                </select>
                                                             </div>
                                                         </div>
                                                         <div class="form-group row ">
@@ -158,7 +151,8 @@
                                                             </div>
                                                         </div>
                                                         
-                                                     </form:form>
+                                                    </form>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -186,9 +180,14 @@
     
         <script>
             CKEDITOR.replace( 'editor1' );
- 
         </script>
-       
+        <script>
+            $("#price-product").blur(function(){
+                var num = $("#price-product").val();
+                $("#convert-money").css("color", "red");
+                $("#convert-money").text(num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+" đ");
+            });
+        </script>
     </body>
 
 </html>

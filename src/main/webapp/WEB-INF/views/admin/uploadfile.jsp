@@ -12,6 +12,13 @@
 	<br />
 	<br />
 	<!-- MyUploadForm -->
+	 <div id="wrapper">
+
+            <div class="content-page">
+                <div class="content">
+                    
+                    <!-- Start Content-->
+                    <div class="container-fluid">
 	<form:form method="POST"
 		action="http://localhost:8080/admin/uploadOneFile"
 		enctype="multipart/form-data">
@@ -30,7 +37,10 @@
 		</p>
 
 	</form:form>
-
+</div>
+</div>
+</div>
+</div>
 
 </body>
 </html>

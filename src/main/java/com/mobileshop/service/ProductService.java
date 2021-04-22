@@ -5,6 +5,7 @@ import java.util.List;
 import com.mobileshop.dto.ProductDTO;
 
 public interface ProductService {
+	List<ProductDTO> findAll();
 	
 	List<ProductDTO> findAllProductActive() ;
 	

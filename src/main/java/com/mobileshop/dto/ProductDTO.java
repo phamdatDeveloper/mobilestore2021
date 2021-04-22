@@ -1,5 +1,7 @@
 package com.mobileshop.dto;
 
+import java.util.List;
+
 public class ProductDTO extends BaseDTO{
 
 	
@@ -12,6 +14,10 @@ public class ProductDTO extends BaseDTO{
 	private String description;
 
 	private String specification;
+	
+	private String mainImage;
+	
+	private List<String> secondaryImage;
 
 	private int quantity;
 
@@ -92,6 +98,22 @@ public class ProductDTO extends BaseDTO{
 
 	public void setCategoryId(int categoryId) {
 		this.categoryId = categoryId;
+	}
+
+	public String getMainImage() {
+		return mainImage;
+	}
+
+	public void setMainImage(String mainImage) {
+		this.mainImage = mainImage;
+	}
+
+	public List<String> getSecondaryImage() {
+		return secondaryImage;
+	}
+
+	public void setSecondaryImage(List<String> secondaryImage) {
+		this.secondaryImage = secondaryImage;
 	}
 
 

@@ -23,6 +23,16 @@ public class ProductServiceImpl implements ProductService {
 	private ProductRepository productRepository;
 
 	@Override
+	public List<ProductDTO> findAll() {
+		List<ProductDTO> listProductDTO = new ArrayList<ProductDTO>();
+		List<ProductEntity> listProductEntity = productRepository.findAll();
+		for (ProductEntity productEntity : listProductEntity) {
+			listProductDTO.add(converter.convertToDTO(productEntity));
+		}
+		return listProductDTO;
+	}
+
+	@Override
 	public List<ProductDTO> findAllProductActive() {
 		List<ProductDTO> listProductDTO = new ArrayList<ProductDTO>();
 		List<ProductEntity> listProductEntity = productRepository.findAllProductActive();
@@ -36,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public ProductDTO getProductByID(Long id) {
 		ProductDTO product = converter.convertToDTO(productRepository.findOne(id));
-		
+
 		return product;
 	}
 
@@ -51,6 +61,7 @@ public class ProductServiceImpl implements ProductService {
 	public void update(ProductDTO product) {
 		ProductEntity productEntity = converter.convertToEntity(product);
 		ProductDTO productDTO = converter.convertToDTO(productRepository.save(productEntity));
-		
+
 	}
+
 }

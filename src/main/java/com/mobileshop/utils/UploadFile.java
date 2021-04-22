@@ -15,10 +15,11 @@ public class UploadFile {
 
 	public static String doUpload(HttpServletRequest request, Model model, //
 			CommonsMultipartFile[] files) {
-
+		List<String> result = new ArrayList<String>();
 		// Thư mục gốc upload file.
 		String uploadRootPath = request.getServletContext().getRealPath("/");
 		System.out.println("uploadRootPath=" + uploadRootPath);
+		System.out.println(request.get);
 
 		File uploadRootDir = new File(uploadRootPath + File.separator + "img");
 		//
@@ -51,6 +52,6 @@ public class UploadFile {
 			}
 		}
 		model.addAttribute("uploadedFiles", uploadedFiles);
-		return "uploadResult";
+		return "uploadfile";
 	}
 }
