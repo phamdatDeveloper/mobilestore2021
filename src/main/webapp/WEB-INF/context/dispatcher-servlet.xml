@@ -17,8 +17,7 @@
 
 	<mvc:resources location="/template/"
 		mapping="/template/**" />
-	<mvc:resources location="/img/"
-		mapping="/img/**" />
+	
 
 	<bean id="templateResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

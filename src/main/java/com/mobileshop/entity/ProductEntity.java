@@ -11,12 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "product")
 public class ProductEntity extends BaseEntity {
 
 	@Column(name = "productname")
+
 	private String productName;
 
 	@Column(name = "price")

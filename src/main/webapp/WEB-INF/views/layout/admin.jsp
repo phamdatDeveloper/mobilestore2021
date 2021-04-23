@@ -42,6 +42,9 @@
 <link href="<c:url value ="/template/admin/assets/css/app.min.css"/>"
 	rel="stylesheet" type="text/css" id="app-stylesheet">
 <!--ck-->
+<script src="<c:url value ="/template/admin/assets/js/jquery.min.js"/>"></script>
+<script src="<c:url value ="/template/admin/assets/js/jquery.validate.min.js"/>"></script>
+
 <script
 	src="<c:url value ="/template/admin/assets/ckeditor/ckeditor.js"/>"></script>
 </head>
@@ -77,5 +80,8 @@
     <script src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.select.min.js"/>"></script>
 	<!-- Datatables init -->
 	<script src="<c:url value ="/template/admin/assets/js/pages/datatables.init.js"/>"></script>
+	
+	<!-- custom js -->
+	<script src="<c:url value ="/template/admin/assets/js/customjs.js"/>"></script>
 </body>
 </html>

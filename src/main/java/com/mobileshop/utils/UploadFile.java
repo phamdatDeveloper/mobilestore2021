@@ -13,15 +13,15 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class UploadFile {
 
-	public static String doUpload(HttpServletRequest request, Model model, //
+	public static List<String> doUpload(HttpServletRequest request, Model model, //
 			CommonsMultipartFile[] files) {
 		List<String> result = new ArrayList<String>();
 		// Thư mục gốc upload file.
 		String uploadRootPath = request.getServletContext().getRealPath("/");
 		System.out.println("uploadRootPath=" + uploadRootPath);
-		System.out.println(request.get);
-
-		File uploadRootDir = new File(uploadRootPath + File.separator + "img");
+		
+		
+		File uploadRootDir = new File(uploadRootPath + File.separator + "template"+File.separator+"admin"+File.separator+"assets"+File.separator+"images");
 		//
 		// Tạo thư mục gốc upload nếu nó không tồn tại.
 		if (!uploadRootDir.exists()) {
@@ -42,6 +42,8 @@ public class UploadFile {
 					// Luồng ghi dữ liệu vào file trên Server.
 					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 					stream.write(fileData.getBytes());
+					result.add(File.separator + "template"+File.separator+"admin"+File.separator+"assets"+File.separator+"images"+File.separator+name);
+					System.out.println(File.separator + "template"+File.separator+"admin"+File.separator+"assets"+File.separator+"images"+File.separator+name);
 					stream.close();
 					//
 					uploadedFiles.add(serverFile);
@@ -51,7 +53,7 @@ public class UploadFile {
 				}
 			}
 		}
-		model.addAttribute("uploadedFiles", uploadedFiles);
-		return "uploadfile";
+		model.addAttribute("uploadedFiles", result);
+		return result;
 	}
 }
