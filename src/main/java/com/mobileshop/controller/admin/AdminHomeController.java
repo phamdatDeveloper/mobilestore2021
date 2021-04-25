@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -28,32 +30,52 @@ public class AdminHomeController {
 	private CategoryService categoryService;
 	
 	@RequestMapping("/admin/home")
-	public String adminHome(ModelAndView modelAndView) {
+	public String adminHome(Model model) {
+		Long countProduct = productService.count();
+		model.addAttribute("countProduct", countProduct);
 		return "admin/index";
 	}
 	
 	@RequestMapping("/admin/product-edit/{id}")
 	public String adminEdit(@PathVariable("id")Long id,Model model) {
 		ProductDTO product =  productService.getProductByID(id);
-		product.setMainImage("https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-xanh-duong-new-600x600-600x600.jpg");
-		List<String> secondaryImage = new ArrayList<String>();
-		secondaryImage.add("/template/admin/assets/images/iphone11.jpg");
-		secondaryImage.add("/template/admin/assets/images/iphone11.jpg");
-		secondaryImage.add("/template/admin/assets/images/iphone11.jpg");
-		product.setSecondaryImage(secondaryImage);
-		List<CategoryDTO> categorys = categoryService.findByActive(1);
 		
+		List<String> secondaryImage = product.getSecondaryImage();
+		
+		List<CategoryDTO> categorys = categoryService.findByActive(1);
+		product.setIsSale("sale");
 		model.addAttribute("secondaryImage", secondaryImage);
 		model.addAttribute("product", product);
 		model.addAttribute("categorys", categorys);
 		return "admin/product-edit";
 	}
 	
+	@PostMapping("/admin/product-edit/{id}")
+	public String adminUpdateProduct(@PathVariable("id")Long id,@ModelAttribute("product") ProductDTO product) {
+		productService.update(product);
+		
+		return "redirect:/admin/product-edit/{id}";
+	}
 	
 	@RequestMapping("/admin/product-manager" )
 	public String adminAdd(Model model,HttpServletRequest request) {	
 		List<ProductDTO> listProduct = productService.findAll();
 		model.addAttribute("products", listProduct);
 		return "admin/product-manager";
+	}
+	@RequestMapping("/admin/product-add" )
+	public String adminShowAddProduct(Model model,HttpServletRequest request,@ModelAttribute("product") ProductDTO product) {	
+		List<CategoryDTO> categorys = categoryService.findByActive(1);
+
+		model.addAttribute("categorys", categorys);
+		return "admin/product-add";
+	}
+	
+	@PostMapping("/admin/product-add" )
+	public String adminAddProduct(Model model,HttpServletRequest request,@ModelAttribute("product") ProductDTO product) {	
+		productService.save(product);
+		
+		return "redirect:/admin/product-manager";
+		
 	}
 }

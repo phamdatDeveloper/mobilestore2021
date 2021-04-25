@@ -14,4 +14,6 @@ public interface ProductService {
 	ProductDTO save(ProductDTO product);
 	
 	void update(ProductDTO product);
+	
+	Long count();
 }

@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
 <html lang="en">
 
     <head>
@@ -57,102 +61,128 @@
 
                                         <div class="row">
                                             <div class="col-12">
-                                                <div class="">
-                                                    <form class="form-horizontal">
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-2 col-form-label">Tên sản phẩm</label>
-                                                            <div class="col-lg-10">
-                                                                <input type="text" class="form-control" value="Tên sản phẩm">
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-2 col-form-label" for="example-email" >Giá</label>
-                                                            <div class="col-lg-10">
-                                                                <input type="email" id="price-product" name="example-email" class="form-control" placeholder="Giá sản phẩm ">
-                                                                <p id="convert-money"></p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-2 col-form-label">Phân loại sản phẩm</label>
-                                                            <div class="col-lg-10">
-                                                                <select class=" custom-select form-control">
-                                                                    <option>Iphone</option>
-                                                                    <option>Samsung</option>
-                                                                    <option>Huawei</option>
-                                                                    <option>Oppo</option>
-                                                                    <option>Nokia</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row ">
-                                                                <label class="col-lg-2 col-form-label" for="example-fileinput">Hình ảnh chính</label>
-                                                                <div class="col-lg-10 ">
-                                                            
-                                                                    <input type="file" class="form-control-file " id="example-fileinput">
-                                                                    <div class="preview">
-                                                                         <img id="thumb" style="margin: 5px" width="100px" height="100px" src="assets\images\layouts\dark.png" />
-                                                                    </div>
-                                                                </div>
-                                                                
-                                                            </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-2 col-form-label " for="example-fileinput">Hình ảnh chi tiết</label>
-                                                            <div class="col-lg-10 ">
-                                                                <input type="file" class="form-control-file  " id="example-fileinput">
-                                                                <div class="preview">
-                                                                     <img id="thumb" style="margin: 5px" width="100px" height="100px" src="assets\images\layouts\dark.png" />
-                                                                     <img id="thumb" style="margin: 5px" width="100px" height="100px" src="assets\images\layouts\dark.png" />
+   <form:form action="${pageContext.request.contextPath}/admin/product-add" method="post"
+												modelAttribute="product" class="form-horizontal"
+												id="product-edit" accept-charset="UTF-8">
+			
+												<div class="form-group row">
+													<label class="col-lg-2 col-form-label">Tên sản phẩm</label>
+													<div class="col-lg-10">
+														<form:input path="productName" name="productName"
+															id="productName" type="text" class="form-control" />
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-2 col-form-label" for="example-email">Giá</label>
+													<div class="col-lg-10">
+														<form:input path="price" name="price" id="price"
+															type="text" class="form-control" />
+														<p id="convert-money"></p>
 
-                                                                </div>
-                                                            </div>
-                                                            
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-2 col-form-label" for="example-textarea">Mô tả sản phẩm</label>
-                                                            <div class="col-lg-10">
-                                                                <textarea class="form-control" rows="5" name="editor1" id="editor1"></textarea>
-                                                            </div>
-                                                        </div>
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-2 col-form-label">Phân loại
+														sản phẩm</label>
 
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-2 col-form-label">Giá khuyển mãi</label>
-                                                            <div class="col-lg-10">
-                                                                <input type="text" class="form-control" >
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group row">
-                                                            <label class="col-lg-2 col-form-label">Tác vụ</label>
-                                                            <div class="col-lg-10">
-                                                                <div class="custom-control custom-checkbox"> 
-                                                                    <input class="custom-control-input" id="checkbox1" type="checkbox" data-parsley-multiple="checkbox6">
-                                                                    <label class="custom-control-label" for="checkbox1">
-                                                                        Mới
-                                                                    </label>
-                                                                </div>
-                                                                <div class="custom-control custom-checkbox"> 
-                                                                    <input class="custom-control-input" id="checkbox2" type="checkbox" data-parsley-multiple="checkbox6">
-                                                                    <label class="custom-control-label" for="checkbox2">
-                                                                        Khuyến mãi
-                                                                    </label>
-                                                                </div>
-                                                                <div class="custom-control custom-checkbox">
-                                                                    <input class="custom-control-input" id="checkbox3" type="checkbox" data-parsley-multiple="checkbox6">
-                                                                    <label class="custom-control-label" for="checkbox3">
-                                                                        Hiển thị
-                                                                    </label>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                       
-                                                        <div class="form-group row">
-                                                            <div class="col-lg-4 "></div>
-                                                            <div class="col-lg-8 ">
-                                                                <input type="submit" class="btn btn-primary" value="Lưu">
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </form>
-                                                </div>
+													<div class="col-lg-10">
+														<form:select path="categoryId" name="category"
+															id="category" class=" custom-select form-control">
+															<form:options items="${categorys}" itemValue="id"
+																itemLabel="categoryName" />
+														</form:select>
+
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-2 col-form-label">Số lượng</label>
+
+													<div class="col-lg-10">
+														<form:input path="quantity" name="quantity" id="quantity"
+															type="text" class="form-control" />
+
+
+													</div>
+												</div>
+												<div class="form-group row ">
+													<label class="col-lg-2 col-form-label"
+														for="example-fileinput">Hình ảnh chính</label>
+													<div class="col-lg-10 ">
+														<button type="button" class="btn btn-primary mb-5"
+															data-toggle="modal" data-target="#upload-secondary-image">Thêm ảnh</button>
+														<div class="preview row" id="show-main-img">
+															
+														</div>
+													</div>
+
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-2 col-form-label "
+														for="example-fileinput">Hình ảnh chi tiết</label>
+													<div class="col-lg-10 ">
+														<button type="button" class="btn btn-primary mb-5"
+															data-toggle="modal" data-target="#upload-main-image">Thêm ảnh</button>
+														<div class="preview row" id="show-img">
+															
+																
+																		
+													
+														</div>
+														
+													
+													</div>
+
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-2 col-form-label"
+														for="example-textarea">Mô tả sản phẩm</label>
+													<div class="col-lg-10">
+														<form:textarea path="description" class="form-control" rows="5" name="editor1"
+															id="editor1"/>
+														
+													</div>
+												</div>
+
+												<div class="form-group row">
+													<label class="col-lg-2 col-form-label">Giá khuyển
+														mãi</label>
+													<div class="col-lg-10">
+														<form:input path="priceSale" class="form-control" id="priceSale" />
+														<p id="convert-money-sale"></p>
+														
+													</div>
+												</div>
+												<div class="form-group row">
+													<label class="col-lg-2 col-form-label">Tác vụ</label>
+													<div class="col-lg-10">
+														<div class="custom-control custom-checkbox">
+															<form:checkbox path="isNew" value ="new" class="custom-control-input" id="checkbox1"  data-parsley-multiple="checkbox6"/>
+															<label class="custom-control-label" for="checkbox1">
+																Mới </label>
+														</div>
+														<div class="custom-control custom-checkbox">
+														<form:checkbox path="isSale" value ="sale" class="custom-control-input" id="sale"  data-parsley-multiple="checkbox6"/>
+															
+															<label class="custom-control-label" for="sale">
+																Khuyến mãi </label>
+														</div>
+														<div class="custom-control custom-checkbox">
+														<form:checkbox path="active" value ="1" class="custom-control-input" id="active"  data-parsley-multiple="checkbox6"/>
+															
+															<label class="custom-control-label" for="active">
+																Hiển thị sản phẩm </label>
+														</div>
+													</div>
+												</div>
+
+												<div class="form-group row">
+													<div class="col-lg-4 "></div>
+													<div class="col-lg-8 ">
+														<input type="submit" class="btn btn-primary" value="Lưu">
+													</div>
+												</div>
+
+											</form:form>
                                             </div>
 
                                         </div>
@@ -172,9 +202,78 @@
 
                 </div>
                 <!-- end content -->
+				<!-- Model bootstrap secondary image-->
+                <div class="modal fade" id="upload-main-image" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Vui lòng tải ảnh lên</h5>
+							<button type="submit" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+						
 
-                
+							<form action="" id="fileUploadForm">
 
+								<p>
+									<label for="image">Chọn ảnh</label>
+								</p>
+								<p>
+									<input name="file" id="fileToUpload" type="file" multiple="multiple" />
+								</p>
+								
+								
+						
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button  id="btnSubmit" class="btn btn-secondary"
+								data-dismiss="modal">Tải lên</button>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Model bootstrap secondary image-->
+                <div class="modal fade" id="upload-secondary-image" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Vui lòng tải ảnh lên</h5>
+							<button type="submit" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+						
+
+							<form action="" id="fileUploadFormMain">
+
+								<p>
+									<label for="image">Chọn ảnh</label>
+								</p>
+								<p>
+									<input name="file" id="fileToUpload" type="file" multiple="multiple" />
+								</p>
+								
+								
+						
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button  id="btnSubmitMainImage" class="btn btn-secondary"
+								data-dismiss="modal">Tải lên</button>
+							
+						</div>
+					</div>
+				</div>
+			</div>
               
 
     
@@ -188,6 +287,162 @@
                 $("#convert-money").text(num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+" đ");
             });
         </script>
+        <script>
+			
+	$(document).ready(function () {
+
+	    $("#btnSubmit").click(function (event) {
+
+	        //stop submit the form, we will post it manually.
+	        event.preventDefault();
+
+	        fire_ajax_submit();
+
+	    });
+
+	});
+	
+	$(document).ready(function () {
+
+	    $("#btnSubmitMainImage").click(function (event) {
+
+	        //stop submit the form, we will post it manually.
+	        event.preventDefault();
+
+	        fire_ajax_submit_Main();
+
+	    });
+
+	});
+
+	function fire_ajax_submit() {
+
+	    // Get form
+	    var form = $('#fileUploadForm')[0];
+
+	    var data = new FormData(form);
+
+	    $.ajax({
+	        type: "POST",
+	        enctype: 'multipart/form-data',
+	        url: "http://localhost:8080/mobileshop/admin/uploadOneFile",
+	        data: data,
+	        //http://api.jquery.com/jQuery.ajax/
+	        //https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+	        processData: false, //prevent jQuery from automatically transforming the data into a query string
+	        contentType: false,
+	        cache: false,
+	        timeout: 600000,
+	        success: function (data) {
+	        	data.forEach(function(item, index, array) {
+	        	console.log(item);
+	        	var HTML ="";
+	        	HTML+= " <div class='col-md-2'>";
+	        	HTML+= '<div class="custom-control custom-checkbox image-checkbox border border-success rounded">';
+	        	HTML+='<input id="newimage'+index+'" class="custom-control-input" name="secondaryImage" type="checkbox" value="'+item+'" checked="checked">';
+	        	HTML+= '<label class="custom-control-label" for="newimage'+index+'">';
+	        	HTML+= '<img width="100%" height="100px" class="img-fluid" src="<c:url value ="/'+item+'"/>" />';
+	        	HTML+= '</label>';
+	        	HTML+= '</div>';
+	        	HTML+= '</div>';
+	        	$("#show-img").append(HTML);
+	        	$('#fileToUpload').val("");
+	        	});	
+	        	
+	        	
+	        
+	        },
+	        error: function (e) {
+
+	        	console.log("error");
+
+	        }
+	    });
+
+	};
+	
+	function fire_ajax_submit_Main() {
+
+	    // Get form
+	    var form = $('#fileUploadFormMain')[0];
+
+	    var data = new FormData(form);
+
+	    $.ajax({
+	        type: "POST",
+	        enctype: 'multipart/form-data',
+	        url: "http://localhost:8080/mobileshop/admin/uploadOneFile",
+	        data: data,
+	        //http://api.jquery.com/jQuery.ajax/
+	        //https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
+	        processData: false, //prevent jQuery from automatically transforming the data into a query string
+	        contentType: false,
+	        cache: false,
+	        timeout: 600000,
+	        success: function (data) {
+	        	data.forEach(function(item, index, array) {
+	        	console.log(item);
+	        	var HTML ="";
+	        	HTML+= " <div class='col-md-2'>";
+	        	HTML+= '<div class="custom-control custom-checkbox image-checkbox border border-success rounded">';
+	        	HTML+='<input id="newimage'+index+'" class="custom-control-input" name="mainImage" type="checkbox" value="'+item+'" checked="checked">';
+	        	HTML+= '<label class="custom-control-label" for="newimage'+index+'">';
+	        	HTML+= '<img width="100%" height="100px" class="img-fluid" src="<c:url value ="/'+item+'"/>" />';
+	        	HTML+= '</label>';
+	        	HTML+= '</div>';
+	        	HTML+= '</div>';
+	        	$("#show-main-img").append(HTML);
+	        	$('#fileToUploadMain').val("");
+	        	});	
+	        	
+	        	
+	        
+	        },
+	        error: function (e) {
+
+	        	console.log("error");
+
+	        }
+	    });
+
+	}
+	
+	
+	 $('#sale').on('click', function(){           
+	       if($(this).is(':checked')){
+	           $('#priceSale').attr('disabled', false);
+	       } else {
+	           $('#priceSale').attr('disabled', true);
+	           $('#priceSale').val(" ");
+	       }
+	   });
+    
+    
+     $(document).ready(function () {
+    	 var num = $("#price").val();
+    	 var numSale = $("#priceSale").val();
+    	 if(num != ''){
+    		 $("#convert-money").css("color", "red");
+    		 $("#convert-money").text(num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+" đ");
+    	 }
+    	 $("#price").keyup("change",function(){
+             var num = $("#price").val();
+             $("#convert-money").css("color", "red");
+             $("#convert-money").text(num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+" đ");
+         });
+    	 if(numSale != ''){
+    		 $("#convert-money-sale").css("color", "red");
+    		 $("#convert-money-sale").text(numSale.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+" đ");
+    	 }
+    	 $("#priceSale").keyup("change",function(){
+             var numSale = $("#priceSale").val();
+             $("#convert-money-sale").css("color", "red");
+             $("#convert-money-sale").text(numSale.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,")+" đ");
+         });
+    	
+	});
+      
+	</script>
     </body>
 
 </html>

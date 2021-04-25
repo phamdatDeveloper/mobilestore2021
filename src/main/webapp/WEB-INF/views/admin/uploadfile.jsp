@@ -21,7 +21,41 @@
                     <!-- Start Content-->
                     <div class="container-fluid">
 	
+<div class="row">
+    <div class="col-md-3">
+        <div class="custom-control custom-checkbox image-checkbox">
+            <input type="checkbox" class="custom-control-input" id="ck1a">
+            <label class="custom-control-label" for="ck1a">
+                <img src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-xanh-duong-new-600x600-600x600.jpg" alt="#" class="img-fluid">
+            </label>
+        </div>
+    </div>
 
+    <div class="col-md-3">
+        <div class="custom-control custom-checkbox image-checkbox">
+            <input type="checkbox" class="custom-control-input" id="ck1b">
+            <label class="custom-control-label" for="ck1b">
+                <img src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-xanh-duong-new-600x600-600x600.jpg" alt="#" class="img-fluid">
+            </label>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="custom-control custom-checkbox image-checkbox">
+            <input type="checkbox" class="custom-control-input" id="ck1c">
+            <label class="custom-control-label" for="ck1c">
+                <img src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-xanh-duong-new-600x600-600x600.jpg" alt="#" class="img-fluid">
+            </label>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="custom-control custom-checkbox image-checkbox">
+            <input type="checkbox" class="custom-control-input" id="ck1d">
+            <label class="custom-control-label" for="ck1d">
+                <img src="https://cdn.tgdd.vn/Products/Images/42/213031/iphone-12-xanh-duong-new-600x600-600x600.jpg" alt="#" class="img-fluid">
+            </label>
+        </div>
+    </div>
+</div>
 	<form action="" id="fileUploadForm">
 
 		<p>

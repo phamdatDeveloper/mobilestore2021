@@ -1,6 +1,7 @@
 
 CKEDITOR.replace( 'editor1' );
 
+
 $("#btn-save").click(function(){
 				var data = {};
 				var buildingTypes = [];

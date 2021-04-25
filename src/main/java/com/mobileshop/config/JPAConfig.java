@@ -59,6 +59,9 @@ public class JPAConfig {
 		properties.setProperty("hibernate.format_sql", environment.getProperty("hibernate.format_sql"));
 		properties.setProperty("hibernate.default_schema", environment.getProperty("hibernate.default_schema"));
 		// properties.setProperty("hibernate.hbm2ddl.auto", "create");
+		properties.setProperty("hibernate.connection.useUnicode", "true");
+		properties.setProperty("hibernate.connection.characterEncoding", "UTF-8");
+		properties.setProperty("hibernate.connection.charSet", "UTF-8");
 		properties.setProperty("hibernate.hbm2ddl.auto", "none");
 		return properties;
 	}

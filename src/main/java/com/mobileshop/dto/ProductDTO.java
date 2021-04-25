@@ -7,9 +7,9 @@ public class ProductDTO extends BaseDTO{
 	
 	private String productName;
 
-	private double price;
+	private int price;
 
-	private double priceSale;
+	private int priceSale;
 
 	private String description;
 
@@ -22,6 +22,11 @@ public class ProductDTO extends BaseDTO{
 	private int quantity;
 
 	private String status;
+	
+	private String isSale;
+	
+	private String isNew;
+	
 
 	private int active;
 
@@ -36,19 +41,19 @@ public class ProductDTO extends BaseDTO{
 		this.productName = productName;
 	}
 
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
-	public double getPriceSale() {
+	public int getPriceSale() {
 		return priceSale;
 	}
 
-	public void setPriceSale(double priceSale) {
+	public void setPriceSale(int priceSale) {
 		this.priceSale = priceSale;
 	}
 
@@ -114,6 +119,22 @@ public class ProductDTO extends BaseDTO{
 
 	public void setSecondaryImage(List<String> secondaryImage) {
 		this.secondaryImage = secondaryImage;
+	}
+
+	public String getIsSale() {
+		return isSale;
+	}
+
+	public void setIsSale(String isSale) {
+		this.isSale = isSale;
+	}
+
+	public String getIsNew() {
+		return isNew;
+	}
+
+	public void setIsNew(String isNew) {
+		this.isNew = isNew;
 	}
 
 

@@ -74,7 +74,7 @@
 				</a>
 					<ul class="nav-second-level" aria-expanded="false">
 						<li><a href="<c:url value ="/admin/product-manager"/>">Danh sách sản phẩm</a></li>
-						<li><a href="<c:url value ="/admin/product-edit"/>">Thêm sản phẩm</a></li>
+						<li><a href="<c:url value ="/admin/product-add"/>">Thêm sản phẩm</a></li>
 					</ul></li>
 
 				<li><a href="javascript: void(0);" class="waves-effect"> <i

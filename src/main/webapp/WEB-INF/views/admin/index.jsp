@@ -49,7 +49,7 @@
 							<div class="text-white media">
 								<div class="media-body align-self-center">
 									<h2 class="my-0 text-white">
-										<span data-plugin="counterup">120</span>
+										<span data-plugin="counterup">${countProduct}</span>
 									</h2>
 									<p class="mb-0">Số lượng sản phẩm</p>
 								</div>

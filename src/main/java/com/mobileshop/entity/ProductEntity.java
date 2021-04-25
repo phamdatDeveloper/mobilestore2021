@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -22,12 +23,13 @@ public class ProductEntity extends BaseEntity {
 	private String productName;
 
 	@Column(name = "price")
-	private double price;
+	private int price;
 
 	@Column(name = "pricesale")
-	private double priceSale;
+	private int priceSale;
 
 	@Column(name = "description")
+	@Lob
 	private String description;
 
 	@Column(name = "specification")
@@ -59,19 +61,19 @@ public class ProductEntity extends BaseEntity {
 		this.productName = productName;
 	}
 
-	public double getPrice() {
+	public int getPrice() {
 		return price;
 	}
 
-	public void setPrice(double price) {
+	public void setPrice(int price) {
 		this.price = price;
 	}
 
-	public double getPriceSale() {
+	public int getPriceSale() {
 		return priceSale;
 	}
 
-	public void setPriceSale(double priceSale) {
+	public void setPriceSale(int priceSale) {
 		this.priceSale = priceSale;
 	}
 

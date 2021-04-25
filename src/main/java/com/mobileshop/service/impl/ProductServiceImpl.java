@@ -60,7 +60,14 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public void update(ProductDTO product) {
 		ProductEntity productEntity = converter.convertToEntity(product);
-		ProductDTO productDTO = converter.convertToDTO(productRepository.save(productEntity));
+		converter.convertToDTO(productRepository.save(productEntity));
+
+	}
+	
+	@Override
+	public Long count() {
+	return	productRepository.count();
+		
 
 	}
 

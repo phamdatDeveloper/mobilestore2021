@@ -4,7 +4,7 @@
 	prefix="decorator"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
 <meta charset="utf-8">
@@ -37,9 +37,14 @@
 <link
 	href="<c:url value ="/template/admin/assets/css/bootstrap.min.css"/>"
 	rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
+	<link
+	href="<c:url value ="/template/admin/assets/css/bootstrap-image-checkbox.css"/>"
+	rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
 <link href="<c:url value ="/template/admin/assets/css/icons.min.css"/>"
 	rel="stylesheet" type="text/css">
 <link href="<c:url value ="/template/admin/assets/css/app.min.css"/>"
+	rel="stylesheet" type="text/css" id="app-stylesheet">
+	<link href="<c:url value ="/template/admin/assets/css/custom.css"/>"
 	rel="stylesheet" type="text/css" id="app-stylesheet">
 <!--ck-->
 <script src="<c:url value ="/template/admin/assets/js/jquery.min.js"/>"></script>
