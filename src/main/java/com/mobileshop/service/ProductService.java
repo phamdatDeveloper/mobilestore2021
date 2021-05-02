@@ -9,6 +9,8 @@ public interface ProductService {
 	
 	List<ProductDTO> findAllProductActive() ;
 	
+	List<ProductDTO> findByCategoryIdAndActive(Long categoryId,boolean active) ;
+	
 	ProductDTO getProductByID(Long id);
 	
 	ProductDTO save(ProductDTO product);

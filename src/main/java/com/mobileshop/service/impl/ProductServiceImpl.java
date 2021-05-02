@@ -71,4 +71,10 @@ public class ProductServiceImpl implements ProductService {
 
 	}
 
+	@Override
+	public List<ProductDTO> findByCategoryIdAndActive(Long categoryId, boolean active) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

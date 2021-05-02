@@ -1,55 +1,7 @@
-<!doctype html>
-<html class="no-js" lang="zxx">
-    
-<!-- login-register31:27-->
-<head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Header</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png">
-        <!-- Material Design Iconic Font-V2.2.0 -->
-        <link rel="stylesheet" href="css/material-design-iconic-font.min.css">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <!-- Font Awesome Stars-->
-        <link rel="stylesheet" href="css/fontawesome-stars.css">
-        <!-- Meanmenu CSS -->
-        <link rel="stylesheet" href="css/meanmenu.css">
-        <!-- owl carousel CSS -->
-        <link rel="stylesheet" href="css/owl.carousel.min.css">
-        <!-- Slick Carousel CSS -->
-        <link rel="stylesheet" href="css/slick.css">
-        <!-- Animate CSS -->
-        <link rel="stylesheet" href="css/animate.css">
-        <!-- Jquery-ui CSS -->
-        <link rel="stylesheet" href="css/jquery-ui.min.css">
-        <!-- Venobox CSS -->
-        <link rel="stylesheet" href="css/venobox.css">
-        <!-- Nice Select CSS -->
-        <link rel="stylesheet" href="css/nice-select.css">
-        <!-- Magnific Popup CSS -->
-        <link rel="stylesheet" href="css/magnific-popup.css">
-        <!-- Bootstrap V4.1.3 Fremwork CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <!-- Helper CSS -->
-        <link rel="stylesheet" href="css/helper.css">
-        <!-- Main Style CSS -->
-        <link rel="stylesheet" href="style.css">
-        <!-- Responsive CSS -->
-        <link rel="stylesheet" href="css/responsive.css">
-        <!-- Modernizr js -->
-        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    </head>
-    <body>
-    <!--[if lt IE 8]>
-		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-	<![endif]-->
-        <!-- Begin Body Wrapper -->
-        <div class="body-wrapper">
-            <!-- Begin Header Area -->
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/layout/taglib.jsp" %>
+  <!-- Begin Header Area -->
             <header>
                 <!-- Begin Header Middle Area -->
                 <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
@@ -59,7 +11,7 @@
                             <div class="col-lg-3">
                                 <div class="logo pb-sm-30 pb-xs-30">
                                     <a href="index.html">
-                                        <img src="images/menu/logo/1.jpg" alt="">
+                                        <img src="<c:url value ="template/user/images/menu/logo/1.jpg"/>" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -94,39 +46,31 @@
                                         <li class="hm-minicart">
                                             <div class="hm-minicart-trigger">
                                                 <span class="item-icon"></span>
-                                                <span class="item-text">$160
-                                                    <span class="cart-item-count">2</span>
+                                                
+                                                <span class="item-text">
+                                                    ${totalQuantity}
                                                 </span>
                                             </div>
                                             <span></span>
-                                            <div class="minicart">
+                                            <div class="minicart" id="mini-cart">
                                                 <ul class="minicart-product-list">
-                                                    <li>
-                                                        <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="images/product/small-size/3.jpg" alt="cart products">
-                                                        </a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                            <span>$80 x 1</span>
-                                                        </div>
-                                                        <button class="close">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-product.html" class="minicart-product-image">
-                                                            <img src="images/product/small-size/4.jpg" alt="cart products">
-                                                        </a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product.html">Aenean eu tristique</a></h6>
-                                                            <span>$80 x 1</span>
-                                                        </div>
-                                                        <button class="close">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
-                                                    </li>
+                                                	<c:forEach items ="${carts }" var ="cart">
+	                                                	 <li>
+	                                                        <a href="single-product-normal.html" class="minicart-product-image">
+	                                                            <img src="<c:url value="${cart.value.product.mainImage}"/>" alt="cart products">
+	                                                        </a>
+	                                                        <div class="minicart-product-details">
+	                                                            <h6><a href="single-product-normal.html">${cart.value.product.productName}</a></h6>
+	                                                            <span><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${cart.value.product.price}" />đ x ${cart.value.quantity}</span>
+	                                                        </div>
+	                                                        <button class="close" onclick="deleteCart(${cart.value.product.id})">
+	                                                            <i class="fa fa-close"></i>
+	                                                        </button>
+	                                                    </li>
+                                                	</c:forEach>
+                                                  
                                                 </ul>
-                                                <p class="minicart-total">Tổng tiền: <span>£160</span></p>
+                                                <p class="minicart-total">Tổng tiền: <span><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${totalPrice}" /></span></p>
                                                 <div class="minicart-button">
                                                     <a href="shopping-cart.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                         <span>Xem giỏ hàng</span>
@@ -159,15 +103,12 @@
                                             <li><a href="index-2.html">Trang chủ</a></li>
                                             <li class="megamenu-holder"><a href="shop-left-sidebar.html">Sản phẩm</a>
                                                 <ul class="megamenu hb-megamenu">
-                                                    <li><a href="shop-left-sidebar.html">Shop Page Layout</a>
+                                                    <li><a href="<c:url value ="/product"/>">Điện thoại</a>
                                                         <ul>
-                                                            <li><a href="shop-3-column.html">Shop 3 Column</a></li>
-                                                            <li><a href="shop-4-column.html">Shop 4 Column</a></li>
-                                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                            <li><a href="shop-list.html">Shop List</a></li>
-                                                            <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>
-                                                            <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>
+                                                        	<c:forEach items="${categorys }" var="category">
+                                                        	<li><a href="shop-3-column.html">${category.categoryName }</a></li>
+                                                        	</c:forEach>
+                                                            
                                                         </ul>
                                                     </li>
                                                     <li><a href="single-product-gallery-left.html">Single Product Style</a>
@@ -180,15 +121,7 @@
                                                             <li><a href="single-product-tab-style-right.html">Single Product Tab Style Right</a></li>
                                                         </ul>
                                                     </li>
-                                                    <li><a href="single-product.html">Single Products</a>
-                                                        <ul>
-                                                            <li><a href="single-product.html">Single Product</a></li>
-                                                            <li><a href="single-product-sale.html">Single Product Sale</a></li>
-                                                            <li><a href="single-product-group.html">Single Product Group</a></li>
-                                                            <li><a href="single-product-normal.html">Single Product Normal</a></li>
-                                                            <li><a href="single-product-affiliate.html">Single Product Affiliate</a></li>
-                                                        </ul>
-                                                    </li>
+                                                    
                                                 </ul>
                                             </li>
                                             <li class="megamenu-static-holder"><a href="index.html">Pages</a>
@@ -255,52 +188,24 @@
                 <!-- Mobile Menu Area End Here -->
             </header>
             <!-- Header Area End Here -->
-            
-        </div>
-        <!-- Body Wrapper End Here -->
-        <!-- jQuery-V1.12.4 -->
-        <script src="js/vendor/jquery-1.12.4.min.js"></script>
-        <!-- Popper js -->
-        <script src="js/vendor/popper.min.js"></script>
-        <!-- Bootstrap V4.1.3 Fremwork js -->
-        <script src="js/bootstrap.min.js"></script>
-        <!-- Ajax Mail js -->
-        <script src="js/ajax-mail.js"></script>
-        <!-- Meanmenu js -->
-        <script src="js/jquery.meanmenu.min.js"></script>
-        <!-- Wow.min js -->
-        <script src="js/wow.min.js"></script>
-        <!-- Slick Carousel js -->
-        <script src="js/slick.min.js"></script>
-        <!-- Owl Carousel-2 js -->
-        <script src="js/owl.carousel.min.js"></script>
-        <!-- Magnific popup js -->
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <!-- Isotope js -->
-        <script src="js/isotope.pkgd.min.js"></script>
-        <!-- Imagesloaded js -->
-        <script src="js/imagesloaded.pkgd.min.js"></script>
-        <!-- Mixitup js -->
-        <script src="js/jquery.mixitup.min.js"></script>
-        <!-- Countdown -->
-        <script src="js/jquery.countdown.min.js"></script>
-        <!-- Counterup -->
-        <script src="js/jquery.counterup.min.js"></script>
-        <!-- Waypoints -->
-        <script src="js/waypoints.min.js"></script>
-        <!-- Barrating -->
-        <script src="js/jquery.barrating.min.js"></script>
-        <!-- Jquery-ui -->
-        <script src="js/jquery-ui.min.js"></script>
-        <!-- Venobox -->
-        <script src="js/venobox.min.js"></script>
-        <!-- Nice Select js -->
-        <script src="js/jquery.nice-select.min.js"></script>
-        <!-- ScrollUp js -->
-        <script src="js/scrollUp.min.js"></script>
-        <!-- Main/Activator js -->
-        <script src="js/main.js"></script>
-    </body>
+    <script type="text/javascript">
+		function deleteCart(id){
+			
+			console.log(id);
+			 $.ajax({
+			        type: "GET",
+			        url:  '<c:url value="/deleteCart/"/>'+id,
+			        timeout: 600000,
+			        success: function (data) {
+			        	console.log(data);
+			        	$("#mini-cart").load(" #mini-cart > *");
+			        	
+			        },
+			        error: function (e) {
 
-<!-- login-register31:27-->
-</html>
+			        	console.log("error");
+
+			        }
+			    });
+		};
+	</script>

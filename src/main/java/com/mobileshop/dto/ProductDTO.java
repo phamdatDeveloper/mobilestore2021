@@ -2,9 +2,8 @@ package com.mobileshop.dto;
 
 import java.util.List;
 
-public class ProductDTO extends BaseDTO{
+public class ProductDTO extends BaseDTO {
 
-	
 	private String productName;
 
 	private int price;
@@ -14,24 +13,22 @@ public class ProductDTO extends BaseDTO{
 	private String description;
 
 	private String specification;
-	
+
 	private String mainImage;
-	
+
 	private List<String> secondaryImage;
 
 	private int quantity;
 
 	private String status;
-	
+
 	private String isSale;
-	
+
 	private String isNew;
-	
 
 	private int active;
 
 	private int categoryId;
-
 
 	public String getProductName() {
 		return productName;
@@ -136,7 +133,5 @@ public class ProductDTO extends BaseDTO{
 	public void setIsNew(String isNew) {
 		this.isNew = isNew;
 	}
-
-
 
 }

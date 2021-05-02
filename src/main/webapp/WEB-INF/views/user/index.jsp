@@ -1,366 +1,84 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/layout/taglib.jsp" %>
 <!doctype html>
-<html class="no-js" lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<html class="no-js" lang="zxx">
     
 <!-- index-231:32-->
 <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Welcome Home</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" th:href="@{/template/user/images/favicon.png}">
-        <!-- Material Design Iconic Font-V2.2.0 -->
-        <link rel="stylesheet" href="css/material-design-iconic-font.min.css" th:href="@{/template/user/css/material-design-iconic-font.min.css}">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="css/font-awesome.min.css" th:href="@{/template/user/css/font-awesome.min.css}">
-        <!-- Font Awesome Stars-->
-        <link rel="stylesheet" href="css/fontawesome-stars.css" th:href="@{/template/user/css/fontawesome-stars.css}">
-        <!-- Meanmenu CSS -->
-        <link rel="stylesheet" href="css/meanmenu.css" th:href="@{/template/user/css/meanmenu.css}">
-        <!-- owl carousel CSS -->
-        <link rel="stylesheet" href="css/owl.carousel.min.css" th:href="@{/template/user/css/owl.carousel.min.css}"> 
-        <!-- Slick Carousel CSS -->
-        <link rel="stylesheet" href="css/slick.css" th:href="@{/template/user/css/slick.css}">
-        <!-- Animate CSS -->
-        <link rel="stylesheet" href="css/animate.css"th:href="@{/template/user/css/animate.css}">
-        <!-- Jquery-ui CSS -->
-        <link rel="stylesheet" href="css/jquery-ui.min.css" th:href="@{/template/user/css/jquery-ui.min.css}">
-        <!-- Venobox CSS -->
-        <link rel="stylesheet" href="css/venobox.css" th:href="@{/template/user/css/venobox.css}">
-        <!-- Nice Select CSS -->
-        <link rel="stylesheet" href="css/nice-select.css" th:href="@{/template/user/css/nice-select.css}">
-        <!-- Magnific Popup CSS -->
-        <link rel="stylesheet" href="css/magnific-popup.css" th:href="@{/template/user/css/magnific-popup.css}">
-        <!-- Bootstrap V4.1.3 Fremwork CSS -->
-        <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/template/user/css/bootstrap.min.css}">
-        <!-- Helper CSS -->
-        <link rel="stylesheet" href="css/helper.css" th:href="@{/template/user/css/helper.css}">
-        <!-- Main Style CSS -->
-        <link rel="stylesheet" href="style.css" th:href="@{/template/user/style.css}">
-        <!-- Responsive CSS -->
-        <link rel="stylesheet" href="css/responsive.css" th:href="@{/template/user/responsive.css}">
-        <!-- Modernizr js -->
-        <script src="js/vendor/modernizr-2.8.3.min.js" th:src="@{/template/user/js/vendor/modernizr-2.8.3.min.js}"></script>
-    </head>
+        <title>Trang chủ</title>
+</head>
     <body>
-    
-    	<p th:utext="${listProduct.productName}">aaa</p>
-   <table border="1">
-        <tr>
-          <th>name</th>
-        </tr>
-         
-        <tr th:each="item : ${products}">
-              
-          <td th:utext="${item.productName}">Email</td>  
-           
-        </tr>
-             
-    </table>
-    
     <!--[if lt IE 8]>
 		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 	<![endif]-->
         <!-- Begin Body Wrapper -->
         <div class="body-wrapper">
-            <!-- Begin Header Area -->
-            <header>
-                <!-- Begin Header Middle Area -->
-                <div class="header-middle pl-sm-0 pr-sm-0 pl-xs-0 pr-xs-0">
-                    <div class="container">
-                        <div class="row">
-                            <!-- Begin Header Logo Area -->
-                            <div class="col-lg-3">
-                                <div class="logo pb-sm-30 pb-xs-30">
-                                    <a href="index.html">
-                                        <img src="images/menu/logo/1.jpg" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <!-- Header Logo Area End Here -->
-                            <!-- Begin Header Middle Right Area -->
-                            <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
-                                <!-- Begin Header Middle Searchbox Area -->
-                                <form action="#" class="hm-searchbox">
-                                    <input type="text" placeholder="Tìm kiếm ...">
-                                    <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
-                                </form>
-                                <!-- Header Middle Searchbox Area End Here -->
-                                <!-- Begin Header Middle Right Area -->
-                                <div class="header-middle-right">
-                                    <ul class="hm-menu">
-                                        <!-- Begin Header Middle Wishlist Area -->
-                                        <li class="hm-wishlist">
-                                            <a href="#" class="ht-setting-trigger">
-                                                <i class="fa fa-user"></i>
-                                            </a>
-                                            <div class="setting ht-setting">
-                                                <ul class="ht-setting-list">
-                                                    <li><a href="login-register.html">Thông tin tài khoản</a></li>
-                                                    <li><a href="login-register - register.html">Đăng ký</a></li>
-                                                    <li><a href="login-register.html">Đăng nhập</a></li>
-                                                    <li><a href="checkout.html">Đơn hàng của tôi</a></li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                        <!-- Header Middle Wishlist Area End Here -->
-                                        <!-- Begin Header Mini Cart Area -->
-                                        <li class="hm-minicart">
-                                            <div class="hm-minicart-trigger">
-                                                <span class="item-icon"></span>
-                                                <span class="item-text">$160
-                                                    <span class="cart-item-count">2</span>
-                                                </span>
-                                            </div>
-                                            <span></span>
-                                            <div class="minicart">
-                                                <ul class="minicart-product-list">
-                                                    <li>
-                                                        <a href="single-product-normal.html" class="minicart-product-image">
-                                                            <img src="images/product/small-size/3.jpg" alt="cart products">
-                                                        </a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product-normal.html">Aenean eu tristique</a></h6>
-                                                            <span>$80 x 1</span>
-                                                        </div>
-                                                        <button class="close">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
-                                                    </li>
-                                                    <li>
-                                                        <a href="single-product-normal.html" class="minicart-product-image">
-                                                            <img src="images/product/small-size/4.jpg" alt="cart products">
-                                                        </a>
-                                                        <div class="minicart-product-details">
-                                                            <h6><a href="single-product-normal.html">Aenean eu tristique</a></h6>
-                                                            <span>$80 x 1</span>
-                                                        </div>
-                                                        <button class="close">
-                                                            <i class="fa fa-close"></i>
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                                <p class="minicart-total">Tổng tiền: <span>£160</span></p>
-                                                <div class="minicart-button">
-                                                    <a href="shopping-cart.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
-                                                        <span>Xem giỏ hàng</span>
-                                                    </a>
-                                                    <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
-                                                        <span>Thanh toán</span>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <!-- Header Mini Cart Area End Here -->
-                                    </ul>
-                                </div>
-                                <!-- Header Middle Right Area End Here -->
-                            </div>
-                            <!-- Header Middle Right Area End Here -->
-                        </div>
-                    </div>
-                </div>
-                <!-- Header Middle Area End Here -->
-                <!-- Begin Header Bottom Area -->
-                <div class="header-bottom header-sticky d-none d-lg-block">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <!-- Begin Header Bottom Menu Area -->
-                                <div class="hb-menu hb-menu-2 d-xl-block">
-                                    <nav>
-                                        <ul>
-                                            <li><a href="index-2.html">Trang chủ</a></li>
-                                            <li class="megamenu-holder"><a href="shop-left-sidebar.html">Sản phẩm</a>
-                                                <ul class="megamenu hb-megamenu">
-                                                    <li><a href="shop-left-sidebar.html">Shop Page Layout</a>
-                                                        <ul>
-                                                            <li><a href="shop-3-column.html">Shop 3 Column</a></li>
-                                                            <li><a href="shop-4-column.html">Shop 4 Column</a></li>
-                                                            <li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-                                                            <li><a href="shop-right-sidebar.html">Shop Right Sidebar</a></li>
-                                                            <li><a href="shop-list.html">Shop List</a></li>
-                                                            <li><a href="shop-list-left-sidebar.html">Shop List Left Sidebar</a></li>
-                                                            <li><a href="shop-list-right-sidebar.html">Shop List Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="single-product-gallery-left.html">Single Product Style</a>
-                                                        <ul>
-                                                            <li><a href="single-product-carousel.html">Single Product Carousel</a></li>
-                                                            <li><a href="single-product-gallery-left.html">Single Product Gallery Left</a></li>
-                                                            <li><a href="single-product-gallery-right.html">Single Product Gallery Right</a></li>
-                                                            <li><a href="single-product-tab-style-top.html">Single Product Tab Style Top</a></li>
-                                                            <li><a href="single-product-tab-style-left.html">Single Product Tab Style Left</a></li>
-                                                            <li><a href="single-product-tab-style-right.html">Single Product Tab Style Right</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="single-product-normal.html">Single Products</a>
-                                                        <ul>
-                                                            <li><a href="single-product-normal.html">Single Product</a></li>
-                                                            <li><a href="single-product-sale.html">Single Product Sale</a></li>
-                                                            <li><a href="single-product-group.html">Single Product Group</a></li>
-                                                            <li><a href="single-product-normal.html">Single Product Normal</a></li>
-                                                            <li><a href="single-product-affiliate.html">Single Product Affiliate</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li class="megamenu-static-holder"><a href="index.html">Pages</a>
-                                                <ul class="megamenu hb-megamenu">
-                                                    <li><a href="blog-left-sidebar.html">Blog Layouts</a>
-                                                        <ul>
-                                                            <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                                            <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                                            <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                            <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                            <li><a href="blog-list.html">Blog List</a></li>
-                                                            <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                            <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="blog-details-left-sidebar.html">Blog Details Pages</a>
-                                                        <ul>
-                                                            <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                            <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                            <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
-                                                            <li><a href="blog-video-format.html">Blog Video Format</a></li>
-                                                            <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="index.html">Other Pages</a>
-                                                        <ul>
-                                                            <li><a href="login-register.html">My Account</a></li>
-                                                            <li><a href="checkout.html">Checkout</a></li>
-                                                            <li><a href="compare.html">Compare</a></li>
-                                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                                            <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="index.html">Other Pages 2</a>
-                                                        <ul>
-                                                            <li><a href="contact.html">Contact</a></li>
-                                                            <li><a href="about-us.html">About Us</a></li>
-                                                            <li><a href="faq.html">FAQ</a></li>
-                                                            <li><a href="404.html">404 Error</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Liên hệ</a></li>
-                                            <li><a href="about-us.html">Về chúng tôi</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                                <!-- Header Bottom Menu Area End Here -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Header Bottom Area End Here -->
-                <!-- Begin Mobile Menu Area -->
-                <div class="mobile-menu-area d-lg-none d-xl-none col-12">
-                    <div class="container"> 
-                        <div class="row">
-                            <div class="mobile-menu">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Mobile Menu Area End Here -->
-            </header>
-            <!-- Header Area End Here -->
+            <p id="check">${carts.size() }</p>
+
             <!-- Begin Slider With Category Menu Area -->
             <div class="slider-with-banner">
                 <div class="container">
                     <div class="row">
                         
                         <!-- Begin Slider Area -->
-                        <div class="col-lg-12">
-                            <div class="slider-area pt-sm-30 pt-xs-30">
-                                <div class="slider-active owl-carousel">
-                                    <!-- Begin Single Slide Area -->
-                                    <div class="single-slide align-center-left animation-style-02 bg-4">
-                                        <div class="slider-progress"></div>
-                                        <div class="slider-content">
-                                            <h5>Sale Offer <span>-20% Off</span> This Week</h5>
-                                            <h2>Chamcham Galaxy S9 | S9+</h2>
-                                            <h3>Starting at <span>$589.00</span></h3>
-                                            <div class="default-btn slide-btn">
-                                                <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Single Slide Area End Here -->
-                                    <!-- Begin Single Slide Area -->
-                                    <div class="single-slide align-center-left animation-style-01 bg-5">
-                                        <div class="slider-progress"></div>
-                                        <div class="slider-content">
-                                            <h5>Sale Offer <span>Black Friday</span> This Week</h5>
-                                            <h2>Work Desk Surface Studio 2018</h2>
-                                            <h3>Starting at <span>$1599.00</span></h3>
-                                            <div class="default-btn slide-btn">
-                                                <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Single Slide Area End Here -->
-                                    <!-- Begin Single Slide Area -->
-                                    <div class="single-slide align-center-left animation-style-02 bg-6">
-                                        <div class="slider-progress"></div>
-                                        <div class="slider-content">
-                                            <h5>Sale Offer <span>-10% Off</span> This Week</h5>
-                                            <h2>Phantom 4 Pro+ Obsidian</h2>
-                                            <h3>Starting at <span>$809.00</span></h3>
-                                            <div class="default-btn slide-btn">
-                                                <a class="links" href="shop-left-sidebar.html">Shopping Now</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- Single Slide Area End Here -->
+                        <div class="col-sm-9">
+                            <div id="demo" class="carousel slide" data-ride="carousel">
+
+                                <!-- Indicators -->
+                                <ul class="carousel-indicators">
+                                  <li data-target="#demo" data-slide-to="0" class="active"></li>
+                                  <li data-target="#demo" data-slide-to="1"></li>
+                                  <li data-target="#demo" data-slide-to="2"></li>
+                                </ul>
+                                
+                                <!-- The slideshow -->
+                                <div class="carousel-inner">
+                                  <div class="carousel-item active">
+                                    <img src=" <c:url value="/template/user/images/slider/4.jpg" /> " alt="Los Angeles" width="870" height="500">
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="<c:url value="/template/user/images/slider/7.jpg" />" alt="Chicago" width="870" height="500">
+                                  </div>
+                                  <div class="carousel-item">
+                                    <img src="<c:url value="/template/user/images/slider/8.jpg" />" alt="New York" width="870" height="500">
+                                  </div>
                                 </div>
+                                
+                                <!-- Left and right controls -->
+                                <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                                  <span class="carousel-control-prev-icon"></span>
+                                </a>
+                                <a class="carousel-control-next" href="#demo" data-slide="next">
+                                  <span class="carousel-control-next-icon"></span>
+                                </a>
                             </div>
                         </div>
-                        <!-- Slider Area End Here -->
+                        <div class="col-sm-3">
+                            <div class="single-banner mb-10 ">
+                                <a href="#">
+                                    <img src="<c:url value="/template/user/images/banner/2_1.jpg" />" alt="Li's Static Banner" width="270" height="160">
+                                </a>
+                            </div>
+                            <div class="single-banner   mb-10 overflow-auto">
+                                <a href="#">
+                                    <img src="<c:url value="/template/user/images/banner/1_3.jpg" />" alt="Li's Static Banner" width="270" height="160">
+                                </a>
+                            </div>
+                            <div class="single-banner   mb-10 overflow-auto">
+                                <a href="#">
+                                    <img src="<c:url value="/template/user/images/banner/1_3.jpg" />" alt="Li's Static Banner" width="270" height="160">
+                                </a>
+                            </div>
+                        </div>
+                       
                     </div>
                 </div>
             </div>
             <!-- Slider With Category Menu Area End Here -->
-            <!-- Begin Li's Static Banner Area -->
-            <div class="li-static-banner pt-20 pt-sm-30 pt-xs-30">
-                <div class="container">
-                    <div class="row">
-                        <!-- Begin Single Banner Area -->
-                        <div class="col-lg-4 col-md-4">
-                            <div class="single-banner pb-xs-30">
-                                <a href="#">
-                                    <img src="images/banner/1_3.jpg" alt="Li's Static Banner">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Single Banner Area End Here -->
-                        <!-- Begin Single Banner Area -->
-                        <div class="col-lg-4 col-md-4">
-                            <div class="single-banner pb-xs-30">
-                                <a href="#">
-                                    <img src="images/banner/1_4.jpg" alt="Li's Static Banner">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Single Banner Area End Here -->
-                        <!-- Begin Single Banner Area -->
-                        <div class="col-lg-4 col-md-4">
-                            <div class="single-banner">
-                                <a href="#">
-                                    <img src="images/banner/1_5.jpg" alt="Li's Static Banner">
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Single Banner Area End Here -->
-                    </div>
-                </div>
-            </div>
-            <!-- Li's Static Banner Area End Here -->
+ 
             <!-- Begin Li's Special Product Area -->
             <section class="product-area li-laptop-product Special-product pt-60 pb-45">
                 <div class="container">
@@ -369,11 +87,51 @@
                         <div class="col-lg-12">
                             <div class="li-section-title">
                                 <h2>
-                                    <span>Hot Deals</span>
+                                    <span>Sản phẩm khuyến mãi</span>
                                 </h2>
                             </div>
                             <div class="row">
                                 <div class="special-product-active owl-carousel">
+                                <c:forEach items="${products}" var="product">
+                                          <div class="col-lg-12">
+                                        <!-- single-product-wrap start -->
+                                        <div class="single-product-wrap">
+                                            <div class="product-image">
+                                                <a href="single-product-normal.html">
+                                                    <img src="<c:url value ="${product.mainImage}"/>" alt="Li's Product Image">
+                                                </a>
+                                                <span class="sticker">Sale</span>
+                                            </div>
+                                            <div class="product_desc">
+                                                <div class="product_desc_info">
+                                                    <div class="product-review">
+                                                        <h5 class="manufacturer">
+                                                            <a href="shop-left-sidebar.html">Studio Design</a>
+                                                        </h5>
+                                                        
+                                                    </div>
+                                                    <h4><a class="product_name" href="single-product-normal.html">Mug Today is a good day</a></h4>
+                                                    <div class="price-box">
+                                                        <span class="new-price new-price-2">$71.80</span>
+                                                        <span class="old-price">$77.22</span>
+                                                        <span class="discount-percentage">-7%</span>
+                                                    </div>
+                                                    
+                                                </div>
+                                                <div class="add-actions">
+                                                    <ul class="add-actions-link">
+                                                        <li class="add-cart active" onclick="addCart(${product.id})">Thêm</li>
+                                                        
+                                                        <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- single-product-wrap end -->
+                                    </div>
+                                        
+                                        
+                                        </c:forEach>
                                     <div class="col-lg-12">
                                         <!-- single-product-wrap start -->
                                         <div class="single-product-wrap">
@@ -399,7 +157,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -435,7 +193,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -469,7 +227,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -505,7 +263,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -541,7 +299,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -579,7 +337,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -660,7 +418,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -695,7 +453,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -728,7 +486,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -763,7 +521,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -796,7 +554,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -831,7 +589,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -912,7 +670,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -947,7 +705,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -980,7 +738,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -1015,7 +773,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -1048,7 +806,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -1083,7 +841,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -1163,7 +921,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -1198,7 +956,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -1231,7 +989,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -1266,7 +1024,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -1299,7 +1057,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -1334,7 +1092,7 @@
                                                 </div>
                                                 <div class="add-actions">
                                                     <ul class="add-actions-link">
-                                                        <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                        <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                         
                                                         <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
@@ -1423,7 +1181,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1458,7 +1216,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1491,7 +1249,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1526,7 +1284,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1559,7 +1317,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1594,7 +1352,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1633,7 +1391,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1668,7 +1426,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1701,7 +1459,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1736,7 +1494,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1769,7 +1527,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1804,7 +1562,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1843,7 +1601,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1878,7 +1636,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1911,7 +1669,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1946,7 +1704,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -1979,7 +1737,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -2014,7 +1772,7 @@
                                                         </div>
                                                         <div class="add-actions">
                                                             <ul class="add-actions-link">
-                                                                <li class="add-cart active"><a href="#">Thêm giỏ hàng</a></li>
+                                                                <li class="add-cart active"><a href="#">ThÃªm giá» hÃ ng</a></li>
                                                                 
                                                                 <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
                                                             </ul>
@@ -2034,202 +1792,7 @@
                 </div>
             </section>
             <!-- Li's Trending Product | Home V2 Area End Here -->
-            <!-- Begin Footer Area -->
-             <div class="footer">
-                <!-- Begin Footer Static Top Area -->
-                <div class="footer-static-top">
-                    <div class="container">
-                        <!-- Begin Footer Shipping Area -->
-                        <div class="footer-shipping pt-60 pb-55 pb-xs-25">
-                            <div class="row">
-                                <!-- Begin Li's Shipping Inner Box Area -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
-                                    <div class="li-shipping-inner-box">
-                                        <div class="shipping-icon">
-                                            <img src="images/shipping-icon/1.png" alt="Shipping Icon">
-                                        </div>
-                                        <div class="shipping-text">
-                                            <h2>Free Ship</h2>
-                                            <p>Và free đổi trả. Miễn phí hai chiều.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Li's Shipping Inner Box Area End Here -->
-                                <!-- Begin Li's Shipping Inner Box Area -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 pb-sm-55 pb-xs-55">
-                                    <div class="li-shipping-inner-box">
-                                        <div class="shipping-icon">
-                                            <img src="images/shipping-icon/2.png" alt="Shipping Icon">
-                                        </div>
-                                        <div class="shipping-text">
-                                            <h2>Safe Payment</h2>
-                                            <p>Thanh toán an toàn tiện lợi với các hệ thống lớn.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Li's Shipping Inner Box Area End Here -->
-                                <!-- Begin Li's Shipping Inner Box Area -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
-                                    <div class="li-shipping-inner-box">
-                                        <div class="shipping-icon">
-                                            <img src="images/shipping-icon/3.png" alt="Shipping Icon">
-                                        </div>
-                                        <div class="shipping-text">
-                                            <h2>Bảo đảm</h2>
-                                            <p>Chúng tôi đảm bảo từ việc bạn mua hàng cho đến khi bạn nhận được hàng.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Li's Shipping Inner Box Area End Here -->
-                                <!-- Begin Li's Shipping Inner Box Area -->
-                                <div class="col-lg-3 col-md-6 col-sm-6 pb-xs-30">
-                                    <div class="li-shipping-inner-box">
-                                        <div class="shipping-icon">
-                                            <img src="images/shipping-icon/4.png" alt="Shipping Icon">
-                                        </div>
-                                        <div class="shipping-text">
-                                            <h2>24/7 Help Center</h2>
-                                            <p>Có thắc mắc? Chúng tôi luôn sẵn sàng hỗ trợ giúp đỡ bạn.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Li's Shipping Inner Box Area End Here -->
-                            </div>
-                        </div>
-                        <!-- Footer Shipping Area End Here -->
-                    </div>
-                </div>
-                <!-- Footer Static Top Area End Here -->
-                <!-- Begin Footer Static Middle Area -->
-                <div class="footer-static-middle">
-                    <div class="container">
-                        <div class="footer-logo-wrap pt-50 pb-35">
-                            <div class="row">
-                                <!-- Begin Footer Logo Area -->
-                                <div class="col-lg-4 col-md-6">
-                                    <div class="footer-logo">
-                                        <img src="images/menu/logo/1.jpg" alt="Footer Logo">
-                                        <p class="info">
-                                            Cửa hàng chúng tôi mang đến những sản phẩm và dịch vụ tốt nhất. Giúp bạn có những lựa chọn tuyệt vời và những giây phút hài lòng trước và sau nhận hàng.
-                                        </p>
-                                    </div>
-                                    <ul class="des">
-                                        <li>
-                                            <span>Địa chỉ: </span>
-                                            6 QL1A, Khu Phó 1, Dĩ An, Bình Dương - Việt Nam
-                                        </li>
-                                        <li>
-                                            <span>Phone: </span>
-                                            <a href="#">(+123) 123 321 345</a>
-                                        </li>
-                                        <li>
-                                            <span>Email: </span>
-                                            <a href="mailto://info@yourdomain.com">17130041@st.hcmuaf.edu.vn</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- Footer Logo Area End Here -->
-                                <!-- Begin Footer Block Area -->
-                                <div class="col-lg-2 col-md-3 col-sm-6">
-                                    <div class="footer-block">
-                                        <h3 class="footer-block-title">Sản phẩm</h3>
-                                        <ul>
-                                            <li><a href="#">Deal sốc</a></li>
-                                            <li><a href="#">Sản phẩm mới toanh</a></li>
-                                            <li><a href="#">Mua nhiều nhất</a></li>
-                                            <li><a href="#">Liên hệ chúng tôi</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- Footer Block Area End Here -->
-                                <!-- Begin Footer Block Area -->
-                                <div class="col-lg-2 col-md-3 col-sm-6">
-                                    <div class="footer-block">
-                                        <h3 class="footer-block-title">Chúng tôi</h3>
-                                        <ul>
-                                            <li><a href="#">Chứng nhận ISO</a></li>
-                                            <li><a href="#">Về chúng tôi</a></li>
-                                            <li><a href="#">Liên hệ chúng tôi</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- Footer Block Area End Here -->
-                                <!-- Begin Footer Block Area -->
-                                <div class="col-lg-4">
-                                    <div class="footer-block">
-                                        <h3 class="footer-block-title">Mạng xã hội</h3>
-                                        <ul class="social-link">
-                                            <li class="twitter">
-                                                <a href="https://twitter.com/" data-toggle="tooltip" target="_blank" title="Twitter">
-                                                    <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li class="rss">
-                                                <a href="https://rss.com/" data-toggle="tooltip" target="_blank" title="RSS">
-                                                    <i class="fa fa-rss"></i>
-                                                </a>
-                                            </li>
-                                            <li class="google-plus">
-                                                <a href="https://www.plus.google.com/discover" data-toggle="tooltip" target="_blank" title="Google Plus">
-                                                    <i class="fa fa-google-plus"></i>
-                                                </a>
-                                            </li>
-                                            <li class="facebook">
-                                                <a href="https://www.facebook.com/" data-toggle="tooltip" target="_blank" title="Facebook">
-                                                    <i class="fa fa-facebook"></i>
-                                                </a>
-                                            </li>
-                                            <li class="youtube">
-                                                <a href="https://www.youtube.com/" data-toggle="tooltip" target="_blank" title="Youtube">
-                                                    <i class="fa fa-youtube"></i>
-                                                </a>
-                                            </li>
-                                            <li class="instagram">
-                                                <a href="https://www.instagram.com/" data-toggle="tooltip" target="_blank" title="Instagram">
-                                                    <i class="fa fa-instagram"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- Begin Footer Newsletter Area -->
-                                    <div class="footer-newsletter">
-                                        <h4>Đăng ký nhận tin mới nhất</h4>
-                                        <form action="#" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="footer-subscribe-form validate" target="_blank" novalidate>
-                                           <div id="mc_embed_signup_scroll">
-                                              <div id="mc-form" class="mc-form subscribe-form form-group" >
-                                                <input id="mc-email" type="email" autocomplete="off" placeholder="Điền email của bạn" />
-                                                <button  class="btn" id="mc-submit">ĐĂNG KÝ</button>
-                                              </div>
-                                           </div>
-                                        </form>
-                                    </div>
-                                    <!-- Footer Newsletter Area End Here -->
-                                </div>
-                                <!-- Footer Block Area End Here -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Footer Static Middle Area End Here -->
-                <!-- Begin Footer Static Bottom Area -->
-                <div class="footer-static-bottom pt-55 pb-55">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <!-- Begin Footer Payment Area -->
-                                <div class="copyright text-center">
-                                    <a href="#">
-                                        <img src="images/payment/1.png" alt="">
-                                    </a>
-                                </div>
-                                <!-- Footer Payment Area End Here -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Footer Static Bottom Area End Here -->
-            </div>
-            <!-- Footer Area End Here -->
+           
             <!-- Begin Quick View | Modal Area -->
             <div class="modal fade modal-wrapper" id="exampleModalCenter" >
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -2297,7 +1860,7 @@
                                                             <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
                                                         </div>
                                                     </div>
-                                                    <button class="add-to-cart" type="submit">Thêm giỏ hàng</button>
+                                                    <button class="add-to-cart" type="submit">ThÃªm giá» hÃ ng</button>
                                                 </form>
                                             </div>
                                             <div class="product-additional-info pt-25">
@@ -2320,48 +1883,29 @@
             <!-- Quick View | Modal Area End Here -->
         </div>
         <!-- Body Wrapper End Here -->
-        <!-- jQuery-V1.12.4 -->
-        <script src="js/vendor/jquery-1.12.4.min.js" th:src="@{/template/user/js/vendor/jquery-1.12.4.min.js}"></script>
-        <!-- Popper js -->
-        <script src="js/vendor/popper.min.js" th:src="@{/template/user/js/vendor/popper.min.js}"></script>
-        <!-- Bootstrap V4.1.3 Fremwork js -->
-        <script src="js/bootstrap.min.js" th:src="@{/template/user/js/bootstrap.min.js}"></script>
-        <!-- Ajax Mail js -->
-        <script src="js/ajax-mail.js" th:src="@{/template/user/js/ajax-mail.js}"></script>
-        <!-- Meanmenu js -->
-        <script src="js/jquery.meanmenu.min.js" th:src="@{/template/user/js/jquery.meanmenu.min.js}"></script>
-        <!-- Wow.min js -->
-        <script src="js/wow.min.js" th:src="@{/template/user/js/wow.min.js}"></script>
-        <!-- Slick Carousel js -->
-        <script src="js/slick.min.js" th:src="@{/template/user/js/slick.min.js}"></script>
-        <!-- Owl Carousel-2 js -->
-        <script src="js/owl.carousel.min.js" th:src="@{/template/user/js/owl.carousel.min.js}"></script>
-        <!-- Magnific popup js -->
-        <script src="js/jquery.magnific-popup.min.js" th:src="@{/template/user/js/jquery.magnific-popup.min.js}"></script>
-        <!-- Isotope js -->
-        <script src="js/isotope.pkgd.min.js" th:src="@{/template/user/js/isotope.pkgd.min.js}"></script>
-        <!-- Imagesloaded js -->
-        <script src="js/imagesloaded.pkgd.min.js" th:src="@{/template/user/js/imagesloaded.pkgd.min.js}"></script>
-        <!-- Mixitup js -->
-        <script src="js/jquery.mixitup.min.js" th:src="@{/template/user/js/jquery.mixitup.min.js}"></script>
-        <!-- Countdown -->
-        <script src="js/jquery.countdown.min.js" th:src="@{/template/user/js/jquery.countdown.min.js}"></script>
-        <!-- Counterup -->
-        <script src="js/jquery.counterup.min.js" th:src="@{/template/user/js/jquery.counterup.min.js}"></script>
-        <!-- Waypoints -->
-        <script src="js/waypoints.min.js" th:src="@{/template/user/js/waypoints.min.js}"></script>
-        <!-- Barrating -->
-        <script src="js/jquery.barrating.min.js" th:src="@{/template/user/js/jquery.barrating.min.js}"></script>
-        <!-- Jquery-ui -->
-        <script src="js/jquery-ui.min.js" th:src="@{/template/user/js/jquery-ui.min.js}"></script>
-        <!-- Venobox -->
-        <script src="js/venobox.min.js" th:src="@{/template/user/js/venobox.min.js}"></script>
-        <!-- Nice Select js -->
-        <script src="js/jquery.nice-select.min.js" th:src="@{/template/user/js/jquery.nice-select.min.js}"></script>
-        <!-- ScrollUp js -->
-        <script src="js/scrollUp.min.js" th:src="@{/template/user/js/scrollUp.min.js}"></script>
-        <!-- Main/Activator js -->
-        <script src="js/main.js" th:src="@{/template/user/js/main.js}"></script>
+
+
+	<!-- xu ly cart -->
+	<script type="text/javascript">
+		function addCart(id){
+			
+			console.log(id);
+			 $.ajax({
+			        type: "GET",
+			        url:  '<c:url value="/addCart/"/>'+id,
+			        timeout: 600000,
+			        success: function (data) {
+			        	console.log(data);
+			        	$("#mini-cart").load(" #mini-cart > *");
+			        },
+			        error: function (e) {
+
+			        	console.log("error");
+
+			        }
+			    });
+		};
+	</script>
     </body>
 
 <!-- index-231:38-->

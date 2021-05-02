@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.NumberFormat;
+
 @Entity
 @Table(name = "product")
 public class ProductEntity extends BaseEntity {
@@ -21,6 +23,7 @@ public class ProductEntity extends BaseEntity {
 	@Column(name = "productname")
 
 	private String productName;
+
 
 	@Column(name = "price")
 	private int price;
