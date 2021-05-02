@@ -37,18 +37,22 @@
 <link
 	href="<c:url value ="/template/admin/assets/css/bootstrap.min.css"/>"
 	rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
-	<link
+<link
 	href="<c:url value ="/template/admin/assets/css/bootstrap-image-checkbox.css"/>"
 	rel="stylesheet" type="text/css" id="bootstrap-stylesheet">
 <link href="<c:url value ="/template/admin/assets/css/icons.min.css"/>"
 	rel="stylesheet" type="text/css">
 <link href="<c:url value ="/template/admin/assets/css/app.min.css"/>"
 	rel="stylesheet" type="text/css" id="app-stylesheet">
-	<link href="<c:url value ="/template/admin/assets/css/custom.css"/>"
+<link href="<c:url value ="/template/admin/assets/css/custom.css"/>"
 	rel="stylesheet" type="text/css" id="app-stylesheet">
+<link
+	href="<c:url value ="/template/admin/assets/libs/dropzone/dropzone.min.css"/>"
+	rel="stylesheet" type="text/css">
 <!--ck-->
 <script src="<c:url value ="/template/admin/assets/js/jquery.min.js"/>"></script>
-<script src="<c:url value ="/template/admin/assets/js/jquery.validate.min.js"/>"></script>
+<script
+	src="<c:url value ="/template/admin/assets/js/jquery.validate.min.js"/>"></script>
 
 <script
 	src="<c:url value ="/template/admin/assets/ckeditor/ckeditor.js"/>"></script>
@@ -72,21 +76,31 @@
 
 	<!-- Vendor js -->
 	<script src="<c:url value ="/template/admin/assets/js/vendor.min.js"/>"></script>
-    <!-- Required datatable js -->
-    <script src="<c:url value ="/template/admin/assets/libs/datatables/jquery.dataTables.min.js"/>"></script>
-    <script src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.bootstrap4.min.js"/>"></script>
+	<!-- Required datatable js -->
+	<script
+		src="<c:url value ="/template/admin/assets/libs/datatables/jquery.dataTables.min.js"/>"></script>
+	<script
+		src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.bootstrap4.min.js"/>"></script>
 	<!-- App js -->
 	<script src="<c:url value ="/template/admin/assets/js/app.min.js"/>"></script>
-	    <!-- Responsive examples -->
-    <script src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.responsive.min.js"/>"></script>
-    <script src="<c:url value ="/template/admin/assets/libs/datatables/responsive.bootstrap4.min.js"/>"></script>
+	<!-- Responsive examples -->
+	<script
+		src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.responsive.min.js"/>"></script>
+	<script
+		src="<c:url value ="/template/admin/assets/libs/datatables/responsive.bootstrap4.min.js"/>"></script>
 
-    <script src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.keyTable.min.js"/>"></script>
-    <script src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.select.min.js"/>"></script>
+	<script
+		src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.keyTable.min.js"/>"></script>
+	<script
+		src="<c:url value ="/template/admin/assets/libs/datatables/dataTables.select.min.js"/>"></script>
 	<!-- Datatables init -->
-	<script src="<c:url value ="/template/admin/assets/js/pages/datatables.init.js"/>"></script>
-	
+	<script
+		src="<c:url value ="/template/admin/assets/js/pages/datatables.init.js"/>"></script>
+
 	<!-- custom js -->
 	<script src="<c:url value ="/template/admin/assets/js/customjs.js"/>"></script>
+	<!-- dropzone -->
+	<script
+		src="<c:url value ="/template/admin/assets/libs/dropzone/dropzone.min.js"/>"></script>
 </body>
 </html>
