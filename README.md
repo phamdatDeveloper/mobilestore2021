@@ -1,1 +1,11 @@
-# mobilestore2021
+# Website bán điện thoại online
+- Technologies
+  - HTML, CSS, JS, JQUERY, SPRING MVC, SPRING SECURITY, MYSQL,... 
+- Các chức năng
+  - Thêm, sửa, xoá sản phẩm vào giỏ hàng.
+  - Tìm kiếm sản phẩm.
+  - Quản lý sản phẩm.
+  - Đặt hàng.
+  - Quản lý đơn hàng.
+  - Quản lý khách hàng.
+  - Đăng nhập, đăng ký, quên mật khẩu.
