@@ -42,7 +42,7 @@ public class UploadFile {
 					// Luồng ghi dữ liệu vào file trên Server.
 					BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(serverFile));
 					stream.write(fileData.getBytes());
-					result.add(File.separator + "template"+File.separator+"admin"+File.separator+"assets"+File.separator+"images"+File.separator+name);
+					result.add("/template/admin/assets/images/"+name);
 					System.out.println(File.separator + "template"+File.separator+"admin"+File.separator+"assets"+File.separator+"images"+File.separator+name);
 					stream.close();
 					//

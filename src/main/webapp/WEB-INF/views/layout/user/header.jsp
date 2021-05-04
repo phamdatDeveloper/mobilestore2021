@@ -10,7 +10,7 @@
                             <!-- Begin Header Logo Area -->
                             <div class="col-lg-3">
                                 <div class="logo pb-sm-30 pb-xs-30">
-                                    <a href="index.html">
+                                    <a href="<c:url value="/"/>">
                                         <img src="<c:url value ="template/user/images/menu/logo/1.jpg"/>" alt="">
                                     </a>
                                 </div>
@@ -72,7 +72,7 @@
                                                 </ul>
                                                 <p class="minicart-total">Tổng tiền: <span><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${totalPrice}" /></span></p>
                                                 <div class="minicart-button">
-                                                    <a href="shopping-cart.html" class="li-button li-button-dark li-button-fullwidth li-button-sm">
+                                                    <a href="<c:url value="/cart"/>" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                         <span>Xem giỏ hàng</span>
                                                     </a>
                                                     <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
@@ -100,7 +100,7 @@
                                 <div class="hb-menu hb-menu-2 d-xl-block">
                                     <nav>
                                         <ul>
-                                            <li><a href="index-2.html">Trang chủ</a></li>
+                                            <li><a href="<c:url value="/"/>">Trang chủ</a></li>
                                             <li class="megamenu-holder"><a href="shop-left-sidebar.html">Sản phẩm</a>
                                                 <ul class="megamenu hb-megamenu">
                                                     <li><a href="<c:url value ="/product"/>">Điện thoại</a>
@@ -188,24 +188,4 @@
                 <!-- Mobile Menu Area End Here -->
             </header>
             <!-- Header Area End Here -->
-    <script type="text/javascript">
-		function deleteCart(id){
-			
-			console.log(id);
-			 $.ajax({
-			        type: "GET",
-			        url:  '<c:url value="/deleteCart/"/>'+id,
-			        timeout: 600000,
-			        success: function (data) {
-			        	console.log(data);
-			        	$("#mini-cart").load(" #mini-cart > *");
-			        	
-			        },
-			        error: function (e) {
-
-			        	console.log("error");
-
-			        }
-			    });
-		};
-	</script>
+    

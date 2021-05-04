@@ -43,13 +43,16 @@
         <link rel="stylesheet" href="<c:url value ="/template/user/css/responsive.css"/> ">
         <!-- Modernizr js -->
         <script src="<c:url value ="/template/user/js/vendor/modernizr-2.8.3.min.js"/>"></script>
+        <!-- Sweet alert -->
+        <link rel="stylesheet" href="<c:url value ="/template/user/css/sweetalert2.min.css"/>">
+        <script src="<c:url value ="/template/user/js/sweetalert2.min.js"/>"></script>
         
         <script src="<c:url value ="/template/user/js/jquery.min.js"/>"></script>
 
 </head>
 <body>
 
-	<div class="body-wrapper">
+	<div class="body-wrapper" id="body-wrapper">
 		<!-- Header -->
 		<%@include file="/WEB-INF/views/layout/user/header.jsp"%>
 		<!-- Body -->
@@ -59,8 +62,7 @@
 		<!-- end Footer -->
 
 	</div>
-        <!-- jQuery-V1.12.4 -->
-        <script src="<c:url value ="/template/user/js/vendor/jquery-1.12.4.min.js"/>"></script>
+
         <!-- Popper js -->
         <script src="<c:url value ="/template/user/js/vendor/popper.min.js"/>"></script>
         <!-- Bootstrap V4.1.3 Fremwork js -->
@@ -101,6 +103,8 @@
         <script src="<c:url value ="/template/user/js/scrollUp.min.js"/>"></script>
         <!-- Main/Activator js -->
         <script src="<c:url value ="/template/user/js/main.js"/>"></script>
+        
+        <script src="<c:url value ="/template/user/js/custom.js"/>"></script>
 
 </body>
 </html>

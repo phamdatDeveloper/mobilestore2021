@@ -47,5 +47,21 @@ public class CartAPI {
 		return "Add Success";
 		
 	}
+	
+	@RequestMapping(value="/updateCart/{id}/{quantity}")
+	public @ResponseBody String updatecart(@PathVariable("id")long id,@PathVariable("quantity")int quantity,HttpSession session) {
+		HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("carts");
+		if(carts == null) {
+			carts = new HashMap<Long, CartDTO>();
+		}
+		carts = cartService.editCart(id, quantity, carts);
+		session.setAttribute("carts", carts);
+		if(carts != null) {
+		session.setAttribute("totalPrice", cartService.totalPrice(carts));
+		session.setAttribute("totalQuantity", cartService.totalQuantity(carts));
+		}
+		return "Add Success";
+		
+	}
 
 }
