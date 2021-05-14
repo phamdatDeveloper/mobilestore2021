@@ -470,14 +470,7 @@
 									var numSale = $("#priceSale").val();
 									if (num != '') {
 										$("#convert-money").css("color", "red");
-										$("#convert-money")
-												.text(
-														num
-																.toString()
-																.replace(
-																		/(\d)(?=(\d\d\d)+(?!\d))/g,
-																		"$1,")
-																+ " đ");
+										$("#convert-money").text(num.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g,"$1,")+ " đ");
 									}
 									$("#price")
 											.keyup(

@@ -22,6 +22,20 @@ public class ProductConverter {
 			secondaryImage.add(link.nextToken());
         }
 		dto.setSecondaryImage(secondaryImage);
+		if(entity.getStatus() != null) {
+			StringTokenizer status = new StringTokenizer(entity.getStatus(), ",");
+			while (status.hasMoreTokens()) {
+				String token = status.nextToken();
+				if(token.equals("MOI")) {
+					dto.setIsNew(true);
+				}else if(token.equals("KHUYEN_MAI")) {
+					dto.setIsSale(true);
+				}else {
+					dto.setIsNew(false);
+					dto.setIsSale(false);
+				}
+	        }
+		}
 		return dto;
 	}
 

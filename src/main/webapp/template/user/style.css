@@ -2651,6 +2651,8 @@ textarea:focus {
 .li-section-title > h2 > span {
 	display: inline-block;
 	position: relative;
+	    font-weight: bold;
+    font-size: larger;
 }
 .li-section-title > h2 > span::before {
 	opacity: 1;
@@ -5056,6 +5058,8 @@ span.required {
 	border-bottom: 1px solid #e1e1e1;
 	margin-bottom: 25px;
 }
+
+
 .product-details-view-content .product-desc p {
 	margin-bottom: 20px;
 }
@@ -5314,6 +5318,11 @@ span.required {
 	overflow: hidden;
 	float: left;
 	width: 100%;
+}
+#btn-cart-quickview{
+	width:150px;
+	height:50px;
+	padding:0 !important;
 }
 /*----------------------------------------*/
 /* 6.18 Single Product Tab Style Left Page

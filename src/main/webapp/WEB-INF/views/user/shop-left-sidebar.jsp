@@ -135,57 +135,13 @@
                             <!-- shop-products-wrapper end -->
                         </div>
                         <div class="col-lg-3 order-2 order-lg-1">
-                            <!--sidebar-categores-box start  -->
-                            <div class="sidebar-categores-box mt-sm-30 mt-xs-30">
-                                <div class="sidebar-title">
-                                    <h2>Loáº¡i Sáº£n pháº©m</h2>
-                                </div>
-                                <!-- category-sub-menu start -->
-                                <div class="category-sub-menu">
-                                    <ul>
-                                        <li class="has-sub"><a href="# ">Samsung</a>
-                                            <ul>
-                                                <li><a href="#">All Videos</a></li>
-                                                <li><a href="#">Blouses</a></li>
-                                                <li><a href="#">Evening Dresses</a></li>
-                                                <li><a href="#">Summer Dresses</a></li>
-                                                <li><a href="#">T-Rent or Buy</a></li>
-                                                <li><a href="#">Your Watchlist</a></li>
-                                                <li><a href="#">Watch Anywhere</a></li>
-                                                <li><a href="#">Getting Started</a></li>  
-                                            </ul>
-                                        </li>
-                                        <li class="has-sub"><a href="#">Apple</a>
-                                            <ul>
-                                                <li><a href="#">TV & Video</a></li>
-                                                <li><a href="#">Audio & Theater</a></li>
-                                                <li><a href="#">Camera, Photo</a></li>
-                                                <li><a href="#">Cell Phones</a></li>
-                                                <li><a href="#">Headphones</a></li>
-                                                <li><a href="#">Video Games</a></li>
-                                                <li><a href="#">Wireless Speakers</a></li> 
-                                            </ul>
-                                        </li>
-                                        <li class="has-sub"><a href="#">KhÃ¡c</a>
-                                            <ul>
-                                                <li><a href="#">Amazon Home</a></li>
-                                                <li><a href="#">Kitchen & Dining</a></li>
-                                                <li><a href="#">Bed & Bath</a></li>
-                                                <li><a href="#">Appliances</a></li>    
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- category-sub-menu end -->
-                            </div>
-                            <!--sidebar-categores-box end  -->
-                            <!--sidebar-categores-box start  -->
+                             <!--sidebar-categores-box start  -->
                             <div class="sidebar-categores-box">
                                 <div class="sidebar-title">
-                                    <h2>Lá»c theo</h2>
+                                    <h2>Lọc theo</h2>
                                 </div>
                                 <!-- btn-clear-all start -->
-                                <button class="btn-clear-all mb-sm-30 mb-xs-30">XÃ³a háº¿t</button>
+                               
                                 <!-- btn-clear-all end -->
                                 <!-- filter-sub-area start -->
                                 <div class="filter-sub-area">
@@ -195,7 +151,7 @@
                                             <ul>
                                                 <li><input type="checkbox" name="product-categori"><a href="#">Samsung (13)</a></li>
                                                 <li><input type="checkbox" name="product-categori"><a href="#">Apple (12)</a></li>
-                                                <li><input type="checkbox" name="product-categori"><a href="#">KhÃ¡c (11)</a></li>
+                                                <li><input type="checkbox" name="product-categori"><a href="#">Khác (11)</a></li>
                                             </ul>
                                         </form>
                                     </div>
@@ -203,14 +159,14 @@
                                 <!-- filter-sub-area end -->
                                 <!-- filter-sub-area start -->
                                 <div class="filter-sub-area pt-sm-10 pt-xs-10">
-                                    <h5 class="filter-sub-titel">KÃ­ch thÆ°á»c</h5>
+                                    <h5 class="filter-sub-titel">Dung lượng bộ nhớ</h5>
                                     <div class="size-checkbox">
                                         <form action="#">
                                             <ul>
-                                                <li><input type="checkbox" name="product-size"><a href="#">S (3)</a></li>
-                                                <li><input type="checkbox" name="product-size"><a href="#">M (3)</a></li>
-                                                <li><input type="checkbox" name="product-size"><a href="#">L (3)</a></li>
-                                                <li><input type="checkbox" name="product-size"><a href="#">XL (3)</a></li>
+                                                <li><input type="checkbox" name="product-size"><a href="#">32GB</a></li>
+                                                <li><input type="checkbox" name="product-size"><a href="#">64GB</a></li>
+                                                <li><input type="checkbox" name="product-size"><a href="#">256GB</a></li>
+                                                <li><input type="checkbox" name="product-size"><a href="#">512GB</a></li>
                                             </ul>
                                         </form>
                                     </div>
@@ -218,13 +174,13 @@
                                 <!-- filter-sub-area end -->
                                 <!-- filter-sub-area start -->
                                 <div class="filter-sub-area pt-sm-10 pt-xs-10">
-                                    <h5 class="filter-sub-titel">MÃ u sáº¯c</h5>
+                                    <h5 class="filter-sub-titel">Màu sắc</h5>
                                     <div class="color-categoriy">
                                         <form action="#">
                                             <ul>
-                                                <li><span class="white"></span><a href="#">Tráº¯ng (1)</a></li>
-                                                <li><span class="black"></span><a href="#">Äen (1)</a></li>
-                                                <li><span class="Orange"></span><a href="#">Äá» (3) </a></li>
+                                                <li><span class="white"></span><a href="#">Trắng (1)</a></li>
+                                                <li><span class="black"></span><a href="#">Đen (1)</a></li>
+                                                <li><span class="Orange"></span><a href="#">Đỏ (3) </a></li>
                                                 <li><span class="Blue"></span><a href="#">Xanh  (2) </a></li>
                                             </ul>
                                         </form>
@@ -233,22 +189,7 @@
                                 <!-- filter-sub-area end -->
                             </div>
                             <!--sidebar-categores-box end  -->
-                            <!-- category-sub-menu start -->
-                            <div class="sidebar-categores-box mb-sm-0 mb-xs-0">
-                                <div class="sidebar-title">
-                                    <h2>Phá»¥ kiá»n</h2>
-                                </div>
-                                <div class="category-tags">
-                                    <ul>
-                                        <li><a href="# ">Devita</a></li>
-                                        <li><a href="# ">Cameras</a></li>
-                                        <li><a href="# ">Sony</a></li>
-                                        <li><a href="# ">Computer</a></li>
-                                        <li><a href="# ">Big Sale</a></li>
-                                        <li><a href="# ">Accessories</a></li>
-                                    </ul>
-                                </div>
-                                <!-- category-sub-menu end -->
+                           
                             </div>
                         </div>
                     </div>
@@ -332,7 +273,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             <div class="modal-inner-area row">
-                                <div class="col-lg-5 col-md-6 col-sm-6">
+                                <div class="col-lg-7 col-md-6 col-sm-6">
                                    <!-- Product Details Left -->
                                     <div class="product-details-left">
                                         <div class="product-details-images slider-navigation-1">
@@ -355,10 +296,10 @@
                                     <!--// Product Details Left -->
                                 </div>
 
-                                <div class="col-lg-7 col-md-6 col-sm-6">
+                                <div class="col-lg-5 col-md-6 col-sm-6">
                                     <div class="product-details-view-content pt-60">
                                         <div class="product-info">
-                                            <h2>${product.productName }</h2>
+                                            <h2>${product.productName } <span><c:if test="${product.isSale == true}">(Khuyến mãi)</c:if></span></h2>
                                             
                                             <div class="rating-box pt-20">
                                                 <ul class="rating rating-with-review-item">
@@ -371,24 +312,37 @@
                                                 </ul>
                                             </div>
                                             <div class="price-box pt-20">
-                                                <span class="new-price new-price-2"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${product.price}" /></span>
+                                            <c:choose>
+											   <c:when test="${product.isSale == true}">
+											   	<span class="new-price new-price-2"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${product.priceSale}" /></span>
+                                            	<span class="old-price" style="text-decoration: line-through;"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${product.price}" /></span>
+											   </c:when> 
+											   <c:otherwise>
+											   <span class="new-price new-price-2"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${product.price}" /></span>
+											   </c:otherwise>   
+											</c:choose>
+                                            	
+                                               
                                             </div>
-                                            <div class="product-desc">
-                                                <p>
-                                                    <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
-                                                    </span>
-                                                </p>
-                                            </div>
-                                            
-                                            <div class="single-add-to-cart">
+                                             <div class="single-add-to-cart">
                                                 <form action="#" class="cart-quantity">
                                                    
-                                                    <button class="add-to-cart" type="button" onclick="addCart(${product.id})">Thêm vào giỏ hàng</button>
+                                                    <button class="add-to-cart" id="btn-cart-quickview" type="button" onclick="addCart(${product.id})">Thêm vào giỏ hàng</button>
                                                 </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="row">
+                            	
+                            	<div class ="product-details-view-content col-sm-12 pt-40">
+                            		 <div class="product-desc">
+                                          <p>
+                                            <span> ${product.description}</span>
+                                          </p>
+                                      </div>
+                            	</div>
                             </div>
                         </div>
                     </div>

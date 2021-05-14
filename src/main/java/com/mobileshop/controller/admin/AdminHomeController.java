@@ -43,7 +43,7 @@ public class AdminHomeController {
 		List<String> secondaryImage = product.getSecondaryImage();
 		
 		List<CategoryDTO> categorys = categoryService.findByActive(1);
-		product.setIsSale("sale");
+		
 		model.addAttribute("secondaryImage", secondaryImage);
 		model.addAttribute("product", product);
 		model.addAttribute("categorys", categorys);

@@ -1,6 +1,8 @@
 package com.mobileshop.controller.api;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -17,51 +19,69 @@ import com.mobileshop.service.CartService;
 public class CartAPI {
 	@Autowired
 	private CartService cartService;
-	
-	@RequestMapping(value="/addCart/{id}")
-	public @ResponseBody String addCart(@PathVariable("id")long id,HttpSession session) {
+
+	@RequestMapping(value = "/addCart/{id}")
+	public @ResponseBody List<CartDTO> addCart(@PathVariable("id") long id, HttpSession session) {
 		HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("carts");
-		if(carts == null) {
+		List<CartDTO> listCart = new ArrayList<CartDTO>();
+		if (carts == null) {
 			carts = new HashMap<Long, CartDTO>();
+		} else {
+			carts = cartService.addCart(id, carts);
+			carts.forEach((k, v) -> {
+				listCart.add(v);
+			});
 		}
-		carts = cartService.addCart(id, carts);
 		session.setAttribute("carts", carts);
 		session.setAttribute("totalPrice", cartService.totalPrice(carts));
 		session.setAttribute("totalQuantity", cartService.totalQuantity(carts));
-		return "Add Success";
-		
+		return listCart;
+
 	}
-	
-	@RequestMapping(value="/deleteCart/{id}")
-	public @ResponseBody String deleteCart(@PathVariable("id")long id,HttpSession session) {
+
+	@RequestMapping(value = "/deleteCart/{id}")
+	public @ResponseBody List<CartDTO> deleteCart(@PathVariable("id") long id, HttpSession session) {
 		HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("carts");
-		if(carts == null) {
+		List<CartDTO> listCart = new ArrayList<CartDTO>();
+		if (carts == null) {
 			carts = new HashMap<Long, CartDTO>();
+		} else {
+			carts = cartService.deleteCart(id, carts);
+			session.setAttribute("carts", carts);
+			if (carts != null) {
+				session.setAttribute("totalPrice", cartService.totalPrice(carts));
+				session.setAttribute("totalQuantity", cartService.totalQuantity(carts));
+			}
+			carts.forEach((k, v) -> {
+				listCart.add(v);
+			});
 		}
-		carts = cartService.deleteCart(id, carts);
-		session.setAttribute("carts", carts);
-		if(carts != null) {
-		session.setAttribute("totalPrice", cartService.totalPrice(carts));
-		session.setAttribute("totalQuantity", cartService.totalQuantity(carts));
-		}
-		return "Add Success";
-		
+
+		return listCart;
+
 	}
-	
-	@RequestMapping(value="/updateCart/{id}/{quantity}")
-	public @ResponseBody String updatecart(@PathVariable("id")long id,@PathVariable("quantity")int quantity,HttpSession session) {
+
+	@RequestMapping(value = "/updateCart/{id}/{quantity}")
+	public @ResponseBody List<CartDTO> updatecart(@PathVariable("id") long id, @PathVariable("quantity") int quantity,
+			HttpSession session) {
 		HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("carts");
-		if(carts == null) {
+		List<CartDTO> listCart = new ArrayList<CartDTO>();
+		if (carts == null) {
 			carts = new HashMap<Long, CartDTO>();
+		} else {
+			carts = cartService.editCart(id, quantity, carts);
+			session.setAttribute("carts", carts);
+			if (carts != null) {
+				session.setAttribute("totalPrice", cartService.totalPrice(carts));
+				session.setAttribute("totalQuantity", cartService.totalQuantity(carts));
+			}
+			carts.forEach((k, v) -> {
+				listCart.add(v);
+			});
 		}
-		carts = cartService.editCart(id, quantity, carts);
-		session.setAttribute("carts", carts);
-		if(carts != null) {
-		session.setAttribute("totalPrice", cartService.totalPrice(carts));
-		session.setAttribute("totalQuantity", cartService.totalQuantity(carts));
-		}
-		return "Add Success";
-		
+
+		return listCart;
+
 	}
 
 }

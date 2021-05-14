@@ -33,11 +33,22 @@
                                                 <i class="fa fa-user"></i>
                                             </a>
                                             <div class="setting ht-setting">
+                                             <div style="text-align: center"><i class="fa fa-user" ></i> <p>${pageContext.request.userPrincipal.name}</p></div>
                                                 <ul class="ht-setting-list">
-                                                    <li><a href="login-register.html">Thông tin tài khoản</a></li>
-                                                    <li><a href="login-register - register.html">Đăng ký</a></li>
-                                                    <li><a href="login-register.html">Đăng nhập</a></li>
+                                                	
+                                                    <li><a href="/admin/home">Thông tin tài khoản</a></li>
+                                                    <li><a href="/register">Đăng ký</a></li>
+                                                    <li><a href="/login">Đăng nhập</a></li>
                                                     <li><a href="checkout.html">Đơn hàng của tôi</a></li>
+                                                    <li>
+                                                    <form  id="logout" action="<c:url value="/j_spring_security_logout" />" method="post" >
+   														
+   														<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+   														 </form>
+   														<a  href="javascript:$('#logout').submit();" >Đăng xuất</a>
+													
+                                                    	
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -47,13 +58,13 @@
                                             <div class="hm-minicart-trigger">
                                                 <span class="item-icon"></span>
                                                 
-                                                <span class="item-text">
-                                                    ${totalQuantity}
+                                                <span class="item-text" id="show-total-quantity">
+                                                    
                                                 </span>
                                             </div>
                                             <span></span>
                                             <div class="minicart" id="mini-cart">
-                                                <ul class="minicart-product-list">
+                                                <ul class="minicart-product-list" id="minicart-product-list">
                                                 	<c:forEach items ="${carts }" var ="cart">
 	                                                	 <li>
 	                                                        <a href="single-product-normal.html" class="minicart-product-image">
@@ -70,7 +81,7 @@
                                                 	</c:forEach>
                                                   
                                                 </ul>
-                                                <p class="minicart-total">Tổng tiền: <span><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${totalPrice}" /></span></p>
+                                                <p class="minicart-total" id="totalPrice"> Tổng tiền: <span><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${totalPrice}" /></span></p>
                                                 <div class="minicart-button">
                                                     <a href="<c:url value="/cart"/>" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                         <span>Xem giỏ hàng</span>
@@ -111,14 +122,14 @@
                                                             
                                                         </ul>
                                                     </li>
-                                                    <li><a href="single-product-gallery-left.html">Single Product Style</a>
+                                                    <li><a href="single-product-gallery-left.html">Mức giá</a>
                                                         <ul>
-                                                            <li><a href="single-product-carousel.html">Single Product Carousel</a></li>
-                                                            <li><a href="single-product-gallery-left.html">Single Product Gallery Left</a></li>
-                                                            <li><a href="single-product-gallery-right.html">Single Product Gallery Right</a></li>
-                                                            <li><a href="single-product-tab-style-top.html">Single Product Tab Style Top</a></li>
-                                                            <li><a href="single-product-tab-style-left.html">Single Product Tab Style Left</a></li>
-                                                            <li><a href="single-product-tab-style-right.html">Single Product Tab Style Right</a></li>
+                                                            <li><a href="single-product-carousel.html">Dưới 2 triệu</a></li>
+                                                            <li><a href="single-product-gallery-left.html">Từ 2 - 4 triệu</a></li>
+                                                           <li><a href="single-product-gallery-left.html">Từ 4 - 6 triệu</a></li>
+                                                            <li><a href="single-product-gallery-left.html">Từ 6 - 8 triệu</a></li>
+                                                            <li><a href="single-product-gallery-left.html">Từ 8 - 10 triệu</a></li>
+                                                            <li><a href="single-product-gallery-left.html">Từ 11 - 12 triệu</a></li>
                                                         </ul>
                                                     </li>
                                                     

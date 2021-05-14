@@ -72,7 +72,7 @@ prefix="decorator"%>
 												<td><input type="checkbox" value="${product.id }"/></td>
 												<td>${product.productName}</td>
 												<td><img style="height: 100px; width: 100px;"
-													src=" <c:url value="/${product.mainImage}"/>"></td>
+													src=" <c:url value="${product.mainImage}"/>"></td>
 												<td id="price">${product.price}</td>
 												<td>Iphone</td>
 												<td>Mới</td>

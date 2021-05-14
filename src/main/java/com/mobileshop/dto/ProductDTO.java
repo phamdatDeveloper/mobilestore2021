@@ -22,9 +22,9 @@ public class ProductDTO extends BaseDTO {
 
 	private String status;
 
-	private String isSale;
+	private boolean isSale;
 
-	private String isNew;
+	private boolean isNew;
 
 	private int active;
 
@@ -118,19 +118,19 @@ public class ProductDTO extends BaseDTO {
 		this.secondaryImage = secondaryImage;
 	}
 
-	public String getIsSale() {
+	public boolean getIsSale() {
 		return isSale;
 	}
 
-	public void setIsSale(String isSale) {
+	public void setIsSale(boolean isSale) {
 		this.isSale = isSale;
 	}
 
-	public String getIsNew() {
+	public boolean getIsNew() {
 		return isNew;
 	}
 
-	public void setIsNew(String isNew) {
+	public void setIsNew(boolean isNew) {
 		this.isNew = isNew;
 	}
 

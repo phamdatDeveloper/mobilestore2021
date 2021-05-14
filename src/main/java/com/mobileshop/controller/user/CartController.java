@@ -19,7 +19,10 @@ public class CartController {
 	@RequestMapping("/cart")
 	public String cart(HttpSession session) {
 		HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("carts");
-		session.setAttribute("carts", session.getAttribute("carts"));
+		if (carts == null) {
+			carts = new HashMap<Long, CartDTO>();
+		} 
+		session.setAttribute("carts", carts);
 		session.setAttribute("totalPrice", cartService.totalPrice(carts));
 		return "user/shopping-cart";
 	}

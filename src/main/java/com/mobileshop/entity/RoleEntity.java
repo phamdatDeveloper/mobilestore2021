@@ -1,24 +1,41 @@
 package com.mobileshop.entity;
 
-public class RoleEntity {
-	private Long id;
+import java.util.ArrayList;
+import java.util.List;
 
-	private String nameRole;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-	public Long getId() {
-		return id;
+@Entity
+@Table(name = "role")
+public class RoleEntity extends BaseEntity {
+
+	
+	@Column(name = "name")
+	private String name;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
+	private List<UsersRolesEntity> usersRoleses = new ArrayList<UsersRolesEntity>();
+
+	public String getName() {
+		return name;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public String getNameRole() {
-		return nameRole;
+	public List<UsersRolesEntity> getUsersRoleses() {
+		return usersRoleses;
 	}
 
-	public void setNameRole(String nameRole) {
-		this.nameRole = nameRole;
+	public void setUsersRoleses(List<UsersRolesEntity> usersRoleses) {
+		this.usersRoleses = usersRoleses;
 	}
 
+	
 }

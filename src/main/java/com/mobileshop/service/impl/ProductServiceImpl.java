@@ -63,11 +63,10 @@ public class ProductServiceImpl implements ProductService {
 		converter.convertToDTO(productRepository.save(productEntity));
 
 	}
-	
+
 	@Override
 	public Long count() {
-	return	productRepository.count();
-		
+		return productRepository.count();
 
 	}
 

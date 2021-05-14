@@ -42,25 +42,33 @@
                                                 <th class="li-product-subtotal">Tổng giá</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="body-table-cart">
                                         <c:forEach items ="${carts }" var="cart">
                                         	
                                        
                                             <tr>
                                             	<input hidden id="idProductCart" value ="${cart.value.product.id }" >
-                                                <td class="li-product-remove"><i class="fa fa-times" onclick="deleteCart(${cart.value.product.id})"></i></td>
+                                                <td class="li-product-remove"><i class="fa fa-times" onclick="confirmDeleteCart(${cart.value.product.id})"></i></td>
                                                 <td class="li-product-thumbnail"><a href="#"><img src="<c:url value="${cart.value.product.mainImage}"/>" with="150px" height="150px" alt="Li's Product Image"></a></td>
-                                                <td class="li-product-name"><a href="#">${car.value.product.productName }</a></td>
-                                               <td class="li-product-price"><span class="amount"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${cart.value.product.price}" />đ</span></td>
+                                                <td class="li-product-name"><a href="#">${cart.value.product.productName}</a></td>
+                                                <c:choose>
+                                                	<c:when test="${cart.value.product.isSale != true }">
+                                                	<td class="li-product-price"><input hidden id="price-${cart.value.product.id}" value ="${cart.value.product.price }" ><span class="amount" ><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${cart.value.product.price}" />đ</span></td>
+                                                	</c:when>
+                                                	<c:otherwise>
+													   <td class="li-product-price"><input hidden id="price-${cart.value.product.id}" value ="${cart.value.product.priceSale}" ><span class="amount" ><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${cart.value.product.priceSale}" />đ</span></td>
+													 </c:otherwise>
+                                                </c:choose>
+                                               
                                                <td>
                                                		<div class="input-group">
 														  <input type="button" value="-" class="button-minus" data-field="quantity" onclick ="decreaseQuantity(${cart.value.product.id})">
-														  <input type="number" step="1" max="" value="${cart.value.quantity }" name="quantity" class="quantity-field" id="quantity-product">
+														  <input type="number" step="1" max="" value="${cart.value.quantity }" name="quantity" class="quantity-field" id="quantity-product-${cart.value.product.id}">
 														  <input type="button" value="+" class="button-plus" data-field="quantity" onclick ="increaseQuantity(${cart.value.product.id})">
 													</div>
 												</td>
                                                 
-                                                <td class="product-subtotal"><span class="amount"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${cart.value.totalPrice}" />đ</span></td>
+                                                <td class="product-subtotal"><span class="amount" id="product-subtotal-${cart.value.product.id}"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${cart.value.totalPrice}" />đ</span></td>
                                             </tr>
                                         </c:forEach>
                                         </tbody>
@@ -73,7 +81,7 @@
                                             <h2>Tổng tiền</h2>
                                             <ul>
                                                 
-                                                <li>Tổng thanh toán <span><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${totalPrice}" /></span></li>
+                                                <li>Tổng thanh toán <span id="total-pay"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${totalPrice}" /></span></li>
                                             </ul>
                                             <a href="checkout.html">Thanh toán</a>
                                         </div>

@@ -11,12 +11,14 @@ import com.mobileshop.dto.CategoryDTO;
 import com.mobileshop.entity.CategoryEntity;
 import com.mobileshop.repository.CategoryRepository;
 import com.mobileshop.service.CategoryService;
+
 @Service
-public class CategoryServiceImpl implements CategoryService{
+public class CategoryServiceImpl implements CategoryService {
 	@Autowired
 	private CategoryConverter converter;
 	@Autowired
 	private CategoryRepository CategoryRepository;
+
 	@Override
 	public List<CategoryDTO> findByActive(int active) {
 		List<CategoryDTO> listCategoryDTO = new ArrayList<CategoryDTO>();

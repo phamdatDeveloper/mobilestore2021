@@ -68,7 +68,8 @@
 		<p>
 			<button id="btnSubmit">upload</button>
 		</p>
-
+<input type="hidden" name="${_csrf.parameterName}"
+							value="${_csrf.token}" />
 	</form>
 
 	<div id="show-img">
@@ -103,7 +104,7 @@
 	    $.ajax({
 	        type: "POST",
 	        enctype: 'multipart/form-data',
-	        url: "http://localhost:8080/mobileshop/admin/uploadOneFile",
+	        url: "http://localhost:8080/admin/uploadOneFile?${_csrf.parameterName}=${_csrf.token}",
 	        data: data,
 	        //http://api.jquery.com/jQuery.ajax/
 	        //https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
@@ -114,7 +115,7 @@
 	        success: function (data) {
 	        	data.forEach(function(item, index, array) {
 	        		 var img = $("#show-img");
-	        		 img.append("<img width='100px' height='100px' src='<c:url value ='/"+item+"'/>' />");
+	        		 img.append("<img width='100px' height='100px' src='<c:url value ='"+item+"'/>' />");
 	        		 $('#fileToUpload').val("");
 	        	});	
 	        },
