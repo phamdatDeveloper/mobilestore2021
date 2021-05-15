@@ -33,12 +33,19 @@
                                                 <i class="fa fa-user"></i>
                                             </a>
                                             <div class="setting ht-setting">
-                                             <div style="text-align: center"><i class="fa fa-user" ></i> <p>${pageContext.request.userPrincipal.name}</p></div>
+                                            <c:if test="${pageContext.request.userPrincipal.name != null }">
+                                                    <div class="mb-5" style="text-align: center; color:#a5a5a5;"><i class="fa fa-user" ></i> Xin chào <span style="font-weight: bold;">${pageContext.request.userPrincipal.name}</span> </div>
+                                                   </c:if>
+                                            
                                                 <ul class="ht-setting-list">
                                                 	
                                                     <li><a href="/admin/home">Thông tin tài khoản</a></li>
-                                                    <li><a href="/register">Đăng ký</a></li>
+                                                    
+                                                    <c:if test="${pageContext.request.userPrincipal.name == null }">
                                                     <li><a href="/login">Đăng nhập</a></li>
+                                                    <li><a href="/register">Đăng ký</a></li>
+                                                    </c:if>
+                                                    
                                                     <li><a href="checkout.html">Đơn hàng của tôi</a></li>
                                                     <li>
                                                     <form  id="logout" action="<c:url value="/j_spring_security_logout" />" method="post" >
@@ -114,10 +121,10 @@
                                             <li><a href="<c:url value="/"/>">Trang chủ</a></li>
                                             <li class="megamenu-holder"><a href="shop-left-sidebar.html">Sản phẩm</a>
                                                 <ul class="megamenu hb-megamenu">
-                                                    <li><a href="<c:url value ="/product"/>">Điện thoại</a>
+                                                    <li><a href="<c:url value ="/product/"/>">Điện thoại</a>
                                                         <ul>
                                                         	<c:forEach items="${categorys }" var="category">
-                                                        	<li><a href="shop-3-column.html">${category.categoryName }</a></li>
+                                                        	<li><a href="/product/${category.value.categoryName }">${category.value.categoryName }</a></li>
                                                         	</c:forEach>
                                                             
                                                         </ul>
@@ -135,47 +142,7 @@
                                                     
                                                 </ul>
                                             </li>
-                                            <li class="megamenu-static-holder"><a href="index.html">Pages</a>
-                                                <ul class="megamenu hb-megamenu">
-                                                    <li><a href="blog-left-sidebar.html">Blog Layouts</a>
-                                                        <ul>
-                                                            <li><a href="blog-2-column.html">Blog 2 Column</a></li>
-                                                            <li><a href="blog-3-column.html">Blog 3 Column</a></li>
-                                                            <li><a href="blog-left-sidebar.html">Grid Left Sidebar</a></li>
-                                                            <li><a href="blog-right-sidebar.html">Grid Right Sidebar</a></li>
-                                                            <li><a href="blog-list.html">Blog List</a></li>
-                                                            <li><a href="blog-list-left-sidebar.html">List Left Sidebar</a></li>
-                                                            <li><a href="blog-list-right-sidebar.html">List Right Sidebar</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="blog-details-left-sidebar.html">Blog Details Pages</a>
-                                                        <ul>
-                                                            <li><a href="blog-details-left-sidebar.html">Left Sidebar</a></li>
-                                                            <li><a href="blog-details-right-sidebar.html">Right Sidebar</a></li>
-                                                            <li><a href="blog-audio-format.html">Blog Audio Format</a></li>
-                                                            <li><a href="blog-video-format.html">Blog Video Format</a></li>
-                                                            <li><a href="blog-gallery-format.html">Blog Gallery Format</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="index.html">Other Pages</a>
-                                                        <ul>
-                                                            <li><a href="login-register.html">My Account</a></li>
-                                                            <li><a href="checkout.html">Checkout</a></li>
-                                                            <li><a href="compare.html">Compare</a></li>
-                                                            <li><a href="wishlist.html">Wishlist</a></li>
-                                                            <li><a href="shopping-cart.html">Shopping Cart</a></li>
-                                                        </ul>
-                                                    </li>
-                                                    <li><a href="index.html">Other Pages 2</a>
-                                                        <ul>
-                                                            <li><a href="contact.html">Contact</a></li>
-                                                            <li><a href="about-us.html">About Us</a></li>
-                                                            <li><a href="faq.html">FAQ</a></li>
-                                                            <li><a href="404.html">404 Error</a></li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
+                                            
                                             <li><a href="contact.html">Liên hệ</a></li>
                                             <li><a href="about-us.html">Về chúng tôi</a></li>
                                         </ul>

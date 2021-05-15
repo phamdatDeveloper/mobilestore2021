@@ -2,20 +2,24 @@ package com.mobileshop.service;
 
 import java.util.List;
 
-import com.mobileshop.dto.ProductDTO;
+import org.springframework.stereotype.Service;
 
+import com.mobileshop.dto.ProductDTO;
+@Service
 public interface ProductService {
 	List<ProductDTO> findAll();
 	
-	List<ProductDTO> findAllProductActive() ;
+	List<ProductDTO> findByActive(long id) ;
 	
-	List<ProductDTO> findByCategoryIdAndActive(Long categoryId,boolean active) ;
+//	List<ProductDTO> findByCategoryAndActive(Long categoryId,boolean active) ;
 	
-	ProductDTO getProductByID(Long id);
+	ProductDTO findById(Long id);
 	
 	ProductDTO save(ProductDTO product);
 	
 	void update(ProductDTO product);
 	
 	Long count();
+
+	List<ProductDTO> findByCategoryAndActive(String categoryName, boolean active);
 }

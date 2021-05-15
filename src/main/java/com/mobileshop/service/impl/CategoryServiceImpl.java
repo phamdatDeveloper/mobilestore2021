@@ -1,7 +1,9 @@
 package com.mobileshop.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,11 +22,11 @@ public class CategoryServiceImpl implements CategoryService {
 	private CategoryRepository CategoryRepository;
 
 	@Override
-	public List<CategoryDTO> findByActive(int active) {
-		List<CategoryDTO> listCategoryDTO = new ArrayList<CategoryDTO>();
+	public Map<Long,CategoryDTO> findByActive(int active) {
+		Map<Long,CategoryDTO> listCategoryDTO = new HashMap<Long,CategoryDTO>();
 		List<CategoryEntity> listCategoryEntity = CategoryRepository.findByActive(active);
 		for (CategoryEntity categoryEntity : listCategoryEntity) {
-			listCategoryDTO.add(converter.convertToDTO(categoryEntity));
+			listCategoryDTO.put(categoryEntity.getId(), converter.convertToDTO(categoryEntity));		
 		}
 		return listCategoryDTO;
 	}

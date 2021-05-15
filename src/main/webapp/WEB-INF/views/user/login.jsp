@@ -45,15 +45,12 @@
 										id="password" name="password" placeholder="Mật khẩu">
 								</div>
 								<div class="col-md-8">
-									<div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
-										<input type="checkbox" id="remember_me"> <label
-											for="remember_me">Ghi nhớ đăng nhập</label>
-									</div>
+									
 								</div>
 								<div class="col-md-4 mt-10 mb-20 text-left text-md-right">
 									<a href="/forgot"> Quên mật khẩu?</a>
 								</div>
-								<div class="col-md-12">
+								<div class="col-md-12 d-flex justify-content-center">
 									<button type="submit" class="register-button mt-0">Đăng
 										nhập</button>
 								</div>

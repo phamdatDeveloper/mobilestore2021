@@ -22,13 +22,13 @@ public class ProductAPI {
 
 	@GetMapping("/api/products")
 	public ResponseEntity<List<ProductDTO>> getAllProduct() {
-		List<ProductDTO> product = productService.findAllProductActive();
+		List<ProductDTO> product = productService.findByActive(1);
 		return ResponseEntity.ok().body(product);
 	}
 
 	@GetMapping("/api/products/{id}")
 	public ResponseEntity<ProductDTO> getProductById(@PathVariable("id") Long id) {
-		ProductDTO product = productService.getProductByID(id);
+		ProductDTO product = productService.findById(id);
 		if (product == null) {
 			return (ResponseEntity<ProductDTO>) ResponseEntity.notFound();
 		}
@@ -43,7 +43,7 @@ public class ProductAPI {
 	@PostMapping("/api/products/{id}")
 	public ResponseEntity<ProductDTO> update(@RequestBody ProductDTO productDTO,@PathVariable("id") Long id) {
 		productService.update(productDTO);
-		ProductDTO product = productService.getProductByID(id);
+		ProductDTO product = productService.findById(id);
 		return ResponseEntity.ok().body(product);
 	}
 }

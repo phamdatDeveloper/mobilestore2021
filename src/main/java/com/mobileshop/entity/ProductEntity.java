@@ -21,9 +21,7 @@ import org.springframework.format.annotation.NumberFormat;
 public class ProductEntity extends BaseEntity {
 
 	@Column(name = "productname")
-
 	private String productName;
-
 
 	@Column(name = "price")
 	private int price;
@@ -51,7 +49,7 @@ public class ProductEntity extends BaseEntity {
 	private String status;
 
 	@Column(name = "active")
-	private int active;
+	private boolean active;
 
 	@Column(name = "categoryid")
 	private int categoryId;
@@ -112,11 +110,11 @@ public class ProductEntity extends BaseEntity {
 		this.status = status;
 	}
 
-	public int getActive() {
+	public boolean getActive() {
 		return active;
 	}
 
-	public void setActive(int active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 

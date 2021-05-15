@@ -33,9 +33,9 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductDTO> findAllProductActive() {
+	public List<ProductDTO> findByActive(long id) {
 		List<ProductDTO> listProductDTO = new ArrayList<ProductDTO>();
-		List<ProductEntity> listProductEntity = productRepository.findAllProductActive();
+		List<ProductEntity> listProductEntity = productRepository.findByActive(id);
 		for (ProductEntity product : listProductEntity) {
 			ProductDTO productDTO = converter.convertToDTO(product);
 			listProductDTO.add(productDTO);
@@ -44,9 +44,8 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public ProductDTO getProductByID(Long id) {
-		ProductDTO product = converter.convertToDTO(productRepository.findOne(id));
-
+	public ProductDTO findById(Long id) {
+		ProductDTO product = converter.convertToDTO(productRepository.findById(id));
 		return product;
 	}
 
@@ -71,9 +70,15 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductDTO> findByCategoryIdAndActive(Long categoryId, boolean active) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ProductDTO> findByCategoryAndActive(String categoryName, boolean active) {
+		List<ProductEntity> productEntitys = productRepository.findByCategoryAndActive(categoryName, active);
+		List<ProductDTO> productDTOs = new ArrayList<ProductDTO>();
+		for (ProductEntity productEntity : productEntitys) {
+			ProductDTO productDTO = converter.convertToDTO(productEntity);
+			productDTOs.add(productDTO);
+		}
+
+		return productDTOs;
 	}
 
 }

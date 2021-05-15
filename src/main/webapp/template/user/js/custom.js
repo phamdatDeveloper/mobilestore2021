@@ -21,6 +21,28 @@ swal({
 });
 }
 
+function confirmCheckout(id){
+swal({
+  title: "Bạn có chắc muốn xoá ?",
+  text: "Sản phẩm sẽ được xoá khỏi giỏ hàng !",
+  icon: "warning",
+  buttons: true,
+  cancel: true,
+  confirm: "Ok",
+  
+})
+.then((willDelete) => {
+  if (willDelete) {
+  deleteCart(id);
+    swal("Sản phẩm đã được xoá khỏi giỏ hàng !", {
+    	buttons: false,
+  		timer: 1000,
+      icon: "success",
+    });
+  }
+});
+}
+
 function deleteCart(id) {
 
 	console.log(id);
@@ -54,7 +76,7 @@ function deleteCart(id) {
 			}
 			$("#minicart-product-list").html(HTML);
 			var fomatTotalPrice = totalPrice.toString().replace(/(.)(?=(\d{3})+$)/g,'$1,');
-			$("#totalPrice").html("Tổng tiền: <span>"+fomatTotalPrice+"</span></p>");
+			$("#totalPrice").html("<input hidden id='input-total-price' value ='"+totalPrice+"' > Tổng tiền: <span>"+fomatTotalPrice+"</span></p>");
 			$("#show-total-quantity").html(totalQuantity);
 			
 			

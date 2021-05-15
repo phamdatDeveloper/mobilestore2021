@@ -138,7 +138,7 @@
                                                     <ul class="add-actions-link">
                                                         <li class="add-cart active" style="cursor: pointer" onclick="addCart(${product.id})">Thêm</li>
                                                         
-                                                        <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                        <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter${product.id}"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -167,11 +167,11 @@
                         <div class="col-lg-12">
                             <div class="li-section-title">
                                 <h2>
-                                    <span>${category.categoryName}</span>
+                                    <span>${category.value.categoryName}</span>
                                 </h2>
                                 <ul class="li-sub-category-list">
                                     
-                                    <li><a href="shop-left-sidebar.html">Xem tất cả</a></li>
+                                    <li><a href="/product/${category.value.categoryName}">Xem tất cả</a></li>
                                 </ul>
                             </div>
                            
@@ -179,6 +179,7 @@
                             <div class="row">
                                 <div class="product-active owl-carousel">
                                 <c:forEach items="${products}" var="product">
+                                	<c:if test="${product.categoryId ==  category.value.id}">
                                     <div class="col-lg-12">
                                         <!-- single-product-wrap start -->
                                         <div class="single-product-wrap">
@@ -202,13 +203,14 @@
                                                     <ul class="add-actions-link">
                                                          <li class="add-cart active" style="cursor: pointer" onclick="addCart(${product.id})">Thêm</li>
                                                         
-                                                        <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-eye"></i></a></li>
+                                                        <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter${product.id}"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- single-product-wrap end -->
                                     </div>
+                                    </c:if>
                                  </c:forEach>
                                 </div>
                             </div>
@@ -222,8 +224,9 @@
            
           
            
-            <!-- Begin Quick View | Modal Area -->
-            <div class="modal fade modal-wrapper" id="exampleModalCenter" >
+           <!-- Begin Xem nhanh | Modal Area -->
+            <c:forEach items="${products }" var ="product">
+                        <div class="modal fade modal-wrapper" id="exampleModalCenter${product.id}" >
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
@@ -231,85 +234,84 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                             <div class="modal-inner-area row">
-                                <div class="col-lg-5 col-md-6 col-sm-6">
+                                <div class="col-lg-7 col-md-6 col-sm-6">
                                    <!-- Product Details Left -->
                                     <div class="product-details-left">
                                         <div class="product-details-images slider-navigation-1">
-                                            <div class="lg-image">
-                                                <img src="images/product/large-size/1.jpg" alt="product image">
+                                        <c:forEach items ="${product.secondaryImage }" var ="image">
+                                        	 <div class="lg-image">
+                                                <img src="<c:url value="${image }"/>" alt="product image">
                                             </div>
-                                            <div class="lg-image">
-                                                <img src="images/product/large-size/2.jpg" alt="product image">
-                                            </div>
-                                            <div class="lg-image">
-                                                <img src="images/product/large-size/3.jpg" alt="product image">
-                                            </div>
-                                            <div class="lg-image">
-                                                <img src="images/product/large-size/4.jpg" alt="product image">
-                                            </div>
-                                            <div class="lg-image">
-                                                <img src="images/product/large-size/5.jpg" alt="product image">
-                                            </div>
-                                            <div class="lg-image">
-                                                <img src="images/product/large-size/6.jpg" alt="product image">
-                                            </div>
+                                        </c:forEach>
+                                           
+                                           
                                         </div>
-                                        <div class="product-details-thumbs slider-thumbs-1">                                        
-                                            <div class="sm-image"><img src="images/product/small-size/1.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="images/product/small-size/2.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="images/product/small-size/3.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="images/product/small-size/4.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="images/product/small-size/5.jpg" alt="product image thumb"></div>
-                                            <div class="sm-image"><img src="images/product/small-size/6.jpg" alt="product image thumb"></div>
+                                        <div class="product-details-thumbs slider-thumbs-1">     
+                                        <c:forEach items ="${product.secondaryImage }" var ="image">
+                                        	
+                                            <div class="sm-image"><img src="<c:url value="${image }"/>"  alt="product image thumb"></div>
+                                        </c:forEach>                                   
+                                           
                                         </div>
                                     </div>
                                     <!--// Product Details Left -->
                                 </div>
 
-                                <div class="col-lg-7 col-md-6 col-sm-6">
+                                <div class="col-lg-5 col-md-6 col-sm-6">
                                     <div class="product-details-view-content pt-60">
                                         <div class="product-info">
-                                            <h2>Today is a good day Framed poster</h2>
+                                            <h2>${product.productName } <span><c:if test="${product.isSale == true}">(Khuyến mãi)</c:if></span></h2>
+                                            
+                                            <div class="rating-box pt-20">
+                                                <ul class="rating rating-with-review-item">
+                                                    <li><i class="fa fa-star-o"></i></li>
+                                                    <li><i class="fa fa-star-o"></i></li>
+                                                    <li><i class="fa fa-star-o"></i></li>
+                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                    <li class="no-star"><i class="fa fa-star-o"></i></li>
+                                                   
+                                                </ul>
+                                            </div>
                                             <div class="price-box pt-20">
-                                                <span class="new-price new-price-2">$57.98</span>
+                                            <c:choose>
+											   <c:when test="${product.isSale == true}">
+											   	<span class="new-price new-price-2"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${product.priceSale}" /></span>
+                                            	<span class="old-price" style="text-decoration: line-through;"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${product.price}" /></span>
+											   </c:when> 
+											   <c:otherwise>
+											   <span class="new-price new-price-2"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${product.price}" /></span>
+											   </c:otherwise>   
+											</c:choose>
+                                            	
+                                               
                                             </div>
-                                            <div class="product-desc">
-                                                <p>
-                                                    <span>100% cotton double printed dress. Black and white striped top and orange high waisted skater skirt bottom. Lorem ipsum dolor sit amet, consectetur adipisicing elit. quibusdam corporis, earum facilis et nostrum dolorum accusamus similique eveniet quia pariatur.
-                                                    </span>
-                                                </p>
-                                            </div>
-                                            <div class="single-add-to-cart">
+                                             <div class="single-add-to-cart">
                                                 <form action="#" class="cart-quantity">
-                                                    <div class="quantity">
-                                                        <label>Quantity</label>
-                                                        <div class="cart-plus-minus">
-                                                            <input class="cart-plus-minus-box" value="1" type="text">
-                                                            <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
-                                                            <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="add-to-cart" type="submit">ThÃªm giá» hÃ ng</button>
+                                                   
+                                                    <button class="add-to-cart" id="btn-cart-quickview" type="button" onclick="addCart(${product.id})">Thêm vào giỏ hàng</button>
                                                 </form>
-                                            </div>
-                                            <div class="product-additional-info pt-25">
-                                                <div class="product-social-sharing pt-25">
-                                                    <ul>
-                                                        <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
-                                                        <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
-                                                        <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
-                                                    </ul>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                            	
+                            	<div class ="product-details-view-content col-sm-12 pt-40">
+                            		 <div class="product-desc">
+                                          <p>
+                                            <span> ${product.description}</span>
+                                          </p>
+                                      </div>
+                            	</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>   
-            <!-- Quick View | Modal Area End Here -->
+            </div> 
+            </c:forEach>
+  
+            <!-- Xem nhanh | Modal Area End Here -->
 
 
     </body>

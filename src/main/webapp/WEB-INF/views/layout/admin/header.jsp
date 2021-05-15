@@ -10,7 +10,7 @@
 			aria-expanded="false"> <img
 				src="<c:url value ="/template/admin/assets/images/users/avatar-1.jpg"/>" alt="user-image"
 				class="rounded-circle"> <span class="pro-user-name ml-1">
-					Phạm Đạt <i class="mdi mdi-chevron-down"></i>
+					${pageContext.request.userPrincipal.name} <i class="mdi mdi-chevron-down"></i>
 			</span>
 		</a>
 			<div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -18,11 +18,15 @@
 				<div class="dropdown-header noti-title">
 					<h6 class="text-overflow m-0">Xin chào !</h6>
 				</div>
-
+				<form  id="logout" action="<c:url value="/j_spring_security_logout" />" method="post" >
+   														
+   														<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+   														 </form>
+   													
 
 
 				<!-- item-->
-				<a href="javascript:void(0);" class="dropdown-item notify-item">
+				<a href="javascript:$('#logout').submit();" class="dropdown-item notify-item">
 					<i class="mdi mdi-logout-variant"></i> <span>Đăng xuất</span>
 				</a>
 

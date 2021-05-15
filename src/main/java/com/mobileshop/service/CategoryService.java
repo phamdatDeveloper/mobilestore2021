@@ -1,9 +1,10 @@
 package com.mobileshop.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.mobileshop.dto.CategoryDTO;
 
 public interface CategoryService {
-	List<CategoryDTO> findByActive(int active);
+	Map<Long, CategoryDTO> findByActive(int active);
 }

@@ -1,7 +1,7 @@
 package com.mobileshop.controller.admin;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,17 +12,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.mobileshop.dto.CategoryDTO;
 import com.mobileshop.dto.ProductDTO;
-import com.mobileshop.repository.CategoryRepository;
 import com.mobileshop.service.CategoryService;
 import com.mobileshop.service.ProductService;
-import com.mobileshop.service.impl.ProductServiceImpl;
 
 @Controller
-
 public class AdminHomeController {
 	@Autowired
 	private ProductService productService;
@@ -38,11 +34,11 @@ public class AdminHomeController {
 	
 	@RequestMapping("/admin/product-edit/{id}")
 	public String adminEdit(@PathVariable("id")Long id,Model model) {
-		ProductDTO product =  productService.getProductByID(id);
+		ProductDTO product =  productService.findById(id);
 		
 		List<String> secondaryImage = product.getSecondaryImage();
 		
-		List<CategoryDTO> categorys = categoryService.findByActive(1);
+		Map<Long, CategoryDTO> categorys = categoryService.findByActive(1);
 		
 		model.addAttribute("secondaryImage", secondaryImage);
 		model.addAttribute("product", product);
@@ -65,7 +61,7 @@ public class AdminHomeController {
 	}
 	@RequestMapping("/admin/product-add" )
 	public String adminShowAddProduct(Model model,HttpServletRequest request,@ModelAttribute("product") ProductDTO product) {	
-		List<CategoryDTO> categorys = categoryService.findByActive(1);
+		Map<Long, CategoryDTO> categorys = categoryService.findByActive(1);
 
 		model.addAttribute("categorys", categorys);
 		return "admin/product-add";

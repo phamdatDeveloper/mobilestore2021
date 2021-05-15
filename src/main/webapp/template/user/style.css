@@ -1791,7 +1791,7 @@ textarea:focus {
 .hb-menu nav > ul > li:first-child > a::after {
 	content: none;
 }
-.hb-menu nav > ul > li:nth-child(n+4) > a::after {
+.hb-menu nav > ul > li:nth-child(n+3) > a::after {
 	content: none;
 }
 .hb-menu nav > ul > li:hover  a::after {

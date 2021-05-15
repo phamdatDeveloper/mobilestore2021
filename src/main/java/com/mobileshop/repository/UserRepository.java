@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.mobileshop.entity.UserEntity;
+
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	UserEntity findByEmail(String email);
@@ -12,7 +13,7 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
 	UserEntity findOneByUsernameAndEmail(String username, String email);
 
-	UserEntity findByUsernameAndActive(String username,int active);
+	UserEntity findByUsernameAndActive(String username, int active);
 
 	UserEntity findByConfirmToken(String confirmToken);
 
