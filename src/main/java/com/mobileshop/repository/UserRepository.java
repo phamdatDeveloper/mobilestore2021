@@ -8,6 +8,8 @@ import com.mobileshop.entity.UserEntity;
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
 	UserEntity findByEmail(String email);
+	
+	UserEntity findOneByUsername(String username);
 
 	UserEntity findOneByUsernameOrActive(String username, int active);
 

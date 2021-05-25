@@ -9,6 +9,9 @@ public interface UserService {
 	UserDTO findOneByUsernameOrEmail(String username, String email);
 
 	UserDTO findByEmail(String email);
+	
+	UserDTO findOneByUsername(String username);
+
 
 	UserDTO findByUsernameAndActive(String username,int active);
 

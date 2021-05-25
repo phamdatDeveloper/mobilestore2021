@@ -20,6 +20,7 @@ public class CartAPI {
 	@Autowired
 	private CartService cartService;
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/addCart/{id}")
 	public @ResponseBody List<CartDTO> addCart(@PathVariable("id") long id, HttpSession session) {
 		HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("carts");
@@ -39,6 +40,7 @@ public class CartAPI {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/deleteCart/{id}")
 	public @ResponseBody List<CartDTO> deleteCart(@PathVariable("id") long id, HttpSession session) {
 		HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("carts");
@@ -61,6 +63,7 @@ public class CartAPI {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/updateCart/{id}/{quantity}")
 	public @ResponseBody List<CartDTO> updatecart(@PathVariable("id") long id, @PathVariable("quantity") int quantity,
 			HttpSession session) {

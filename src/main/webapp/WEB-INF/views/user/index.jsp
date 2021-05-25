@@ -77,109 +77,41 @@
                     </div>
                 </div>
             </div>
-            <!-- Slider With Category Menu Area End Here -->
- 			<section class="product-area li-laptop-product li-laptop-product-2 pb-45">
-                <div class="container">
-                    <div class="row">
-                        <!-- Begin Li's Section Area -->
-                        <div class="col-lg-12 mt-50">
-                            <div class="li-section-title">
-                                <h2>
-                                    <span>Sản phẩm khuyến mãi</span>
-                                </h2>
-                                <ul class="li-sub-category-list">
-                                    
-                                    <li><a href="shop-left-sidebar.html">Xem tất cả</a></li>
-                                </ul>
-                            </div>
-                           
-                           
-                            <div class="row">
-                                <div class="product-active owl-carousel">
-                                <c:forEach items="${products}" var="product">
-                                    <div class="col-lg-12">
-                                        <!-- single-product-wrap start -->
-                                        <div class="single-product-wrap">
-                                            <div class="product-image">
-                                                <a href="single-product-normal.html">
-                                                    <img src="<c:url value ="${product.mainImage}"/>" alt="Li's Product Image">
-                                                </a>
-                                                <c:if test="${product.isSale == true}">
-                                                	<span class="sticker">Sale</span>
-                                                </c:if>
-                                            </div>
-                                            <div class="product_desc">
-                                                <div class="product_desc_info">
-                                                    <div class="product-review">
-                                                        <h5 class="manufacturer">
-                                                            
-                                                        </h5>
-                                                        
-                                                    </div>
-                                                    <h4><a class="product_name" href="single-product-normal.html">${product.productName}</a></h4>
-                                                    <div class="price-box">
-                                                    	<c:choose>
-															<c:when test="${product.isSale == true}">
-																<span class="new-price new-price-2"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${product.priceSale}" /> đ</span>
-                    											<span class="old-price" style="text-decoration: line-through;"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${product.price}" /> đ</span>
-											   					<span class="discount-percentage"><fmt:formatNumber type = "number" maxFractionDigits = "0" value = "${100-(product.priceSale/product.price)*100}" />%</span>
-											   				</c:when> 
-											   				<c:otherwise>
-											   					<span class="new-price new-price-2"><fmt:formatNumber type = "number" maxFractionDigits = "3" value = "${product.price}" /> đ</span>
-											   				</c:otherwise>   
-														</c:choose>
-          
-                                                    
-                                                        
-                                                    </div>
-                                                    
-                                                </div>
-                                                <div class="add-actions">
-                                                    <ul class="add-actions-link">
-                                                        <li class="add-cart active" style="cursor: pointer" onclick="addCart(${product.id})">Thêm</li>
-                                                        
-                                                        <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter${product.id}"><i class="fa fa-eye"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- single-product-wrap end -->
-                                    </div>
-                                 </c:forEach>
-                                  
-                                    
-                              
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Li's Section Area End Here -->
-                    </div>
-                </div>
-            </section>
+
 
             
             
-            <c:forEach items ="${categorys }" var="category">
+            <c:forEach items ="${listProductCategory }" var="listProductCategory">
             <section class="product-area li-laptop-product li-laptop-product-2 pb-45">
                 <div class="container">
                     <div class="row">
                         <!-- Begin Li's Section Area -->
                         <div class="col-lg-12">
                             <div class="li-section-title">
-                                <h2>
+                            	<c:forEach items="${categorys }" var="category">
+                            	
+                            
+                            		<c:if test="${category.key == listProductCategory.key }">
+                            		<h2>
                                     <span>${category.value.categoryName}</span>
+                                  
+                                   
                                 </h2>
                                 <ul class="li-sub-category-list">
                                     
                                     <li><a href="/product/${category.value.categoryName}">Xem tất cả</a></li>
                                 </ul>
+                            		</c:if>
+                            	</c:forEach>
+                                
                             </div>
                            
                            
                             <div class="row">
                                 <div class="product-active owl-carousel">
-                                <c:forEach items="${products}" var="product">
-                                	<c:if test="${product.categoryId ==  category.value.id}">
+                                
+                                <c:forEach items="${listProductCategory.value}" var="product">
+                                	
                                     <div class="col-lg-12">
                                         <!-- single-product-wrap start -->
                                         <div class="single-product-wrap">
@@ -203,14 +135,14 @@
                                                     <ul class="add-actions-link">
                                                          <li class="add-cart active" style="cursor: pointer" onclick="addCart(${product.id})">Thêm</li>
                                                         
-                                                        <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#exampleModalCenter${product.id}"><i class="fa fa-eye"></i></a></li>
+                                                        <li><a href="#" title="quick view" class="quick-view-btn" data-toggle="modal" data-target="#ModalCenter${product.id}"><i class="fa fa-eye"></i></a></li>
                                                     </ul>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- single-product-wrap end -->
                                     </div>
-                                    </c:if>
+                                  
                                  </c:forEach>
                                 </div>
                             </div>
@@ -225,8 +157,9 @@
           
            
            <!-- Begin Xem nhanh | Modal Area -->
-            <c:forEach items="${products }" var ="product">
-                        <div class="modal fade modal-wrapper" id="exampleModalCenter${product.id}" >
+            <c:forEach items ="${listProductCategory }" var="listProductCategory">
+            <c:forEach items="${listProductCategory.value }" var ="product">
+                        <div class="modal fade modal-wrapper" id="ModalCenter${product.id}" >
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
@@ -310,8 +243,9 @@
                 </div>
             </div> 
             </c:forEach>
-  
+   </c:forEach>
             <!-- Xem nhanh | Modal Area End Here -->
+
 
 
     </body>

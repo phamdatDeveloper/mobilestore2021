@@ -1,6 +1,5 @@
 package com.mobileshop.controller.user;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,21 +7,19 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mobileshop.constant.SystemConstant;
-import com.mobileshop.dto.CartDTO;
 import com.mobileshop.dto.CategoryDTO;
 import com.mobileshop.dto.ProductDTO;
-import com.mobileshop.entity.ProductEntity;
-import com.mobileshop.repository.ProductRepository;
+import com.mobileshop.dto.UserDTO;
 import com.mobileshop.service.CategoryService;
 import com.mobileshop.service.ProductService;
+import com.mobileshop.service.UserService;
 
 @Controller
 public class UserHomeController {
@@ -30,62 +27,45 @@ public class UserHomeController {
 	private ProductService productService;
 	@Autowired
 	private CategoryService categoryService;
+	@Autowired
+	private UserService userService;
 
+// Trang chu
 	@RequestMapping("/")
-	public ModelAndView index(ModelAndView model) {
+	public ModelAndView index(ModelAndView model, HttpSession session) {
 		Map<Long, CategoryDTO> categorys = categoryService.findByActive(1);
-		List<ProductDTO> products = productService.findAll();
-		Map<String,ProductDTO> listProductCategory = new HashMap<String, ProductDTO>();
-		
-		model.addObject("products", products);
+		Map<Long, List<ProductDTO>> listProductCategory = new HashMap<Long, List<ProductDTO>>();
+		for (Map.Entry<Long, CategoryDTO> category : categorys.entrySet()) {
+			Page<ProductDTO> products = productService.findByCategoryIdAndActive(category.getKey(), true, null);
+			listProductCategory.put(category.getKey(), products.getContent());
+		}
+		model.addObject("listProductCategory", listProductCategory);
 		model.addObject("categorys", categorys);
 		model.setViewName("user/index");
 		return model;
 	}
 
-	@RequestMapping("/product/{category}")
-	public ModelAndView pageProductByCategory(ModelAndView model, @PathVariable("category") String category) {
-		Map<Long, CategoryDTO> categorys = categoryService.findByActive(SystemConstant.ACTIVE_STATUS);
-		List<ProductDTO> products;
-		if(("").equals(category)) {
-			products = productService.findAll();
-		}else {
-			products = productService.findByCategoryAndActive(category, true);
-		}
-//		Long categoryID = 0L;
-//		for (CategoryDTO categoryDTO : categorys) {
-//			if (categoryDTO.getCategoryName().equals(category)) {
-//				categoryID = categoryDTO.getId();
-//			}
-//			break;
-//		}
-		model.addObject("products", products);
+	@RequestMapping("/user")
+	public ModelAndView userInforPage(ModelAndView model, HttpSession session) {
+		Map<Long, CategoryDTO> categorys = categoryService.findByActive(1);
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		
+			String username = ((UserDetails) principal).getUsername();
+			UserDTO userNameExist = userService.findOneByUsername(username);
+	
 		model.addObject("categorys", categorys);
-		model.setViewName("user/shop-left-sidebar");
+		model.addObject("formEditUser", userNameExist);
+		model.setViewName("user/user-infor");
 		return model;
 	}
 
-	@RequestMapping("/checkout")
-	public ModelAndView checkoutPage(ModelAndView model, HttpSession session) {
-
-		HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("carts");
-		if (session.getAttribute("SPRING_SECURITY_CONTEXT") == null) {
-
-			model.setViewName("redirect:/login");
-
-		} else if (carts == null) {
-			carts = new HashMap<Long, CartDTO>();
-			model.setViewName("redirect:/");
-		} else {
-//			List<CategoryDTO> categorys = categoryService.findByActive(1);
-
-			List<ProductDTO> products = productService.findAll();
-			model.addObject("products", products);
-//			model.addObject("categorys", categorys);
-
-			model.setViewName("user/checkout");
-		}
-
+	@RequestMapping("/changepassword")
+	public ModelAndView changePasswordPage(ModelAndView model, HttpSession session) {
+		Map<Long, CategoryDTO> categorys = categoryService.findByActive(1);
+		model.addObject("categorys", categorys);
+		
+		model.setViewName("user/change-password");
 		return model;
 	}
+
 }

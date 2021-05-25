@@ -37,8 +37,8 @@
 	<!-- LOGO -->
 	<div class="logo-box">
 		<a href="index.html" class="logo text-center logo-light"> <span
-			class="logo-lg"> <img src="<c:url value ="/template/admin/assets/images/logo-light.png"/>" alt=""
-				height="20"> <!-- <span class="logo-lg-text-dark">Velonic</span> -->
+			class="logo-lg"> <img src="<c:url value ="/template/admin/assets/images/logo.jpg"/>" alt=""
+				height="35"> <!-- <span class="logo-lg-text-dark">Velonic</span> -->
 		</span> <span class="logo-sm"> <!-- <span class="logo-lg-text-dark">V</span> -->
 				<img src="<c:url value ="/template/admin/assets/images/logo-sm.png"/>" alt="" height="22">
 		</span>
@@ -69,7 +69,7 @@
 						class="ion-md-speedometer"></i> <span> Trang chủ </span>
 				</a>
 					<ul class="nav-second-level" aria-expanded="false">
-						<li><a href="index.html">Thống kê</a></li>
+						<li><a href="/admin/home">Thống kê</a></li>
 					</ul></li>
 
 				<li><a href="javascript: void(0);" class="waves-effect"> <i

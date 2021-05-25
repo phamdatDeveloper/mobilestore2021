@@ -6,11 +6,7 @@
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
 <title>Đăng ký</title>
-<style type="text/css">
-.error{
-coler:red;
-}
-</style>
+
 </head>
 <body>
 	<!-- Begin Li's Breadcrumb Area -->
@@ -46,12 +42,13 @@ coler:red;
 				<div class="col-sm-8 col-md-8 col-lg-8 col-xs-8">
 
 					<form:form action="/register" id="register-form"
-						modelAttribute="registerForm" method="post" role="form">
+						modelAttribute="registerForm" method="post">
 						<div class="login-form">
 							<h4 class="login-title">ĐĂNG KÝ</h4>
+							
 							<p style='color: red; font-weight: bold;'>${alreadyRegistered}</p>
 							<div class="row">
-
+							
 								<div class="col-md-12 mb-20">
 									<label>Tên tài khoản*</label>
 									<form:errors path="username" class="error" />
@@ -66,6 +63,7 @@ coler:red;
 								</div>
 								<div class="col-md-12 mb-20">
 									<label>Số điện thoại*</label>
+									<form:errors path="numberPhone" class="error" />
 									<form:input type="text" path="numberPhone" id="numberPhone"
 										tabindex="1" class="form-control" placeholder="Số điện thoại" />
 								</div>
@@ -77,16 +75,20 @@ coler:red;
 								</div>
 								<div class="col-md-12 mb-20">
 									<label>Địa chỉ*</label>
+									<form:errors path="address" class="error" />
 									<form:input type="text" path="address" id="address"
 										tabindex="1" class="form-control" placeholder="Địa chỉ" />
 								</div>
 								<div class="col-md-12 mb-20 ">
 									<label>Mật khẩu*</label>
+									<form:errors path="" class="error" />
+									<form:errors path="password" class="error" />
 									<form:input type="password" path="password" id="password"
 										tabindex="2" class="form-control" placeholder="Password" />
 								</div>
 								<div class="col-md-12 mb-20">
 									<label>Xác nhận mật khẩu*</label>
+									<form:errors path="passwordConfirm" class="error" />
 									<form:input type="password" path="passwordConfirm"
 										id="passwordConfirm" tabindex="2" class="form-control"
 										placeholder="Confirm Password" />
@@ -103,5 +105,10 @@ coler:red;
 		</div>
 	</div>
 	<!-- Login Content Area End Here -->
+	
+	
+
+
+
 </body>
 </html>

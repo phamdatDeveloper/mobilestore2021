@@ -37,6 +37,8 @@
         <link rel="stylesheet" href="<c:url value ="/template/user/css/bootstrap.min.css"/> ">
         <!-- Helper CSS -->
         <link rel="stylesheet" href="<c:url value ="/template/user/css/helper.css"/> ">
+        <!-- bootoast -->
+         <link rel="stylesheet" href="<c:url value ="/template/user/css/bootoast.css"/> ">
         <!-- Main Style CSS -->
         <link rel="stylesheet" href="<c:url value ="/template/user/style.css"/> ">
         <!-- Responsive CSS -->
@@ -69,6 +71,8 @@
         <script src="<c:url value ="/template/user/js/bootstrap.min.js"/>"></script>
         <!-- Ajax Mail js -->
         <script src="<c:url value ="/template/user/js/ajax-mail.js"/>"></script>
+        
+        <script src="<c:url value ="/template/user/js/bootoast.js"/>"></script>
         <!-- Meanmenu js -->
         <script src="<c:url value ="/template/user/js/jquery.meanmenu.min.js"/>"></script>
         <!-- Wow.min js -->

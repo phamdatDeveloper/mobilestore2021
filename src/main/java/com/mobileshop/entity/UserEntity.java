@@ -43,9 +43,13 @@ public class UserEntity extends BaseEntity {
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "users")
 	private List<UsersRolesEntity> usersRoleses = new ArrayList<UsersRolesEntity>();
+
 	
+
 	@Column(name = "confirmtoken")
 	private String confirmToken;
+
+
 
 	public String getUserName() {
 		return username;

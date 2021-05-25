@@ -1,9 +1,10 @@
 
+
+
 function confirmDeleteCart(id){
 swal({
   title: "Bạn có chắc muốn xoá ?",
   text: "Sản phẩm sẽ được xoá khỏi giỏ hàng !",
-  icon: "warning",
   buttons: true,
   cancel: true,
   confirm: "Ok",
@@ -95,7 +96,7 @@ function deleteCart(id) {
 				}else{
 					var priceSale = data[i].product['priceSale'];
 					var fomatPriceSale = priceSale.toString().replace(/(.)(?=(\d{3})+$)/g,'$1,');
-					HTMLCART += "<td class='li-product-price'><input hidden id='price-"+data[i].product['id']+"' value ='"+data[i].product['price']+"' ><span class='amount'>"+fomatPriceSale+" đ</span></td>";   		
+					HTMLCART += "<td class='li-product-price'><input hidden id='price-"+data[i].product['id']+"' value ='"+data[i].product['price']+"' ><span class='amount'>"+fomatPriceSale+" đ</span><p class='old-price' style='text-decoration: line-through;color: red;'>"+fomatPriceSale+" đ</p></td>";   		
 				}
 				HTMLCART += " <td><div class='input-group'>";
 				HTMLCART += "<input type='button' value='-' class='button-minus' data-field='quantity' onclick ='decreaseQuantity("+data[i].product['id']+")'>";
@@ -154,6 +155,8 @@ function addCart(id) {
 			var fomatTotalPrice = totalPrice.toString().replace(/(.)(?=(\d{3})+$)/g,'$1,');
 			$("#totalPrice").html("Tổng tiền: <span>"+fomatTotalPrice+"</span></p>");
 			$("#show-total-quantity").html(totalQuantity);
+		
+			
 			swal("Thêm vào giỏ hàng thành công !", {
 		    	buttons: false,
 		  		timer: 1000,
@@ -202,12 +205,31 @@ function editCart(id,quantity) {
 				HTML += "<button class='close' onclick='deleteCart("+data[i].product['id']+")'>  <i class='fa fa-close'></i> </button></li>";
 				
 			}
+			
 			$("#minicart-product-list").html(HTML);
 			var fomatTotalPrice = totalPrice.toString().replace(/(.)(?=(\d{3})+$)/g,'$1,');
 			$("#totalPrice").html("Tổng tiền: <span>"+fomatTotalPrice+"</span></p>");
 			$("#show-total-quantity").html(totalQuantity);
-			$("#total-pay").html(fomatTotalPrice);
-
+			$("#total-pay").html(fomatTotalPrice );
+			
+			var errorQuantity = 0;
+			for(var i=0;i< data.length;i++){
+				$('#quantity-product-'+data[i].product['id']).val(data[i].quantity);
+				$('#product-subtotal-'+data[i].product['id']).text(data[i].totalPrice.toString().replace(/(.)(?=(\d{3})+$)/g,'$1,'));
+				if(data[i].message != ''){
+					errorQuantity = 1;
+				}
+			}	
+			
+			if(errorQuantity == 1){
+				swal("Sản phẩm đã vượt quá số lượng trong kho !", {
+		    	buttons: false,
+		  		timer: 1000,
+				icon:"info"	,
+		     
+		    });
+			}
+		
 		},
 		error: function(e) {
 
@@ -219,37 +241,6 @@ function editCart(id,quantity) {
 
 
 
-function increaseQuantity(id) {
-	var idInput = "#quantity-product-"+id;
-	var quantityProduct = $(idInput).val();
-	var idPrice ="#price-"+id;
-	var price = $(idPrice).val();
-	var subPrice ="#product-subtotal-"+id;
-	var total = (parseInt(quantityProduct)+1)*price;
-	editCart(id,parseInt(quantityProduct)+1);
-	$(idInput).val(parseInt(quantityProduct)+1);
-	$(subPrice).html(total.toString().replace(/(.)(?=(\d{3})+$)/g,'$1,'));
-};
-function decreaseQuantity(id) {
-	var idInput = "#quantity-product-"+id;
-	var quantityProduct = $(idInput).val();
-	console.log(quantityProduct);
-	if (quantityProduct < 1 || (quantityProduct-1) == 0) {
-		confirmDeleteCart(id);
-		
-	}else{
-		var idInput = "#quantity-product-"+id;
-	var quantityProduct = $(idInput).val();
-	var idPrice ="#price-"+id;
-	var price = $(idPrice).val();
-	var subPrice ="#product-subtotal-"+id;
-	var total = (parseInt(quantityProduct)-1)*price;
-	editCart(id,parseInt(quantityProduct)-1);
-	$(idInput).val(parseInt(quantityProduct)-1);
-	$(subPrice).html(total.toString().replace(/(.)(?=(\d{3})+$)/g,'$1,'));
-		
-	};
 
-};
 
 

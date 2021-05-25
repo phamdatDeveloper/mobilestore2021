@@ -56,8 +56,7 @@
 								</div>
 							</div>
 						</div>
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 					</form>
 				</div>
 				<div
@@ -78,5 +77,18 @@
 		</div>
 	</div>
 	<!-- Login Content Area End Here -->
+	<c:if test="${waitSendMail.equals('send-mail')}">
+<script type="text/javascript">
+	swal({
+	 	title: "Một email đã gửi đến bạn !",
+	  	text: "Vui lòng xác nhận email để hoàn tất quá trình đăng ký",
+		buttons: false,
+		timer: 2000,
+ 	 icon: "success",
+	});
+
+
+</script>
+</c:if>
 </body>
 </html>

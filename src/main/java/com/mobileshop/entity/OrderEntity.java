@@ -1,38 +1,60 @@
 package com.mobileshop.entity;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-public class OrderEntity {
-	private Long id;
-	private Long userId;
+@Entity
+@Table(name = "order", catalog = "mobileshop")
+public class OrderEntity extends BaseEntity {
+
+	@Column(name = "userid")
+	private long userId;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "order", cascade = CascadeType.ALL)
+	private List<OrderDetailEntity> orderDetail = new ArrayList<OrderDetailEntity>();
+
+	@Column(name = "shipaddress")
 	private String shipAddress;
+
+	@Column(name = "name")
+	private String name;
+
+	@Column(name = "orderemail")
 	private String orderEmail;
+
+	@Column(name = "orderphone")
 	private String orderPhone;
+
+	@Column(name = "status")
 	private String status;
-	private int active;
-	private String createBy;
-	private Date createDate;
-	private String modifyBy;
-	private Date modifyDate;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
+	@Column(name = "totalprice")
+	private double totalPrice;
 
 	public String getShipAddress() {
 		return shipAddress;
+	}
+
+	public List<OrderDetailEntity> getOrderDetail() {
+		return orderDetail;
+	}
+
+	public void setOrderDetail(List<OrderDetailEntity> orderDetail) {
+		this.orderDetail = orderDetail;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public void setShipAddress(String shipAddress) {
@@ -63,44 +85,20 @@ public class OrderEntity {
 		this.status = status;
 	}
 
-	public int getActive() {
-		return active;
+	public long getUserId() {
+		return userId;
 	}
 
-	public void setActive(int active) {
-		this.active = active;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
-	public String getCreateBy() {
-		return createBy;
+	public double getTotalPrice() {
+		return totalPrice;
 	}
 
-	public void setCreateBy(String createBy) {
-		this.createBy = createBy;
-	}
-
-	public Date getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-
-	public String getModifyBy() {
-		return modifyBy;
-	}
-
-	public void setModifyBy(String modifyBy) {
-		this.modifyBy = modifyBy;
-	}
-
-	public Date getModifyDate() {
-		return modifyDate;
-	}
-
-	public void setModifyDate(Date modifyDate) {
-		this.modifyDate = modifyDate;
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 }

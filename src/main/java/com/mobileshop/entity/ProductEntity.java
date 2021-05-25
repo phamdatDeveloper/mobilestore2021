@@ -1,20 +1,9 @@
 package com.mobileshop.entity;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
-import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 @Table(name = "product")
@@ -52,7 +41,15 @@ public class ProductEntity extends BaseEntity {
 	private boolean active;
 
 	@Column(name = "categoryid")
-	private int categoryId;
+	private long categoryId;
+
+//	public CategoryEntity getCategoryEntity() {
+//		return categoryEntity;
+//	}
+//
+//	public void setCategoryEntity(CategoryEntity categoryEntity) {
+//		this.categoryEntity = categoryEntity;
+//	}
 
 	public String getProductName() {
 		return productName;
@@ -118,11 +115,11 @@ public class ProductEntity extends BaseEntity {
 		this.active = active;
 	}
 
-	public int getCategoryId() {
+	public long getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(long categoryId) {
 		this.categoryId = categoryId;
 	}
 

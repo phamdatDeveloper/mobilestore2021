@@ -24,11 +24,23 @@ public class CartServiceImpl implements CartService {
 		CartDTO cart = new CartDTO();
 		ProductDTO product = productConverter.convertToDTO(productRepository.findById(id));
 		if (product != null) {
-			cart.setProduct(product);
-			cart.setQuantity(1);
-			cart.setTotalPrice(product.getPrice());
+			if (carts.containsKey(id)) {
+				carts.get(id).setQuantity(carts.get(id).getQuantity() + 1);
+				return carts;
+			} else {
+				cart.setProduct(product);
+				cart.setQuantity(1);
+				if (product.getIsSale()) {
+					cart.setTotalPrice(product.getPriceSale());
+
+				} else {
+					cart.setTotalPrice(product.getPrice());
+				}
+				carts.put(id, cart);
+				return carts;
+			}
+
 		}
-		carts.put(id, cart);
 		return carts;
 	}
 
@@ -39,10 +51,26 @@ public class CartServiceImpl implements CartService {
 		}
 		if (carts.containsKey(id)) {
 			cart = carts.get(id);
-			cart.setQuantity(quantity);
-			cart.setTotalPrice(cart.getProduct().getPrice() * quantity);
+			if(quantity <= cart.getProduct().getQuantity()) {
+				for (Map.Entry<Long, CartDTO> oneCart : carts.entrySet()) {
+					oneCart.getValue().setMessage("");
+					carts.put(oneCart.getKey(), oneCart.getValue()	);
+				}
+				cart.setQuantity(quantity);
+				cart.setMessage("");
+				if (cart.getProduct().getIsSale()) {
+					cart.setTotalPrice(cart.getProduct().getPriceSale() * quantity);
+
+				} else {
+					cart.setTotalPrice(cart.getProduct().getPrice() * quantity);
+				}
+				carts.put(id, cart);
+			}else {
+				cart = carts.get(id);
+				cart.setMessage("ERROR");
+				carts.put(id, cart);
+			}
 		}
-		carts.put(id, cart);
 		return carts;
 	}
 
@@ -56,16 +84,18 @@ public class CartServiceImpl implements CartService {
 
 		return carts;
 	}
+
 	public int totalQuantity(HashMap<Long, CartDTO> carts) {
-		int sum =0;
-		for (Map.Entry<Long, CartDTO> cart: carts.entrySet()) {
+		int sum = 0;
+		for (Map.Entry<Long, CartDTO> cart : carts.entrySet()) {
 			sum += cart.getValue().getQuantity();
 		}
 		return sum;
 	}
+
 	public double totalPrice(HashMap<Long, CartDTO> carts) {
-		double sum =0;
-		for (Map.Entry<Long, CartDTO> cart: carts.entrySet()) {
+		double sum = 0;
+		for (Map.Entry<Long, CartDTO> cart : carts.entrySet()) {
 			sum += cart.getValue().getTotalPrice();
 		}
 		return sum;

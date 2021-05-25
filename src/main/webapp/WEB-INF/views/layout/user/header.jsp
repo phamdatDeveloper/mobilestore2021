@@ -11,7 +11,7 @@
                             <div class="col-lg-3">
                                 <div class="logo pb-sm-30 pb-xs-30">
                                     <a href="<c:url value="/"/>">
-                                        <img src="<c:url value ="template/user/images/menu/logo/1.jpg"/>" alt="">
+                                        <img src="<c:url value ="/template/user/images/menu/logo/1.jpg"/>" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -38,15 +38,19 @@
                                                    </c:if>
                                             
                                                 <ul class="ht-setting-list">
-                                                	
-                                                    <li><a href="/admin/home">Thông tin tài khoản</a></li>
+                                                	<c:if test="${pageContext.request.userPrincipal.name != null }">
+                                                    
+                                                   <li><a href="/user">Thông tin tài khoản</a></li>
+                                                    </c:if>
+                                                    
                                                     
                                                     <c:if test="${pageContext.request.userPrincipal.name == null }">
+                                                    
                                                     <li><a href="/login">Đăng nhập</a></li>
                                                     <li><a href="/register">Đăng ký</a></li>
                                                     </c:if>
                                                     
-                                                    <li><a href="checkout.html">Đơn hàng của tôi</a></li>
+                                                    <li><a href="user">Đơn hàng của tôi</a></li>
                                                     <li>
                                                     <form  id="logout" action="<c:url value="/j_spring_security_logout" />" method="post" >
    														

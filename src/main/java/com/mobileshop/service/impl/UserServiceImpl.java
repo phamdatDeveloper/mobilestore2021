@@ -16,7 +16,7 @@ import com.mobileshop.repository.UsersRolesRepository;
 import com.mobileshop.service.UserService;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepository;
 	@Autowired
@@ -61,7 +61,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public UserDTO findByUsernameAndActive(String username,int active) {
+	public UserDTO findByUsernameAndActive(String username, int active) {
 		UserEntity userEntity = userRepository.findByUsernameAndActive(username, active);
 		if (userEntity == null) {
 			return null;
@@ -83,6 +83,15 @@ public class UserServiceImpl implements UserService{
 
 	}
 
-	
+	@Override
+	public UserDTO findOneByUsername(String username) {
+		UserEntity userEntity = userRepository.findOneByUsername(username);
+		if (userEntity == null) {
+			return null;
+		} else {
+			UserDTO userDTO = userConverter.convertToDTO(userEntity);
+			return userDTO;
+		}
+	}
 
 }

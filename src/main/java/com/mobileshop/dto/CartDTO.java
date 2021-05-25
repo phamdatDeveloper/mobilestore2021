@@ -4,7 +4,18 @@ public class CartDTO {
 
 	private int quantity;
 	private double totalPrice;
+	private String message;
 	private ProductDTO product;
+
+	
+	
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
 
 	public int getQuantity() {
 		return quantity;

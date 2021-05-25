@@ -1,7 +1,6 @@
 package com.mobileshop.controller.user;
 
 import java.security.Principal;
-import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,7 +28,7 @@ import com.mobileshop.service.impl.EmailService;
 @Controller
 public class LoginController {
 	@Autowired
-	private	PasswordEncoder passwordEncoder;
+	private PasswordEncoder passwordEncoder;
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -38,11 +37,11 @@ public class LoginController {
 	@RequestMapping(value = { "/login" })
 	public String login(@RequestParam(value = "error", required = false) final String error, final Model model,
 			HttpServletRequest request) {
-		//doan nay de lay sesson ra de xu ly
-		Object object = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		HttpSession session = request.getSession(true);
-		System.out.println(session.getAttribute("SPRING_SECURITY_CONTEXT"));
-		
+		// doan nay de lay sesson ra de xu ly
+//		Object object = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//		HttpSession session = request.getSession(true);
+//		System.out.println(session.getAttribute("SPRING_SECURITY_CONTEXT"));
+
 		if (error != null) {
 			model.addAttribute("message", "Tên tài khoản hoặc mật khẩu không chính xác, vui lòng đăng nhập lại!");
 		}
@@ -79,21 +78,24 @@ public class LoginController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView processRegistration(@ModelAttribute("registerForm") @Valid UserDTO user,
-			BindingResult bindingResult,ModelAndView mv) {
+			BindingResult bindingResult, ModelAndView mv) {
 
-		UserDTO userExist = userService.findOneByUsernameOrEmail(user.getUsername(), user.getEmail());
-		System.out.println(userExist);
+//		UserDTO userExist = userService.findOneByUsernameOrEmail(user.getUsername(), user.getEmail());
+		UserDTO userEmailExist = userService.findByEmail(user.getEmail());
+		UserDTO userNameExist = userService.findOneByUsername(user.getUsername());
 
-		if (userExist != null) {
-			mv.addObject("alreadyRegistered", "Tài khoản đã được đăng ký");
+		if (userEmailExist != null) {
+			mv.addObject("alreadyRegistered", "Email này đã có người đăng ký");
 			mv.setViewName("user/register");
-			bindingResult.reject("username");
+			bindingResult.addError(new ObjectError("email", "Email này đã có người đăng ký"));
 			bindingResult.reject("email");
-		}
-
-		if (bindingResult.hasErrors()) {
+		} else if (userNameExist != null) {
+			mv.addObject("alreadyRegistered", "Tên tài khoản này đã có người đăng ký");
 			mv.setViewName("user/register");
-			
+			bindingResult.addError(new ObjectError("username", "Tên tài khoản này đã có người đăng ký"));
+			bindingResult.reject("email");
+		} else if (bindingResult.hasErrors()) {
+			mv.setViewName("user/register");
 		} else {
 			user.setConfirmToken(UUID.randomUUID().toString());
 //			user.setExpiryDate(30);
@@ -102,6 +104,7 @@ public class LoginController {
 			userService.save(user);
 
 //			 send mail
+
 			SimpleMailMessage registrationEmail = new SimpleMailMessage();
 			registrationEmail.setTo(user.getEmail());
 			registrationEmail.setSubject("Xác nhận Email");
@@ -109,8 +112,8 @@ public class LoginController {
 					+ user.getConfirmToken());
 			registrationEmail.setFrom("noreplymobileshop@gmail.com");
 			emailService.sendEmail(registrationEmail);
-			mv.setViewName("redirect:/");
-
+			mv.addObject("waitSendMail", "send-mail");
+			mv.setViewName("user/login");
 		}
 		return mv;
 	}
@@ -134,7 +137,7 @@ public class LoginController {
 		return url;
 	}
 
-	//Quen mat khau
+	// Quen mat khau
 	@RequestMapping(value = "/forgot", method = RequestMethod.GET)
 	public ModelAndView resetPasswordPage(ModelAndView mav) {
 		mav.setViewName("user/forgot");
@@ -176,6 +179,7 @@ public class LoginController {
 		}
 		return mav;
 	}
+
 //
 	@RequestMapping(value = "/reset", method = RequestMethod.GET)
 	public ModelAndView displayResetPassword(ModelAndView mav, @RequestParam("confirmtoken") String confirmToken) {
@@ -189,10 +193,11 @@ public class LoginController {
 		mav.setViewName("user/resetpassword");
 		return mav;
 	}
+
 //
 	@RequestMapping(value = "/reset", method = { RequestMethod.POST })
-	public ModelAndView setNewPassword(ModelAndView mav, @RequestParam("confirmtoken") String confirmtoken,@RequestParam("password") String password
-			) {
+	public ModelAndView setNewPassword(ModelAndView mav, @RequestParam("confirmtoken") String confirmtoken,
+			@RequestParam("password") String password) {
 		UserDTO userExist = userService.findByConfirmToken(confirmtoken);
 		System.out.println(userExist);
 
@@ -201,7 +206,7 @@ public class LoginController {
 			mav.setViewName("user/forgot");
 		}
 
-		 else {
+		else {
 			UserDTO user = userService.findByConfirmToken(confirmtoken);
 			user.setConfirmToken(null);
 			user.setPassword(passwordEncoder.encode(password));

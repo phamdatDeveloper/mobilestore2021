@@ -26,7 +26,7 @@ public class ProductDTO extends BaseDTO {
 
 	private boolean isNew;
 
-	private int active;
+	private boolean active;
 
 	private int categoryId;
 
@@ -70,38 +70,6 @@ public class ProductDTO extends BaseDTO {
 		this.specification = specification;
 	}
 
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
-	public int getActive() {
-		return active;
-	}
-
-	public void setActive(int active) {
-		this.active = active;
-	}
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
-
 	public String getMainImage() {
 		return mainImage;
 	}
@@ -116,6 +84,22 @@ public class ProductDTO extends BaseDTO {
 
 	public void setSecondaryImage(List<String> secondaryImage) {
 		this.secondaryImage = secondaryImage;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public boolean getIsSale() {
@@ -134,4 +118,23 @@ public class ProductDTO extends BaseDTO {
 		this.isNew = isNew;
 	}
 
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+	
+
+
+	
 }

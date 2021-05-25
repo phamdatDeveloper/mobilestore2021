@@ -22,7 +22,7 @@ public class ProductAPI {
 
 	@GetMapping("/api/products")
 	public ResponseEntity<List<ProductDTO>> getAllProduct() {
-		List<ProductDTO> product = productService.findByActive(1);
+		List<ProductDTO> product = productService.getByActive(true,null).getContent();
 		return ResponseEntity.ok().body(product);
 	}
 
@@ -42,7 +42,7 @@ public class ProductAPI {
 	}
 	@PostMapping("/api/products/{id}")
 	public ResponseEntity<ProductDTO> update(@RequestBody ProductDTO productDTO,@PathVariable("id") Long id) {
-		productService.update(productDTO);
+		productService.save(productDTO);
 		ProductDTO product = productService.findById(id);
 		return ResponseEntity.ok().body(product);
 	}

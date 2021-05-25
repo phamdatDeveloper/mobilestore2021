@@ -1,38 +1,35 @@
 package com.mobileshop.dto;
 
-import java.util.Collection;
-
-import javax.persistence.Column;
-import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
+import com.mobileshop.validation.FieldMatch;
+
 @Component
+@FieldMatch(field = "password",fieldMatch = "passwordConfirm",message = "Mật khẩu không tương ứng. Thử lại." )
 public class UserDTO extends BaseDTO {
 
-	@NotNull
+	@NotBlank(message = "Bạn không được bỏ trông trường dữ liệu này")
 	@Size(min = 5, message = "Tên tài khoản phải có ít nhất 5 ký tự")
 	private String username;
-	@NotNull
+	@NotBlank(message = "Bạn không được bỏ trông trường dữ liệu này")
 	@Size(min = 5, message = "Tên tài khoản phải có ít nhất 5 ký tự")
 	private String fullName;
-
+	@NotBlank(message = "Bạn không được bỏ trông trường dữ liệu này")
 	private String numberPhone;
-	@NotNull
+	@NotBlank(message = "Bạn không được bỏ trông trường dữ liệu này")
 	@Email(message = "Vui lòng điền Email hợp lệ (VD:xxx@gmail.com)")
 	private String email;
-
+	@NotBlank(message = "Bạn không được bỏ trông trường dữ liệu này")
 	private String password;
 
 	private String passwordConfirm;
 
 	private int active;
-
+	@NotBlank(message = "Bạn không được bỏ trông trường dữ liệu này")
 	private String address;
 
 	private String confirmToken;
@@ -108,5 +105,7 @@ public class UserDTO extends BaseDTO {
 	public void setConfirmToken(String confirmToken) {
 		this.confirmToken = confirmToken;
 	}
+
+	
 
 }

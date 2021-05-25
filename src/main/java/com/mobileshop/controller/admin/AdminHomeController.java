@@ -48,7 +48,7 @@ public class AdminHomeController {
 	
 	@PostMapping("/admin/product-edit/{id}")
 	public String adminUpdateProduct(@PathVariable("id")Long id,@ModelAttribute("product") ProductDTO product) {
-		productService.update(product);
+		productService.save(product);
 		
 		return "redirect:/admin/product-edit/{id}";
 	}
