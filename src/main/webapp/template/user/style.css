@@ -81,6 +81,51 @@ body {
 	font-weight: normal;
 	overflow-x: hidden;
 }
+ul.search-suggestions {
+    width: 638px;
+    height: auto;
+    list-style: none;
+    box-sizing: border-box;
+    border: 1px solid #cccc;
+    border-radius: 8px;
+    background-color: white;
+    position: absolute;
+    top: 45px;
+    z-index: 30;
+}
+
+ul.search-suggestions .suggestion-text {
+    background-color: #cecece;
+    box-sizing: border-box;
+    padding: 10px 20px;
+    font-weight: bold;
+}
+
+.suggestion {
+    display: flex;
+    padding: 10px;
+    border-bottom: 1px solid #cccc;
+}
+
+.suggestion img.imgClass {
+    width: 70px;
+    height: 80px;
+    margin-right: 10px;
+}
+span.name-product {
+    width: 100%;
+    display: block;
+    margin-bottom: 15px;
+}
+
+span.price-product {
+    color: #ED3737;
+}
+
+span.name-price {
+    display: flex;
+    flex-wrap: wrap;
+}
 a {
 	color: #a4a4a4;
 	transition: 0.3s ease-in-out;
@@ -5608,6 +5653,85 @@ input[type="number"] {
   -ms-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
   transform: rotate(-90deg);
+}
+
+.method-payment{
+	border-color: red;
+    color: red;
+}
+
+.error-text h1 {
+	color: #fed700;
+	font-size: 200px;
+	font-weight: 900;
+	letter-spacing: 10px;
+	line-height: 200px;
+	margin-bottom: 30px;
+}
+.error-text h2 {
+  color: #242424;
+  font-size: 35px;
+  font-weight: 700;
+  line-height: 35px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+.error-text > p {
+  color: #242424;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 25px;
+  margin-bottom: 30px;
+}
+ #search-form {
+  position: relative;
+  width: 450px;
+  text-align: center;
+  display: inline-block;
+}
+#search-form input {
+  background: #e1e1e1 none repeat scroll 0 0;
+  border: 1px solid #e1e1e1;
+  border-radius: 30px;
+  color: #242424;
+  float: left;
+  font-size: 14px;
+  height: 45px;
+  padding-left: 20px;
+  padding-right: 55px;
+  width: 100%;
+}
+#search-form button {
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: medium none;
+  color: #4f4f4f;
+  font-size: 18px;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all 0.3s ease 0s;
+  width: 50px;
+}
+ #search-form button:hover {
+ 	color:#fed700;
+ }
+ .error-button a {
+ 	background: #fed700 none repeat scroll 0 0;
+ 	border-radius: 35px;
+ 	color: #ffffff;
+ 	display: inline-block;
+ 	font-size: 12px;
+ 	font-weight: bold;
+ 	line-height: 40px;
+ 	margin-top: 53px;
+ 	padding: 0 30px;
+ 	text-transform: uppercase;
+ 	transition: all 0.3s ease-in-out;
+}
+.error-button a:hover{background:#242424;color:#fff;}
+.small-version {
+  display: none;
 }
 /*----------------------------------------------------------------------------------------------------*/
 /*------------------------------------------> The End <-----------------------------------------------*/

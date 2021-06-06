@@ -81,7 +81,7 @@
 								</div>
 								<div class="col-md-12 mb-20 ">
 									<label>Mật khẩu*</label>
-									<form:errors path="" class="error" />
+									
 									<form:errors path="password" class="error" />
 									<form:input type="password" path="password" id="password"
 										tabindex="2" class="form-control" placeholder="Password" />

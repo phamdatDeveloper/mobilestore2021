@@ -18,6 +18,7 @@ import com.mobileshop.dto.CategoryDTO;
 import com.mobileshop.dto.ProductDTO;
 import com.mobileshop.dto.UserDTO;
 import com.mobileshop.service.CategoryService;
+import com.mobileshop.service.OrderService;
 import com.mobileshop.service.ProductService;
 import com.mobileshop.service.UserService;
 
@@ -29,11 +30,13 @@ public class UserHomeController {
 	private CategoryService categoryService;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private OrderService orderService;
 
 // Trang chu
 	@RequestMapping("/")
 	public ModelAndView index(ModelAndView model, HttpSession session) {
-		Map<Long, CategoryDTO> categorys = categoryService.findByActive(1);
+		Map<Long, CategoryDTO> categorys = categoryService.findByActive(true);
 		Map<Long, List<ProductDTO>> listProductCategory = new HashMap<Long, List<ProductDTO>>();
 		for (Map.Entry<Long, CategoryDTO> category : categorys.entrySet()) {
 			Page<ProductDTO> products = productService.findByCategoryIdAndActive(category.getKey(), true, null);
@@ -47,12 +50,12 @@ public class UserHomeController {
 
 	@RequestMapping("/user")
 	public ModelAndView userInforPage(ModelAndView model, HttpSession session) {
-		Map<Long, CategoryDTO> categorys = categoryService.findByActive(1);
+		Map<Long, CategoryDTO> categorys = categoryService.findByActive(true);
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		
-			String username = ((UserDetails) principal).getUsername();
-			UserDTO userNameExist = userService.findOneByUsername(username);
-	
+
+		String username = ((UserDetails) principal).getUsername();
+		UserDTO userNameExist = userService.findOneByUsername(username);
+
 		model.addObject("categorys", categorys);
 		model.addObject("formEditUser", userNameExist);
 		model.setViewName("user/user-infor");
@@ -61,10 +64,19 @@ public class UserHomeController {
 
 	@RequestMapping("/changepassword")
 	public ModelAndView changePasswordPage(ModelAndView model, HttpSession session) {
-		Map<Long, CategoryDTO> categorys = categoryService.findByActive(1);
+		Map<Long, CategoryDTO> categorys = categoryService.findByActive(true);
 		model.addObject("categorys", categorys);
-		
+
 		model.setViewName("user/change-password");
+		return model;
+	}
+
+	@RequestMapping("/orderInfor")
+	public ModelAndView orderInforPage(ModelAndView model, HttpSession session) {
+		Map<Long, CategoryDTO> categorys = categoryService.findByActive(true);
+		model.addObject("categorys", categorys);
+
+		model.setViewName("user/order-infor");
 		return model;
 	}
 

@@ -2,13 +2,12 @@ package com.mobileshop.dto;
 
 import java.util.HashMap;
 
-import javax.validation.constraints.NotNull;
+import javax.persistence.Column;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+public class OrderDTO extends BaseDTO{
 
-public class OrderDTO {
-	
 	private String userName;
 	@NotEmpty(message = "Bạn không được bỏ trống trường này")
 	private String name;
@@ -16,8 +15,14 @@ public class OrderDTO {
 	private String shipAddress;
 	@NotEmpty(message = "Bạn không được bỏ trống trường này")
 	private String orderPhone;
+	
+	private String statusOrder;
 	@NotEmpty(message = "Bạn chưa chọn phương thức thanh toán")
-	private String statusPay;
+	@Column(name = "methodpay")
+	private String methodPay;
+
+	@Column(name = "totalprice")
+	private double totalPrice;
 
 	private HashMap<Long, CartDTO> carts;
 
@@ -53,14 +58,29 @@ public class OrderDTO {
 		this.orderPhone = orderPhone;
 	}
 
-	public String getStatusPay() {
-		return statusPay;
+	public String getStatusOrder() {
+		return statusOrder;
 	}
 
-	public void setStatusPay(String statusPay) {
-		this.statusPay = statusPay;
+	public void setStatusOrder(String statusOrder) {
+		this.statusOrder = statusOrder;
 	}
-	
+
+	public String getMethodPay() {
+		return methodPay;
+	}
+
+	public void setMethodPay(String methodPay) {
+		this.methodPay = methodPay;
+	}
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 
 	public HashMap<Long, CartDTO> getCarts() {
 		return carts;
@@ -78,5 +98,4 @@ public class OrderDTO {
 		this.carts = carts;
 	}
 
-	
 }

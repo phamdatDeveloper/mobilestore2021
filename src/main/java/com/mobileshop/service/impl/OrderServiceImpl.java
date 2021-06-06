@@ -2,15 +2,12 @@ package com.mobileshop.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mobileshop.converter.OrderConverter;
-import com.mobileshop.dto.CartDTO;
 import com.mobileshop.dto.OrderDTO;
-import com.mobileshop.entity.OrderDetailEntity;
 import com.mobileshop.entity.OrderEntity;
 import com.mobileshop.entity.UserEntity;
 import com.mobileshop.repository.OrderRepository;
@@ -71,6 +68,16 @@ public class OrderServiceImpl implements OrderService {
 	public Double sumOrderByYear(int month, int year, String status) {
 
 		return orderRepository.sumOrderByYear(month, year, status);
+	}
+
+	@Override
+	public List<OrderDTO> findAll() {
+		List<OrderDTO> listOrderDTO = new ArrayList<OrderDTO>();
+		List<OrderEntity> listOrderEntity = orderRepository.findAll();
+		for (OrderEntity orderEntity : listOrderEntity) {
+			listOrderDTO.add(orderConverter.convertToDTO(orderEntity));
+		}
+		return listOrderDTO;
 	}
 
 }

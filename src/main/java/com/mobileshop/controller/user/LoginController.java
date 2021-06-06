@@ -4,14 +4,14 @@ import java.security.Principal;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -76,6 +76,7 @@ public class LoginController {
 		return "user/register";
 	}
 
+	@Transactional
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView processRegistration(@ModelAttribute("registerForm") @Valid UserDTO user,
 			BindingResult bindingResult, ModelAndView mv) {
@@ -97,21 +98,23 @@ public class LoginController {
 		} else if (bindingResult.hasErrors()) {
 			mv.setViewName("user/register");
 		} else {
-			user.setConfirmToken(UUID.randomUUID().toString());
-//			user.setExpiryDate(30);
-			user.setPassword(passwordEncoder.encode(user.getPassword()));
-			user.setActive(0);
-			userService.save(user);
 
 //			 send mail
+		
+				user.setConfirmToken(UUID.randomUUID().toString());
+//				user.setExpiryDate(30);
+				user.setPassword(passwordEncoder.encode(user.getPassword()));
+				user.setActive(false);
+				userService.save(user);
 
-			SimpleMailMessage registrationEmail = new SimpleMailMessage();
-			registrationEmail.setTo(user.getEmail());
-			registrationEmail.setSubject("Xác nhận Email");
-			registrationEmail.setText("Để xác nhận email, xin vui lòng click: " + "http://localhost:8080/confirm?token="
-					+ user.getConfirmToken());
-			registrationEmail.setFrom("noreplymobileshop@gmail.com");
-			emailService.sendEmail(registrationEmail);
+				SimpleMailMessage registrationEmail = new SimpleMailMessage();
+				registrationEmail.setTo(user.getEmail());
+				registrationEmail.setSubject("Xác nhận Email");
+				registrationEmail.setText("Để xác nhận email, xin vui lòng click: "
+						+ "http://localhost:8080/confirm?token=" + user.getConfirmToken());
+				registrationEmail.setFrom("ducnguyen241292@gmail.com");
+				emailService.sendEmail(registrationEmail);
+			
 			mv.addObject("waitSendMail", "send-mail");
 			mv.setViewName("user/login");
 		}
@@ -125,7 +128,7 @@ public class LoginController {
 		if (token != null) {
 			UserDTO user = userService.findByConfirmToken(confirmationToken);
 			user.setConfirmToken(null);
-			user.setActive(1);
+			user.setActive(true);
 			userService.save(user);
 			model.addAttribute("message", "đã xác thực");
 			url = "redirect:/login";
@@ -153,7 +156,7 @@ public class LoginController {
 
 		if (userExist == null) {
 			mav.addObject("cannotFindEmail", "Tài khoản chưa được đăng ký");
-			mav.setViewName("forgotPassword");
+			mav.setViewName("user/forgot");
 			bindingResult.reject("email");
 		}
 
@@ -171,7 +174,7 @@ public class LoginController {
 			registrationEmail.setSubject("Lấy lại mật khẩu");
 			registrationEmail.setText("Để lấy lại mật khẩu, xin vui lòng click: "
 					+ "http://localhost:8080/reset?confirmtoken=" + userExist.getConfirmToken());
-			registrationEmail.setFrom("noreplymobileshop@gmail.com");
+			registrationEmail.setFrom("ducnguyen241292@gmail.com");
 			emailService.sendEmail(registrationEmail);
 
 			mav.addObject("message", "Một đường dẫn đã gửi đến Email của bạn, vui lòng xác nhận.");

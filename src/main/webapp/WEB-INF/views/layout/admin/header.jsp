@@ -86,7 +86,7 @@
 						class="menu-arrow"></span>
 				</a>
 					<ul class="nav-second-level" aria-expanded="false">
-						<li><a href="order-manager.html">Danh sách đơn hàng</a></li>
+						<li><a href="/admin/order-manager">Danh sách đơn hàng</a></li>
 					</ul></li>
 
 				<li><a href="javascript: void(0);" class="waves-effect"> <i
@@ -94,7 +94,7 @@
 						class="menu-arrow"></span>
 				</a>
 					<ul class="nav-second-level" aria-expanded="false">
-						<li><a href="categorys-manager.html">Danh sách loại sản
+						<li><a href="/admin/category-manager">Danh sách loại sản
 								phẩm</a></li>
 
 					</ul></li>
@@ -104,7 +104,7 @@
 						class="menu-arrow"></span>
 				</a>
 					<ul class="nav-second-level" aria-expanded="false">
-						<li><a href="user-manager.html">Danh sách người dùng</a></li>
+						<li><a href="/admin/user-manager">Danh sách người dùng</a></li>
 					</ul></li>
 
 			</ul>

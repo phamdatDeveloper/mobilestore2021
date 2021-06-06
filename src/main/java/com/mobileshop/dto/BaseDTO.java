@@ -2,11 +2,6 @@ package com.mobileshop.dto;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
 public abstract class BaseDTO {
 
 	private Long id;

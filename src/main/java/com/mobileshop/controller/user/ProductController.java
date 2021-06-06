@@ -1,6 +1,5 @@
 package com.mobileshop.controller.user;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,12 +42,22 @@ public class ProductController {
 		return model;
 
 	}
+	@RequestMapping("/product-detail")
+	public ModelAndView pageProductDetail(ModelAndView model,@RequestParam("id") long id	) {
+		
+		ProductDTO products = productService.findById(id);
+		model.addObject("products", products);
+		model.setViewName("user/product-detail");
+		return model;
+
+	}
+
 
 	@RequestMapping("/product/{category}")
 	public ModelAndView pageProductByCategory(ModelAndView model, @PathVariable("category") String category,
 			@RequestParam(name = "page", defaultValue = "1") Integer page,
 			@RequestParam(name = "limit", defaultValue = "3") Integer limit) {
-		Map<Long, CategoryDTO> categorys = categoryService.findByActive(SystemConstant.ACTIVE_STATUS);
+		Map<Long, CategoryDTO> categorys = categoryService.findByActive(true);
 		long id = 0;
 		for (Map.Entry<Long, CategoryDTO> category1 : categorys.entrySet()) {
 			if (category.equals(category1.getValue().getCategoryName())) {

@@ -1,14 +1,10 @@
 package com.mobileshop.dto;
 
-import javax.persistence.Column;
-
-import com.mobileshop.entity.BaseEntity;
-
 public class CategoryDTO extends BaseDTO{
 
 	private String categoryName;
 	
-	private int active;
+	private boolean active;
 
 	public String getCategoryName() {
 		return categoryName;
@@ -18,11 +14,11 @@ public class CategoryDTO extends BaseDTO{
 		this.categoryName = categoryName;
 	}
 
-	public int getActive() {
+	public boolean getActive() {
 		return active;
 	}
 
-	public void setActive(int active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 	

@@ -51,10 +51,10 @@ public class CartServiceImpl implements CartService {
 		}
 		if (carts.containsKey(id)) {
 			cart = carts.get(id);
-			if(quantity <= cart.getProduct().getQuantity()) {
+			if (quantity <= cart.getProduct().getQuantity()) {
 				for (Map.Entry<Long, CartDTO> oneCart : carts.entrySet()) {
 					oneCart.getValue().setMessage("");
-					carts.put(oneCart.getKey(), oneCart.getValue()	);
+					carts.put(oneCart.getKey(), oneCart.getValue());
 				}
 				cart.setQuantity(quantity);
 				cart.setMessage("");
@@ -65,7 +65,7 @@ public class CartServiceImpl implements CartService {
 					cart.setTotalPrice(cart.getProduct().getPrice() * quantity);
 				}
 				carts.put(id, cart);
-			}else {
+			} else {
 				cart = carts.get(id);
 				cart.setMessage("ERROR");
 				carts.put(id, cart);

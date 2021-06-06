@@ -6,16 +6,18 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
 
+	<http security="none" pattern="/api/**"/>
+	<http auto-config="true" use-expressions="true">
 
-	<http auto-config="true">
 		<intercept-url pattern="/admin/*"
 			access="hasRole('ROLE_ADMIN')" />
-			<intercept-url pattern="/user"
+		<intercept-url pattern="/user"
 			access="hasRole('ROLE_USER')" />
-			<intercept-url pattern="/changepassword"
+		<intercept-url pattern="/changepassword"
 			access="hasRole('ROLE_USER')" />
-			<intercept-url pattern="/admin/uploadFile/*"
+		<intercept-url pattern="/admin/uploadFile*"
 			access="permitAll" />
+
 		<intercept-url pattern="/*" access="permitAll" />
 		<access-denied-handler error-page="/403" />
 		<form-login login-page="/login"
@@ -26,6 +28,8 @@
 
 		<logout logout-url="/j_spring_security_logout"
 			logout-success-url="/logout" delete-cookies="JSESSIONID" />
+
+		
 	</http>
 
 	<authentication-manager>
@@ -34,7 +38,7 @@
 			<password-encoder hash="bcrypt" />
 		</authentication-provider>
 	</authentication-manager>
-	
+
 	<beans:bean id="customUserDetailsService"
 		class="com.mobileshop.service.impl.CustomUserDetailsService" />
 	<beans:bean id="customSuccessHandler"

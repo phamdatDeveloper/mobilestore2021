@@ -34,73 +34,7 @@
 			</div>
 			<!-- end page title -->
 
-			<div class="row">
-				<div class="col-xl-3 col-sm-6">
-					<div class="card bg-pink">
-						<div class="card-body widget-style-2">
-							<div class="text-white media">
-								<div class="media-body align-self-center">
-									<h2 class="my-0 text-white">
-										<span data-plugin="counterup">250</span>
-									</h2>
-									<p class="mb-0">Số lượng truy cập</p>
-								</div>
-								<i class="ion-md-eye"></i>
-							</div>
-						</div>
-					</div>
-				</div>
 
-				<div class="col-xl-3 col-sm-6">
-					<div class="card bg-purple">
-						<div class="card-body widget-style-2">
-							<div class="text-white media">
-								<div class="media-body align-self-center">
-									<h2 class="my-0 text-white">
-										<span data-plugin="counterup">${countProduct}</span>
-									</h2>
-									<p class="mb-0">Số lượng sản phẩm</p>
-								</div>
-								<i class="ion-md-paper-plane"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-xl-3 col-sm-6">
-					<div class="card bg-info">
-						<div class="card-body widget-style-2">
-							<div class="text-white media">
-								<div class="media-body align-self-center">
-									<h2 class="my-0 text-white">
-										<span data-plugin="counterup">50</span>
-									</h2>
-									<p class="mb-0">Số đơn bán ra</p>
-								</div>
-								<i class="ion-ios-pricetag"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-xl-3 col-sm-6">
-					<div class="card bg-primary">
-						<div class="card-body widget-style-2">
-							<div class="text-white media">
-								<div class="media-body align-self-center">
-									<h2 class="my-0 text-white">
-										<span data-plugin="counterup">100,000</span>
-									</h2>
-									<p class="mb-0">Số tiền thu về</p>
-								</div>
-								<i class="mdi mdi-comment-multiple"></i>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- end container-fluid -->
 
 		<div class="row">
 			<div class="col-xl-8">
@@ -108,12 +42,10 @@
 					<div class="card-header py-3 bg-transparent">
 						<div class="card-widgets">
 
-
-							<select class="custom-select mr-sm-2" id="select-pay-order">
-								
-								<option value="now-year">Trong năm nay</option>
-								<option>Trong tháng này</option>
-							</select>
+							<button class ="btn btn-info" id="find-by-now-year">Trong năm nay</button>
+							<button class="btn btn-info" id="find-by-year">Tìm trong năm</button>
+							<input type ="number" id= "input-of-find-by-year" style="display: none;">
+							
 
 						</div>
 						<h5 class="header-title mb-0">Tiền bán hàng</h5>
@@ -177,9 +109,25 @@
 <!-- end content -->
 
 <script type="text/javascript">
+
+<!-- Khoi tao bieu do ban dau -->
 $(document).ready(function() {
 	charOrderByYear("now-year");
-	charOrderPayByYear('now-year');
+	charOrderPayByYear('');
+});
+<!-- set sk click 2 button -->
+$('#find-by-year').click(function(){
+  $("#input-of-find-by-year").show();
+});
+
+$('#find-by-now-year').click(function(){
+	  $("#input-of-find-by-year").hide();
+	  charOrderPayByYear('');
+	});
+
+$('#input-of-find-by-year').keyup(function() {
+   
+    charOrderPayByYear($(this).val());
 });
 
 console.log($('#select-time-order').val());
@@ -192,15 +140,7 @@ $('#select-time-order').change(function() {
 	
 });
 
-console.log($('#select-pay-order').val());
-$('#select-pay-order').change(function() {
-	console.log($('#select-pay-order').val());
-	var type = $('#select-pay-order').val();
-	
-		charOrderPayByYear('now-year');
 
-	
-});
 
 function charOrderByYear(type) {
 	var date = new Date();
@@ -244,15 +184,15 @@ function charOrderByYear(type) {
 	});
 };
 	
-function charOrderPayByYear(type) {
+function charOrderPayByYear(year) {
 	var date = new Date();
-	var year = date.getFullYear();
+	var nowYear = date.getFullYear();
 	var month = date.getMonth();
 	var url ="";
-	if(type == 'now-year'){
-		url = "/api/orders/sum/" + year;
-	}else if(type == 'now-month'){
-		url = "/api/orders/" + parseInt(month + 1)+"/"+year;
+	if(year == ''){
+		url = "/api/orders/sum/" + nowYear;
+	}else{
+		url = "/api/orders/sum/"+year;
 	}
 	console.log(year);
 	$.ajax({

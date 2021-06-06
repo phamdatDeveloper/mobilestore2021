@@ -1,10 +1,9 @@
 package com.mobileshop.entity;
 
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -41,15 +40,14 @@ public class UserEntity extends BaseEntity {
 	@Column(name = "address")
 	private String address;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "users")
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "users" ,cascade = CascadeType.ALL)
 	private List<UsersRolesEntity> usersRoleses = new ArrayList<UsersRolesEntity>();
 
-	
+	@Column(name = "isdelete")
+	private boolean isDelete;
 
 	@Column(name = "confirmtoken")
 	private String confirmToken;
-
-
 
 	public String getUserName() {
 		return username;
@@ -129,6 +127,14 @@ public class UserEntity extends BaseEntity {
 
 	public void setConfirmToken(String confirmToken) {
 		this.confirmToken = confirmToken;
+	}
+
+	public boolean isDelete() {
+		return isDelete;
+	}
+
+	public void setDelete(boolean isDelete) {
+		this.isDelete = isDelete;
 	}
 
 	@Transient

@@ -50,6 +50,9 @@
 	href="<c:url value ="/template/admin/assets/libs/dropzone/dropzone.min.css"/>"
 	rel="stylesheet" type="text/css">
 <!--ck-->
+    <link rel="stylesheet" href="<c:url value ="/template/user/css/sweetalert2.min.css"/>">
+        <script src="<c:url value ="/template/user/js/sweetalert2.min.js"/>"></script>
+
 <script src="<c:url value ="/template/admin/assets/js/jquery.min.js"/>"></script>
 <script
 	src="<c:url value ="/template/admin/assets/js/jquery.validate.min.js"/>"></script>

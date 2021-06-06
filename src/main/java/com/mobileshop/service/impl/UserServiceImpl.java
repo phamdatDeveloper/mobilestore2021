@@ -1,9 +1,11 @@
 package com.mobileshop.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsPasswordService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mobileshop.converter.UserConverter;
 import com.mobileshop.dto.UserDTO;
@@ -27,15 +29,49 @@ public class UserServiceImpl implements UserService {
 	private RoleRepository roleRepository;
 
 	@Override
+	@Transactional
 	public void save(UserDTO user) {
-		UserEntity userEntity = userRepository.save(userConverter.convertToEntity(user));
-		if (user.getActive() != 0) {
-			UserDTO userDTO = userConverter.convertToDTO(userEntity);
+//		UserEntity userEntity = userRepository.save(userConverter.convertToEntity(user));
+//		if (user.getActive() != 0) {
+		UserEntity userEntity = userConverter.convertToEntity(user);
+		List<UsersRolesEntity> usersRolesEntity = new ArrayList<UsersRolesEntity>();
+		List<String> roles = user.getRole();
+		// Truong hop nguoi dang ky moi chua co id
+		if (user.getId() == null) {
 			UsersRolesEntity usersRoles = new UsersRolesEntity();
-			usersRoles.setUsers(userEntity);
 			usersRoles.setRole(roleRepository.findByName("ROLE_USER"));
+			usersRoles.setUsers(userEntity);
+//			usersRolesEntity.add(usersRoles);
+//		} else {
+//			for (String role : roles) {
+//				UsersRolesEntity usersRoles = new UsersRolesEntity();
+//				usersRoles.setRole(roleRepository.findByName(role));
+//				usersRoles.setUsers(userEntity);
+//				usersRolesEntity.add(usersRoles);
+//			}
+//		}
+
+//		usersRoles.setUsers(userEntity);
+//
+//		usersRolesRepository.save(usersRoles);
+			userEntity.setUsersRoleses(usersRolesEntity);
+			userRepository.save(userEntity);
 			usersRolesRepository.save(usersRoles);
+		} else {
+			for (String string : roles) {
+				UsersRolesEntity usersRoles = new UsersRolesEntity();
+				usersRoles.setRole(roleRepository.findByName(string));
+				usersRoles.setUsers(userEntity);
+				usersRolesEntity.add(usersRoles);
+			}
+			userEntity.setUsersRoleses(usersRolesEntity);
+			List<UsersRolesEntity> listUserRoleDelete = usersRolesRepository.findByUsers(userEntity);
+			for (UsersRolesEntity usersRolesEntity2 : listUserRoleDelete) {
+				usersRolesRepository.delete(usersRolesEntity2.getId());
+			}
+			userRepository.save(userEntity);
 		}
+//		}
 	}
 
 	@Override
@@ -52,6 +88,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public UserDTO findByEmail(String email) {
 		UserEntity userEntity = userRepository.findByEmail(email);
+
 		if (userEntity == null) {
 			return null;
 		} else {
@@ -90,6 +127,44 @@ public class UserServiceImpl implements UserService {
 			return null;
 		} else {
 			UserDTO userDTO = userConverter.convertToDTO(userEntity);
+			return userDTO;
+		}
+	}
+
+	@Override
+	public List<UserDTO> findByIsDelete(boolean isDelete) {
+		List<UserEntity> listUserEntity = userRepository.findByIsDelete(isDelete);
+
+		List<UserDTO> listUserDTO = new ArrayList<UserDTO>();
+
+		for (UserEntity userEntity : listUserEntity) {
+			UserDTO newUser = userConverter.convertToDTO(userEntity);
+			List<UsersRolesEntity> listUsersRoles = userEntity.getUsersRoleses();
+			List<String> roles = new ArrayList<String>();
+			for (UsersRolesEntity usersRolesEntity : listUsersRoles) {
+				RoleEntity role = usersRolesEntity.getRole();
+				roles.add(role.getName());
+			}
+			newUser.setRole(roles);
+			listUserDTO.add(newUser);
+		}
+		return listUserDTO;
+	}
+
+	@Override
+	public UserDTO findById(long id) {
+		UserEntity userEntity = userRepository.findById(id);
+		if (userEntity == null) {
+			return null;
+		} else {
+			UserDTO userDTO = userConverter.convertToDTO(userEntity);
+			List<UsersRolesEntity> listUsersRoles = userEntity.getUsersRoleses();
+			List<String> roles = new ArrayList<String>();
+			for (UsersRolesEntity usersRolesEntity : listUsersRoles) {
+				RoleEntity role = usersRolesEntity.getRole();
+				roles.add(role.getName());
+			}
+			userDTO.setRole(roles);
 			return userDTO;
 		}
 	}

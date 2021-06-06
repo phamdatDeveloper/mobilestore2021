@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mobileshop.dto.CartDTO;
 import com.mobileshop.dto.OrderDTO;
 import com.mobileshop.dto.ProductDTO;
 import com.mobileshop.service.CartService;
-import com.mobileshop.service.CategoryService;
 import com.mobileshop.service.OrderService;
 import com.mobileshop.service.ProductService;
 
@@ -87,15 +87,46 @@ public class CartController {
 		if (bindingResult.hasErrors()) {
 			model.setViewName("user/checkout");
 			
-		}else {
+		}else if(orderDTO.getMethodPay().equals("PAYPAL")) {
+			HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("carts");
+			orderDTO.setCarts(carts);
+//					List<CategoryDTO> categorys = categoryService.findByActive(1);
+			orderDTO.setStatusOrder("WAITING");
+				orderService.save(orderDTO);
+				session.removeAttribute("carts");
+				model.addObject("totalPrice", orderDTO.getTotalPrice());
+				model.setViewName("redirect:/pay");
+		}
+		
+		else  {
 		HashMap<Long, CartDTO> carts = (HashMap<Long, CartDTO>) session.getAttribute("carts");
 		orderDTO.setCarts(carts);
 //				List<CategoryDTO> categorys = categoryService.findByActive(1);
+			orderDTO.setStatusOrder("UNPAID");
 			orderService.save(orderDTO);
-			
+			session.removeAttribute("carts");
 			model.addObject("paymentSuccess", "paymentSuccess");
-			model.setViewName("redirect:/");
+			model.setViewName("user/index");
 		}
+		return model;
+	}
+	
+	@RequestMapping("/pay")
+	public ModelAndView vnpay(ModelAndView model, HttpSession session) {
+	
+		model.setViewName("user/vnpay");
+		return model;
+	}
+	
+	@RequestMapping("/checkPay")
+	public ModelAndView checkvnpay(@RequestParam("vnp_ResponseCode")String code, ModelAndView model, HttpSession session) {
+		 if ("00".equals(code)) {
+			 model.addObject("paymentSuccess", "paymentSuccess");
+			model.setViewName("user/index");
+         } else {
+        	 model.addObject("paymentSuccess", "paymentFail");
+        	 model.setViewName("user/index");
+         }
 		return model;
 	}
 }

@@ -1,5 +1,7 @@
 package com.mobileshop.dto;
 
+import java.util.List;
+
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
@@ -9,7 +11,7 @@ import org.springframework.stereotype.Component;
 import com.mobileshop.validation.FieldMatch;
 
 @Component
-@FieldMatch(field = "password",fieldMatch = "passwordConfirm",message = "Mật khẩu không tương ứng. Thử lại." )
+@FieldMatch(field = "password", fieldMatch = "passwordConfirm", message = "Mật khẩu không tương ứng. Thử lại.")
 public class UserDTO extends BaseDTO {
 
 	@NotBlank(message = "Bạn không được bỏ trông trường dữ liệu này")
@@ -28,7 +30,11 @@ public class UserDTO extends BaseDTO {
 
 	private String passwordConfirm;
 
-	private int active;
+	private boolean isDelete;
+
+	private List<String> role;
+
+	private boolean active;
 	@NotBlank(message = "Bạn không được bỏ trông trường dữ liệu này")
 	private String address;
 
@@ -82,12 +88,12 @@ public class UserDTO extends BaseDTO {
 		this.passwordConfirm = passwordConfirm;
 	}
 
-	public int getActive() {
+	public boolean getActive() {
 		return active;
 	}
 
-	public void setActive(int active) {
-		this.active = active;
+	public void setActive(boolean active2) {
+		this.active = active2;
 	}
 
 	public String getAddress() {
@@ -106,6 +112,20 @@ public class UserDTO extends BaseDTO {
 		this.confirmToken = confirmToken;
 	}
 
-	
+	public boolean isDelete() {
+		return isDelete;
+	}
+
+	public void setDelete(boolean isDelete) {
+		this.isDelete = isDelete;
+	}
+
+	public List<String> getRole() {
+		return role;
+	}
+
+	public void setRole(List<String> role) {
+		this.role = role;
+	}
 
 }

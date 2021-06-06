@@ -17,7 +17,6 @@ public class OrderConverter {
 	public OrderDTO convertToDTO(OrderEntity entity) {
 		ModelMapper modelMapper = new ModelMapper();
 		OrderDTO dto = modelMapper.map(entity, OrderDTO.class);
-
 		return dto;
 	}
 
@@ -29,8 +28,8 @@ public class OrderConverter {
 		entity.setName(dto.getName());
 		entity.setOrderPhone(dto.getOrderPhone());
 		entity.setShipAddress(dto.getShipAddress());
-		entity.setStatus(dto.getStatusPay());
-
+		entity.setMethodPay(dto.getMethodPay());
+		
 		List<OrderDetailEntity> orderDetails = new ArrayList<OrderDetailEntity>();
 		for (Map.Entry<Long, CartDTO> cart : dto.getCarts().entrySet()) {
 			OrderDetailEntity orderDetail = new OrderDetailEntity();

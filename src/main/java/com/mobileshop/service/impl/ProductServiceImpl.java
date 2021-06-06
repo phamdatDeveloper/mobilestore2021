@@ -1,15 +1,12 @@
 package com.mobileshop.service.impl;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.mobileshop.converter.ProductConverter;
@@ -108,6 +105,24 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Page<ProductDTO> findByCategoryIdAndActive(Long categoryId, boolean active, Pageable pageable) {
 		Page<ProductEntity> productEntitys = productRepository.findByCategoryIdAndActive(categoryId, active, pageable);
+		Page<ProductDTO> productDTOs = productEntitys.map(new Converter<ProductEntity, ProductDTO>() {
+
+			@Override
+			public ProductDTO convert(ProductEntity productEntity) {
+				ProductDTO productDTO = converter.convertToDTO(productEntity);
+				return productDTO;
+			}
+		});
+//		for (ProductEntity productEntity : productEntitys) {
+//			ProductDTO productDTO = converter.convertToDTO(productEntity);
+//			productDTOs.add(productDTO);
+//		}
+		return productDTOs;
+	}
+
+	@Override
+	public Page<ProductDTO> findByProductNameStartingWith(String productName, Pageable pageable) {
+		Page<ProductEntity> productEntitys = productRepository.findByProductNameStartingWith(productName, pageable);
 		Page<ProductDTO> productDTOs = productEntitys.map(new Converter<ProductEntity, ProductDTO>() {
 
 			@Override

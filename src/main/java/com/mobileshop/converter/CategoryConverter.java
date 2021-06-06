@@ -4,9 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 
 import com.mobileshop.dto.CategoryDTO;
-import com.mobileshop.dto.ProductDTO;
 import com.mobileshop.entity.CategoryEntity;
-import com.mobileshop.entity.ProductEntity;
 
 @Component
 public class CategoryConverter {

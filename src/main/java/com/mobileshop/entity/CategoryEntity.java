@@ -1,12 +1,7 @@
 package com.mobileshop.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -16,7 +11,7 @@ public class CategoryEntity extends BaseEntity {
 	@Column(name = "categoryname")
 	private String categoryName;
 	@Column(name = "active")
-	private int active;
+	private boolean active;
 
 //	@OneToMany(mappedBy = "category")
 //	private List<ProductEntity> products;
@@ -29,11 +24,11 @@ public class CategoryEntity extends BaseEntity {
 		this.categoryName = categoryName;
 	}
 
-	public int getActive() {
+	public boolean getActive() {
 		return active;
 	}
 
-	public void setActive(int active) {
+	public void setActive(boolean active) {
 		this.active = active;
 	}
 

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +24,14 @@ public class ProductAPI {
 		List<ProductDTO> product = productService.getByActive(true,null).getContent();
 		return ResponseEntity.ok().body(product);
 	}
+	
+	@GetMapping("/api/products/search/{productName}")
+	public ResponseEntity<List<ProductDTO>> getProductByName(@PathVariable("productName") String productName) {
+		List<ProductDTO> product = productService.findByProductNameStartingWith(productName, null).getContent();
+		return ResponseEntity.ok().body(product);
+	}
 
+	@SuppressWarnings("unchecked")
 	@GetMapping("/api/products/{id}")
 	public ResponseEntity<ProductDTO> getProductById(@PathVariable("id") Long id) {
 		ProductDTO product = productService.findById(id);

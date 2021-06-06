@@ -246,7 +246,39 @@
    </c:forEach>
             <!-- Xem nhanh | Modal Area End Here -->
 
+<c:if test="${paymentSuccess.equals('paymentSuccess')}">
+<script type="text/javascript">
 
+	swal({
+	    title: 'Đặt hàng thành công !',
+	    text: 'Chúc bạn một ngày mua sắm vui vẻ.',
+	    icon: 'success',
+	    timer: 2000,
+	    buttons: false,
+	})
+	.then(() => {
+		window.location.href = '/'
+	})
+</script>
+
+</c:if>
+
+<c:if test="${paymentSuccess.equals('paymentFail')}">
+<script type="text/javascript">
+
+	swal({
+	    title: 'Đặt hàng thất bại !',
+	    text: 'Chúc bạn một ngày mua sắm vui vẻ.',
+	    icon: 'info',
+	    timer: 2000,
+	    buttons: false,
+	})
+	.then(() => {
+		window.location.href = '/'
+	})
+</script>
+
+</c:if>
 
     </body>
 

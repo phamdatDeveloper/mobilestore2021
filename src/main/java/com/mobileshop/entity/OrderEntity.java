@@ -31,8 +31,11 @@ public class OrderEntity extends BaseEntity {
 	@Column(name = "orderphone")
 	private String orderPhone;
 
-	@Column(name = "status")
-	private String status;
+	@Column(name = "statusorder")
+	private String statusOrder;
+	
+	@Column(name = "methodpay")
+	private String methodPay;
 
 	@Column(name = "totalprice")
 	private double totalPrice;
@@ -77,12 +80,22 @@ public class OrderEntity extends BaseEntity {
 		this.orderPhone = orderPhone;
 	}
 
-	public String getStatus() {
-		return status;
+	
+
+	public String getStatusOrder() {
+		return statusOrder;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setStatusOrder(String statusOrder) {
+		this.statusOrder = statusOrder;
+	}
+
+	public String getMethodPay() {
+		return methodPay;
+	}
+
+	public void setMethodPay(String methodPay) {
+		this.methodPay = methodPay;
 	}
 
 	public long getUserId() {

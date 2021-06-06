@@ -19,10 +19,13 @@
                             <!-- Begin Header Middle Right Area -->
                             <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
                                 <!-- Begin Header Middle Searchbox Area -->
+                                
                                 <form action="#" class="hm-searchbox">
-                                    <input type="text" placeholder="Tìm kiếm ...">
+                                    <input type="text" name="search" id="input-search" autocomplete="off" placeholder="Tìm kiếm ...">
                                     <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
                                 </form>
+                                <div id="result-search">
+                                </div>
                                 <!-- Header Middle Searchbox Area End Here -->
                                 <!-- Begin Header Middle Right Area -->
                                 <div class="header-middle-right">
@@ -41,6 +44,16 @@
                                                 	<c:if test="${pageContext.request.userPrincipal.name != null }">
                                                     
                                                    <li><a href="/user">Thông tin tài khoản</a></li>
+                                                    <li><a href="user">Đơn hàng của tôi</a></li>
+                                                     <li>
+                                                    <form  id="logout" action="<c:url value="/j_spring_security_logout" />" method="post" >
+   														
+   														<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+   														 </form>
+   														<a  href="javascript:$('#logout').submit();" >Đăng xuất</a>
+													
+                                                    	
+                                                    </li>
                                                     </c:if>
                                                     
                                                     
@@ -50,16 +63,8 @@
                                                     <li><a href="/register">Đăng ký</a></li>
                                                     </c:if>
                                                     
-                                                    <li><a href="user">Đơn hàng của tôi</a></li>
-                                                    <li>
-                                                    <form  id="logout" action="<c:url value="/j_spring_security_logout" />" method="post" >
-   														
-   														<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-   														 </form>
-   														<a  href="javascript:$('#logout').submit();" >Đăng xuất</a>
-													
-                                                    	
-                                                    </li>
+                                                   
+                                                   
                                                 </ul>
                                             </div>
                                         </li>
@@ -97,7 +102,7 @@
                                                     <a href="<c:url value="/cart"/>" class="li-button li-button-dark li-button-fullwidth li-button-sm">
                                                         <span>Xem giỏ hàng</span>
                                                     </a>
-                                                    <a href="checkout.html" class="li-button li-button-fullwidth li-button-sm">
+                                                    <a href="/checkout" class="li-button li-button-fullwidth li-button-sm">
                                                         <span>Thanh toán</span>
                                                     </a>
                                                 </div>
@@ -170,4 +175,51 @@
                 <!-- Mobile Menu Area End Here -->
             </header>
             <!-- Header Area End Here -->
+            
+            <script type="text/javascript">
+            $('#input-search').keyup(function () {
+            	var productName = $('#input-search').val();
+            	console.log('do dai input'+ productName.length);
+            	if(productName.length === 0){
+            		$('#result-search').html('');
+            	}else{
+            		search(productName);
+            	}
+            	});
+            
+            
+            function search(productName) {
+
+            	console.log(productName);
+            	$.ajax({
+            		type: "GET",
+            		url: "/api/products/search/" + productName,
+            		timeout: 600000,
+            		success: function(data) {
+            			console.log(data.length);
+            			if(data.length != 0){
+            				var html ="";
+            				html += ' <ul class="search-suggestions">';
+            				html += ' <li class="suggestion-text">Sản phẩm gợi ý</li> ';
+            				for (var i = 0; i < 5; i++) {
+								html += '<li class="suggestion">';
+								html += '<img class="imgClass" src="'+data[i].mainImage+'" /><div class="name-price">';
+								html += '<a href="/product-detail?id='+data[i].id+'"><span class="name-product">'+data[i].productName+'</span></a>';
+								var price = data[i].price.toString().replace(/(.)(?=(\d{3})+$)/g,'$1,');
+								html += '<span class="price-product">'+price+' đ</span> </div>';
+								html += '</li> ';
+							}
+            				html += '</ul>';
+            				 $('#result-search').html(html);
+            			}
+     			
+            		},
+            		error: function(e) {
+
+            			console.log("error");
+
+            		}
+            	});
+            };
+			</script>
     
