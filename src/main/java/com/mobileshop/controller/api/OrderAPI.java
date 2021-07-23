@@ -7,15 +7,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mobileshop.dto.OrderDTO;
 import com.mobileshop.service.OrderService;
 
 @RestController
 public class OrderAPI {
 	@Autowired
 	private OrderService orderService;
+
+	@RequestMapping(value = "/api/orders", method = RequestMethod.PUT)
+	public @ResponseBody OrderDTO updateOrder(@RequestParam(value="id",required=false) Long id,
+			@RequestParam(value="statusOrder",required=false) String statusOrder) {
+		OrderDTO order = orderService.saveByStatusOrder(id, statusOrder);
+		return order;
+	}
+	
+	@RequestMapping(value = "/api/order/{id}", method = RequestMethod.GET)
+	public @ResponseBody OrderDTO updateOrder(@PathVariable("id") Long id) {
+		OrderDTO order = orderService.findById(id);
+		return order;
+	}
 
 	@RequestMapping(value = "/api/orders/{year}", method = RequestMethod.GET)
 	public @ResponseBody Map<String, Integer> getOrderByYear(@PathVariable("year") int year) {

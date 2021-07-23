@@ -1484,7 +1484,7 @@ textarea:focus {
 }
 /*Header Middle*/
 .header-middle {
-	padding: 30px;
+	margin-top: 10px;
 }
 .hm-searchbox {
 	display: flex;
@@ -1790,7 +1790,7 @@ textarea:focus {
 /*Header Bottom Menu*/
 .header-bottom {
 		background: #fed700;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 }
 .hb-menu > nav > ul {
 		position: relative;

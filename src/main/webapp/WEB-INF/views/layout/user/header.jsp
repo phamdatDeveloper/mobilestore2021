@@ -20,9 +20,9 @@
                             <div class="col-lg-9 pl-0 ml-sm-15 ml-xs-15">
                                 <!-- Begin Header Middle Searchbox Area -->
                                 
-                                <form action="#" class="hm-searchbox">
+                                <form action="" class="hm-searchbox" id="form-search" onkeydown="return event.key != 'Enter';">
                                     <input type="text" name="search" id="input-search" autocomplete="off" placeholder="Tìm kiếm ...">
-                                    <button class="li-btn" type="submit"><i class="fa fa-search"></i></button>
+                                    <button class="li-btn" onclick="redirectSearch()" type="button"><i class="fa fa-search"></i></button>
                                 </form>
                                 <div id="result-search">
                                 </div>
@@ -128,7 +128,7 @@
                                     <nav>
                                         <ul>
                                             <li><a href="<c:url value="/"/>">Trang chủ</a></li>
-                                            <li class="megamenu-holder"><a href="shop-left-sidebar.html">Sản phẩm</a>
+                                            <li class="megamenu-holder"><a href="<c:url value ="/product/"/>">Sản phẩm</a>
                                                 <ul class="megamenu hb-megamenu">
                                                     <li><a href="<c:url value ="/product/"/>">Điện thoại</a>
                                                         <ul>
@@ -152,8 +152,8 @@
                                                 </ul>
                                             </li>
                                             
-                                            <li><a href="contact.html">Liên hệ</a></li>
-                                            <li><a href="about-us.html">Về chúng tôi</a></li>
+                                            <li><a href="<c:url value="/contact"/>">Liên hệ</a></li>
+                                            <li><a href="<c:url value="/about-us"/>">Về chúng tôi</a></li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -188,6 +188,12 @@
             	});
             
             
+            function redirectSearch(){
+            	
+            	var search = $('#input-search').val();
+            	window.location.href = '/product-search/'+search;
+            }
+            
             function search(productName) {
 
             	console.log(productName);
@@ -201,7 +207,13 @@
             				var html ="";
             				html += ' <ul class="search-suggestions">';
             				html += ' <li class="suggestion-text">Sản phẩm gợi ý</li> ';
-            				for (var i = 0; i < 5; i++) {
+            				var limit = 0;
+            				if(data.length >= 5){
+            					limit = 5;
+            				}else{
+            					limit = data.length;
+            				}
+            				for (var i = 0; i < limit; i++) {
 								html += '<li class="suggestion">';
 								html += '<img class="imgClass" src="'+data[i].mainImage+'" /><div class="name-price">';
 								html += '<a href="/product-detail?id='+data[i].id+'"><span class="name-product">'+data[i].productName+'</span></a>';

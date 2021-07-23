@@ -41,12 +41,12 @@
 							<h4 class="login-title text-center">THAY ĐỔI MẬT KHẨU</h4>
 							<div class="row">
 								<div class="col-md-6 mb-20">
-									<label>Mật khẩu mới</label> <input class="mb-0" type="password"
+									<label>Mật khẩu mới</label> <input class="mb-0" id="password" name="password" type="password"
 										placeholder="Điền mật khẩu">
 								</div>
 								<div class="col-md-6 mb-20">
 									<label>Xác nhận mật khẩu</label> <input class="mb-0"
-										type="password" placeholder="Xác nhận mật khẩu">
+										name="confirmpassword" id="confirmpassword" type="password" placeholder="Xác nhận mật khẩu">
 								</div>
 								<div class="col-12 d-flex justify-content-center">
 									<button class="register-button mt-0">XÁC NHẬN</button>

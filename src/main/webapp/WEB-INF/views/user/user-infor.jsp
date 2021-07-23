@@ -37,7 +37,7 @@
 				</div>
 				<div class="col-sm-8 col-md-8 col-lg-8 col-xs-8">
 					<form:form action="/user" id="register-form"
-						modelAttribute="formEditUser" method="get">
+						modelAttribute="formEditUser" method="post">
 						<div class="login-form">
 							<h4 class="login-title">THÔNG TIN TÀI KHOẢN</h4>
 							<div class="row">
@@ -58,7 +58,7 @@
 								<div class="col-md-12 mb-20">
 									<label>Email (Email là mặc định bạn không thể sửa)</label>
 									<form:input type="text" path="email" id="email" tabindex="1"
-										class="mb-0" placeholder="Email" disabled="true" />
+										class="mb-0" placeholder="Email" disabled="true"  />
 								</div>
 								<div class="col-md-12 mb-20">
 									<label>Địa chỉ*</label>
@@ -79,5 +79,7 @@
 		</div>
 	</div>
 	<!-- Login Content Area End Here -->
+
+	
 </body>
 </html>

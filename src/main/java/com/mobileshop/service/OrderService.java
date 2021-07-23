@@ -9,6 +9,12 @@ import com.mobileshop.dto.OrderDTO;
 public interface OrderService {
 	void save(OrderDTO order);
 	
+	OrderDTO saveByStatusOrder(Long id,String statusOrder);
+	
+	OrderDTO findById(Long id);
+	
+	List<OrderDTO> findByUserId(Long id);
+	
 	List<OrderDTO> findAll();
 	
 	int findOrderByYear(int year, String status);

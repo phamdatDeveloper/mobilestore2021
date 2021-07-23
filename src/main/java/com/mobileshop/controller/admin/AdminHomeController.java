@@ -1,5 +1,6 @@
 package com.mobileshop.controller.admin;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,18 +39,18 @@ public class AdminHomeController {
 		model.addAttribute("countProduct", countProduct);
 		return "admin/index";
 	}
-	
+
 	@RequestMapping("/admin/user-manager")
 	public ModelAndView adminUserManagerPage(ModelAndView model) {
-		List<UserDTO> listUser  = userService.findByIsDelete(SystemConstant.ISDELETE);
+		List<UserDTO> listUser = userService.findByIsDelete(SystemConstant.ISDELETE);
 		model.addObject("listUser", listUser);
 		model.setViewName("admin/user-manager");
 		return model;
 	}
-	
+
 	@RequestMapping("/admin/category-manager")
 	public ModelAndView adminCategoryManagerPage(ModelAndView model) {
-		List<CategoryDTO> listCategory  = categoryService.findAll();
+		List<CategoryDTO> listCategory = categoryService.findAll();
 		model.addObject("listCategory", listCategory);
 		model.setViewName("admin/category-manager");
 		return model;
@@ -61,18 +63,27 @@ public class AdminHomeController {
 		List<String> secondaryImage = product.getSecondaryImage();
 
 		Map<Long, CategoryDTO> categorys = categoryService.findByActive(true);
-
+		List<CategoryDTO> listCategory = new ArrayList<CategoryDTO>();
+		for (Map.Entry<Long, CategoryDTO> entry : categorys.entrySet()) {
+			listCategory.add(entry.getValue());
+		}
 		model.addAttribute("secondaryImage", secondaryImage);
 		model.addAttribute("product", product);
-		model.addAttribute("categorys", categorys);
+		model.addAttribute("categorys", listCategory);
 		return "admin/product-edit";
 	}
 
 	@PostMapping("/admin/product-edit/{id}")
-	public String adminUpdateProduct(@PathVariable("id") Long id, @ModelAttribute("product") ProductDTO product) {
-		productService.save(product);
-
-		return "redirect:/admin/product-edit/{id}";
+	public ModelAndView adminUpdateProduct(@PathVariable("id") Long id, @ModelAttribute("product") ProductDTO product,
+			BindingResult bindingResult) {
+		ModelAndView mv = new ModelAndView();
+		if (bindingResult.hasErrors()) {
+			mv.setViewName("admin/product-edit");
+		} else {
+			productService.save(product);
+			mv.setViewName("redirect:/admin/product-edit/{id}");
+		}
+		return mv;
 	}
 
 	@RequestMapping("/admin/product-manager")
@@ -86,17 +97,25 @@ public class AdminHomeController {
 	public String adminShowAddProduct(Model model, HttpServletRequest request,
 			@ModelAttribute("product") ProductDTO product) {
 		Map<Long, CategoryDTO> categorys = categoryService.findByActive(true);
-
-		model.addAttribute("categorys", categorys);
+		List<CategoryDTO> listCategory = new ArrayList<CategoryDTO>();
+		for (Map.Entry<Long, CategoryDTO> entry : categorys.entrySet()) {
+			listCategory.add(entry.getValue());
+		}
+		model.addAttribute("categorys", listCategory);
 		return "admin/product-add";
 	}
 
 	@PostMapping("/admin/product-add")
-	public String adminAddProduct(Model model, HttpServletRequest request,
-			@ModelAttribute("product") ProductDTO product) {
+	public ModelAndView adminAddProduct(Model model, HttpServletRequest request,
+			@ModelAttribute("product") ProductDTO product,BindingResult bindingResult) {
+		ModelAndView mv = new ModelAndView();
+		if(bindingResult.hasErrors()) {
+			mv.setViewName("admin/product-add");
+		}else {
 		productService.save(product);
-
-		return "redirect:/admin/product-manager";
+		mv.setViewName("redirect:/admin/product-manager");
+		}
+		return mv;
 
 	}
 }

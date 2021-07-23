@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.mobileshop.constant.SystemConstant;
 import com.mobileshop.dto.CategoryDTO;
 import com.mobileshop.dto.ProductDTO;
 import com.mobileshop.service.CategoryService;
@@ -31,7 +30,7 @@ public class ProductController {
 			@RequestParam(name = "limit", defaultValue = "7") Integer limit) {
 		Pageable pageable = new PageRequest(page - 1, limit);
 		if (page == null || limit == null) {
-			pageable = new PageRequest(1, 5);
+			pageable = new PageRequest(1, 7);
 		}
 
 		Page<ProductDTO> products = productService.getByActive(true, pageable);
@@ -56,7 +55,7 @@ public class ProductController {
 	@RequestMapping("/product/{category}")
 	public ModelAndView pageProductByCategory(ModelAndView model, @PathVariable("category") String category,
 			@RequestParam(name = "page", defaultValue = "1") Integer page,
-			@RequestParam(name = "limit", defaultValue = "3") Integer limit) {
+			@RequestParam(name = "limit", defaultValue = "7") Integer limit) {
 		Map<Long, CategoryDTO> categorys = categoryService.findByActive(true);
 		long id = 0;
 		for (Map.Entry<Long, CategoryDTO> category1 : categorys.entrySet()) {
@@ -68,7 +67,7 @@ public class ProductController {
 
 		Pageable pageable = new PageRequest(page - 1, limit);
 		if (page == null || limit == null) {
-			pageable = new PageRequest(1, 5);
+			pageable = new PageRequest(1, 7);
 		}
 
 		Page<ProductDTO> products = productService.findByCategoryIdAndActive(id, true, pageable);
@@ -77,6 +76,27 @@ public class ProductController {
 		model.addObject("products", products.getContent());
 		model.addObject("category", category);
 		model.addObject("categorys", categorys);
+		model.setViewName("user/shop-left-sidebar");
+		return model;
+	}
+	@RequestMapping("/product-search/{search}")
+	public ModelAndView pageSearchProduct(ModelAndView model, @PathVariable("search") String search,
+			@RequestParam(name = "page", defaultValue = "1") Integer page,
+			@RequestParam(name = "limit", defaultValue = "7") Integer limit) {
+		Map<Long, CategoryDTO> categorys = categoryService.findByActive(true);
+		
+
+		Pageable pageable = new PageRequest(page - 1, limit);
+		if (page == null || limit == null) {
+			pageable = new PageRequest(1, 7);
+		}
+
+		Page<ProductDTO> products = productService.findByProductNameStartingWith(search, pageable);
+		model.addObject("totalPage", products.getTotalPages());
+		model.addObject("page", pageable.getPageNumber() + 1);
+		model.addObject("products", products.getContent());
+		model.addObject("categorys", categorys);
+		model.addObject("search", search);
 		model.setViewName("user/shop-left-sidebar");
 		return model;
 	}

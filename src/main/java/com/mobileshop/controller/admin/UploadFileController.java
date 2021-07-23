@@ -37,7 +37,7 @@ public class UploadFileController {
 //
 //	}
 	
-	 @PostMapping("/admin/uploadOneFile")
+	 @PostMapping("/api/uploadOneFile")
 	   public ResponseEntity<List<String>> fileUpload(HttpServletRequest request, Model model,@RequestParam("file") CommonsMultipartFile[] file)
 	         throws IOException {
 		 List<String> linkImages= UploadFile.doUpload(request, model, file);

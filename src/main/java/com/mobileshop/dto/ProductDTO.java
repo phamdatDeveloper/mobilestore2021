@@ -2,14 +2,17 @@ package com.mobileshop.dto;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class ProductDTO extends BaseDTO {
 
+	@NotEmpty(message="Không được để trống trường này")
 	private String productName;
-
+	@NotEmpty(message="Không được để trống trường này")
 	private int price;
 
 	private int priceSale;
-
+	@NotEmpty(message="Không được để trống trường này")
 	private String description;
 
 	private String specification;

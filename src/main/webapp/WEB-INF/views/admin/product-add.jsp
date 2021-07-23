@@ -325,7 +325,7 @@
 	    $.ajax({
 	        type: "POST",
 	        enctype: 'multipart/form-data',
-	        url: "http://localhost:8080/mobileshop/admin/uploadOneFile",
+	        url: "http://localhost:8080/api/uploadOneFile",
 	        data: data,
 	        //http://api.jquery.com/jQuery.ajax/
 	        //https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
@@ -341,7 +341,7 @@
 	        	HTML+= '<div class="custom-control custom-checkbox image-checkbox border border-success rounded">';
 	        	HTML+='<input id="newimage'+index+'" class="custom-control-input" name="secondaryImage" type="checkbox" value="'+item+'" checked="checked">';
 	        	HTML+= '<label class="custom-control-label" for="newimage'+index+'">';
-	        	HTML+= '<img width="100%" height="100px" class="img-fluid" src="<c:url value ="/'+item+'"/>" />';
+	        	HTML+= '<img width="100%" height="100px" class="img-fluid" src="<c:url value ="'+item+'"/>" />';
 	        	HTML+= '</label>';
 	        	HTML+= '</div>';
 	        	HTML+= '</div>';
@@ -371,7 +371,7 @@
 	    $.ajax({
 	        type: "POST",
 	        enctype: 'multipart/form-data',
-	        url: "http://localhost:8080/mobileshop/admin/uploadOneFile",
+	        url: "http://localhost:8080/api/uploadOneFile",
 	        data: data,
 	        //http://api.jquery.com/jQuery.ajax/
 	        //https://developer.mozilla.org/en-US/docs/Web/API/FormData/Using_FormData_Objects
@@ -387,7 +387,7 @@
 	        	HTML+= '<div class="custom-control custom-checkbox image-checkbox border border-success rounded">';
 	        	HTML+='<input id="newimage'+index+'" class="custom-control-input" name="mainImage" type="checkbox" value="'+item+'" checked="checked">';
 	        	HTML+= '<label class="custom-control-label" for="newimage'+index+'">';
-	        	HTML+= '<img width="100%" height="100px" class="img-fluid" src="<c:url value ="/'+item+'"/>" />';
+	        	HTML+= '<img width="100%" height="100px" class="img-fluid" src="<c:url value ="'+item+'"/>" />';
 	        	HTML+= '</label>';
 	        	HTML+= '</div>';
 	        	HTML+= '</div>';

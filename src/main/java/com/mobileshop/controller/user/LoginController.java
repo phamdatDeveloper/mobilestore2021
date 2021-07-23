@@ -70,12 +70,15 @@ public class LoginController {
 		return "user/403";
 	}
 
+	//Hien thi trang dang ky
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public String registerPage(Model model) {
 		model.addAttribute("registerForm", new UserDTO());
 		return "user/register";
 	}
 
+	
+	//Xu ly dang ky khi nguoi dung dang ky sai thong tin
 	@Transactional
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView processRegistration(@ModelAttribute("registerForm") @Valid UserDTO user,
@@ -121,6 +124,7 @@ public class LoginController {
 		return mv;
 	}
 
+	//Xu ly email gui ve
 	@RequestMapping(value = "/confirm", method = { RequestMethod.GET, RequestMethod.POST })
 	public String confirmUserAccount(@RequestParam("token") String confirmationToken, Model model) {
 		UserDTO token = userService.findByConfirmToken(confirmationToken);

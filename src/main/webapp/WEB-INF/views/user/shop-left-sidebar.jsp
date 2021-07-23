@@ -79,8 +79,9 @@
 												<!-- single-product-wrap start -->
 												<div class="single-product-wrap">
 													<div class="product-image">
-														<a href="single-product-normal.html"> <img
-															src="<c:url value="${product.mainImage}"/>"
+														<a
+															href="<c:url value="/product-detail?id=${product.id}"/>">
+															<img src="<c:url value="${product.mainImage}"/>"
 															alt="Li's Product Image">
 														</a> <span class="sticker">New</span>
 													</div>
@@ -94,7 +95,7 @@
 															</div>
 															<h4>
 																<a class="product_name"
-																	href="single-product-normal.html">${product.productName }</a>
+																	href="<c:url value="/product-detail?id=${product.id}"/>">${product.productName }</a>
 															</h4>
 															<div class="price-box">
 																<span class="new-price"><fmt:formatNumber
@@ -125,33 +126,62 @@
 									</div>
 								</div>
 							</div>
-							
-							
-												
-							
-							          <div class="paginatoin-area">
-							          <c:choose>
-							          	<c:when test="${category == '' }">
-							          		<form action="/product" method ="get" id ="formSubmit">
-							          	</c:when>
-							          	<c:otherwise>
-							          		<form action="/product/${category}" method ="get" id ="formSubmit">
-							          	</c:otherwise>
-							          </c:choose>
-							          
-                                        <div class="d-flex justify-content-center">
-                                            <div class="">
-                                            <input type="hidden" id="page" name="page" value="">
-									 		<input type="hidden" id="limit" name="limit" value="">
-                                            
-                                                <ul id="pagination-demo" class="pagination-box pt-xs-20 pb-xs-15 pagination-sm"></ul>
-                                            </div>
-                                        </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-	
+
+
+
+
+							<div class="paginatoin-area">
+								<c:choose>
+									<c:when test="${category == '' }">
+										<form action="/product" method="get" id="formSubmit">
+											<div class="d-flex justify-content-center">
+												<div class="">
+													<input type="hidden" id="page" name="page" value="">
+													<input type="hidden" id="limit" name="limit" value="">
+
+													<ul id="pagination-demo"
+														class="pagination-box pt-xs-20 pb-xs-15 pagination-sm"></ul>
+												</div>
+											</div>
+										</form>
+									</c:when>
+									<c:when test="${search != null}">
+									<form action="/product-search/${search}" method="get"
+											id="formSubmit">
+											
+											<div class="d-flex justify-content-center">
+												<div class="">
+													
+													<input type="hidden" id="page" name="page" value="">
+													<input type="hidden" id="limit" name="limit" value="">
+
+													<ul id="pagination-demo"
+														class="pagination-box pt-xs-20 pb-xs-15 pagination-sm"></ul>
+												</div>
+											</div>
+										</form>
+									</c:when>
+									<c:otherwise>
+										<form action="/product/${category}" method="get"
+											id="formSubmit">
+											<div class="d-flex justify-content-center">
+												<div class="">
+													<input type="hidden" id="page" name="page" value="">
+													<input type="hidden" id="limit" name="limit" value="">
+
+													<ul id="pagination-demo"
+														class="pagination-box pt-xs-20 pb-xs-15 pagination-sm"></ul>
+												</div>
+											</div>
+										</form>
+									</c:otherwise>
+								</c:choose>
+
+
+							</div>
+						</div>
+					</div>
+
 					<!-- shop-products-wrapper end -->
 				</div>
 				<div class="col-lg-3 order-2 order-lg-1">
@@ -180,40 +210,15 @@
 							</div>
 						</div>
 						<!-- filter-sub-area end -->
-						<!-- filter-sub-area start -->
-						<div class="filter-sub-area pt-sm-10 pt-xs-10">
-							<h5 class="filter-sub-titel">Dung lượng bộ nhớ</h5>
-							<div class="size-checkbox">
-								<form action="#">
-									<ul>
-										<li><input type="checkbox" name="product-size"><a
-											href="#">32GB</a></li>
-										<li><input type="checkbox" name="product-size"><a
-											href="#">64GB</a></li>
-										<li><input type="checkbox" name="product-size"><a
-											href="#">256GB</a></li>
-										<li><input type="checkbox" name="product-size"><a
-											href="#">512GB</a></li>
-									</ul>
-								</form>
-							</div>
-						</div>
-						<!-- filter-sub-area end -->
-						<!-- filter-sub-area start -->
-						<div class="filter-sub-area pt-sm-10 pt-xs-10">
-							<h5 class="filter-sub-titel">Màu sắc</h5>
-							<div class="color-categoriy">
-								<form action="#"></form>
-							</div>
-						</div>
-						<!-- filter-sub-area end -->
+						
+						
 					</div>
 					<!--sidebar-categores-box end  -->
 
 				</div>
 			</div>
 		</div>
-
+	</div>
 
 
 
@@ -279,7 +284,7 @@
 																type="number" maxFractionDigits="3"
 																value="${product.priceSale}" /></span>
 														<span class="old-price"
-															style="text-decoration: line-through;"><fmt:formatNumber
+															style="text-decoration: line-through"><fmt:formatNumber
 																type="number" maxFractionDigits="3"
 																value="${product.price}" /></span>
 													</c:when>

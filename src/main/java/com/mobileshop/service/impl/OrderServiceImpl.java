@@ -20,7 +20,6 @@ public class OrderServiceImpl implements OrderService {
 	private OrderRepository orderRepository;
 	@Autowired
 	private UserRepository userRepository;
-
 	@Autowired
 	private OrderConverter orderConverter;
 
@@ -30,32 +29,11 @@ public class OrderServiceImpl implements OrderService {
 		UserEntity user = userRepository.findOneByUsername(order.getUserName());
 		orderEntity.setUserId(user.getId());
 		orderEntity.setOrderEmail(user.getEmail());
-//		orderEntity.setUserId(user.getId());
-//		orderEntity.setName(order.getName());
-//		orderEntity.setOrderPhone(order.getOrderPhone());
-//		orderEntity.setShipAddress(order.getShipAddress());
-//		orderEntity.setOrderEmail(user.getEmail());
-//		orderEntity.setStatus("COD");
-//
-//		List<OrderDetailEntity> orderDetails = new ArrayList<OrderDetailEntity>();
-//		for (Map.Entry<Long, CartDTO> cart : order.getCarts().entrySet()) {
-//			OrderDetailEntity orderDetail = new OrderDetailEntity();
-//			orderDetail.setQuatity(cart.getValue().getQuantity());
-//			orderDetail.setProductId(cart.getValue().getProduct().getId());
-//			orderDetail.setPrice(cart.getValue().getTotalPrice());
-//			orderDetail.setOrder(orderEntity);
-//			orderDetails.add(orderDetail);
-//		}
-//		orderEntity.setOrderDetail(orderDetails);
-
 		orderRepository.save(orderEntity);
-//		orderRepository.save(orderEntity);
-
 	}
 
 	@Override
 	public int findOrderByYear(int year, String status) {
-
 		return orderRepository.findOrderByYear(year, status);
 	}
 
@@ -66,7 +44,6 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public Double sumOrderByYear(int month, int year, String status) {
-
 		return orderRepository.sumOrderByYear(month, year, status);
 	}
 
@@ -76,6 +53,36 @@ public class OrderServiceImpl implements OrderService {
 		List<OrderEntity> listOrderEntity = orderRepository.findAll();
 		for (OrderEntity orderEntity : listOrderEntity) {
 			listOrderDTO.add(orderConverter.convertToDTO(orderEntity));
+		}
+		return listOrderDTO;
+	}
+
+	@Override
+	public OrderDTO findById(Long id) {
+		OrderEntity orderEntity = orderRepository.findById(id);
+		if (orderEntity == null) {
+			return null;
+		}
+		OrderDTO orderDTO = orderConverter.convertToDTO(orderEntity);
+		return orderDTO;
+	}
+
+	@Override
+	public OrderDTO saveByStatusOrder(Long id, String statusOrder) {
+		OrderEntity orderEntity = orderRepository.findById(id);
+		orderEntity.setStatusOrder(statusOrder);
+		OrderDTO orderDTO = orderConverter.convertToDTO(orderRepository.save(orderEntity));
+		return orderDTO;
+
+	}
+
+	@Override
+	public List<OrderDTO> findByUserId(Long id) {
+		List<OrderDTO> listOrderDTO = new ArrayList<OrderDTO>();
+		List<OrderEntity> listOrderEntity = orderRepository.findByUserId(id);
+		//Lay danh sach tu duoi len
+		for (int i = listOrderEntity.size() - 1; i >= 0; i--) {
+			listOrderDTO.add(orderConverter.convertToDTO(listOrderEntity.get(i)));
 		}
 		return listOrderDTO;
 	}
